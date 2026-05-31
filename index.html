@@ -3,12 +3,687 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Linsheng He</title>
+    <meta
+      name="description"
+      content="Linsheng He academic homepage: research, writing, teaching, and contact."
+    >
+    <title>Linsheng He | Academic Homepage</title>
+    <style>
+      :root {
+        --paper: #f7f3ea;
+        --paper-deep: #ece4d4;
+        --ink: #141411;
+        --muted: #665f52;
+        --line: rgba(20, 20, 17, 0.18);
+        --rule: rgba(20, 20, 17, 0.32);
+        --moss: #34483d;
+        --clay: #a65f45;
+        --gold: #b48a45;
+        --max: 1160px;
+        --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        --sans: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--serif);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(20, 20, 17, 0.035) 1px, transparent 1px) 0 0 / 88px 88px,
+          linear-gradient(rgba(20, 20, 17, 0.025) 1px, transparent 1px) 0 0 / 88px 88px,
+          radial-gradient(circle at 78% 12%, rgba(180, 138, 69, 0.13), transparent 28rem),
+          linear-gradient(180deg, #fbf8f0 0%, var(--paper) 46%, var(--paper-deep) 100%);
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        opacity: 0.34;
+        background-image:
+          repeating-radial-gradient(circle at 18% 24%, rgba(20, 20, 17, 0.13) 0 0.5px, transparent 0.6px 2.8px),
+          repeating-linear-gradient(102deg, transparent 0 13px, rgba(20, 20, 17, 0.045) 14px 15px);
+        mix-blend-mode: multiply;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgba(52, 72, 61, 0.38);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        color: var(--moss);
+        text-decoration-color: var(--moss);
+      }
+
+      .site-shell {
+        width: min(100% - 40px, var(--max));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+        padding: 28px 0 20px;
+        border-bottom: 1px solid var(--line);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .wordmark {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        min-width: 0;
+        font-weight: 700;
+      }
+
+      .seal {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--rule);
+        border-radius: 50%;
+        color: var(--paper);
+        background: var(--ink);
+        font-family: var(--serif);
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+
+      .nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        color: var(--muted);
+      }
+
+      .nav a {
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: clamp(32px, 7vw, 92px);
+        align-items: end;
+        min-height: 72vh;
+        padding: clamp(56px, 9vw, 118px) 0 58px;
+      }
+
+      .eyebrow {
+        margin: 0 0 28px;
+        color: var(--moss);
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 850px;
+        margin-bottom: 28px;
+        font-size: clamp(54px, 9vw, 124px);
+        font-weight: 400;
+        line-height: 0.91;
+        letter-spacing: 0;
+      }
+
+      .hanzi {
+        display: block;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(30px, 5vw, 62px);
+      }
+
+      .intro {
+        max-width: 710px;
+        margin-bottom: 34px;
+        color: #312d25;
+        font-size: clamp(19px, 2.2vw, 28px);
+        line-height: 1.42;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        align-items: center;
+        font-family: var(--sans);
+        font-size: 13px;
+        letter-spacing: 0.03em;
+      }
+
+      .contact-row a {
+        padding-bottom: 4px;
+      }
+
+      .folio {
+        position: relative;
+        padding: 26px 0 0 26px;
+        border-left: 1px solid var(--rule);
+      }
+
+      .folio::before {
+        position: absolute;
+        top: 0;
+        left: -5px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--clay);
+        content: "";
+      }
+
+      .folio-title {
+        margin-bottom: 30px;
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .folio-list {
+        display: grid;
+        gap: 24px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .folio-list li {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .folio-list strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 19px;
+        font-weight: 400;
+      }
+
+      .folio-list span {
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .section {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 88px);
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-kicker {
+        color: var(--moss);
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .section h2 {
+        margin-bottom: 22px;
+        font-size: clamp(31px, 4vw, 52px);
+        font-weight: 400;
+        line-height: 1.04;
+      }
+
+      .measure {
+        max-width: 780px;
+        color: #302c24;
+        font-size: 19px;
+        line-height: 1.7;
+      }
+
+      .research-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .research-item {
+        min-height: 210px;
+        padding: 24px;
+        background: rgba(247, 243, 234, 0.88);
+      }
+
+      .research-item h3 {
+        margin-bottom: 42px;
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .research-item p {
+        margin-bottom: 0;
+        font-size: 22px;
+        line-height: 1.25;
+      }
+
+      .work-list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      .work {
+        display: grid;
+        grid-template-columns: 86px minmax(0, 1fr);
+        gap: 28px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .work time {
+        color: var(--clay);
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .work h3 {
+        margin-bottom: 8px;
+        font-size: 23px;
+        font-weight: 400;
+        line-height: 1.22;
+      }
+
+      .work p {
+        max-width: 760px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .compact-list {
+        display: grid;
+        gap: 14px;
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .compact-list strong {
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px;
+      }
+
+      .note {
+        border-top: 1px solid var(--rule);
+        padding-top: 18px;
+      }
+
+      .note h3 {
+        margin-bottom: 11px;
+        font-size: 27px;
+        font-weight: 400;
+      }
+
+      .note p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .footer {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: end;
+        padding: 56px 0 38px;
+        border-top: 1px solid var(--ink);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      .footer a {
+        text-decoration: none;
+      }
+
+      @media (max-width: 860px) {
+        .topbar,
+        .hero,
+        .section,
+        .footer {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          gap: 18px;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 48px;
+        }
+
+        .folio {
+          padding-left: 18px;
+        }
+
+        .research-grid,
+        .notes {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .site-shell {
+          width: min(100% - 28px, var(--max));
+        }
+
+        .nav {
+          gap: 12px;
+          font-size: 11px;
+        }
+
+        h1 {
+          font-size: 52px;
+        }
+
+        .intro {
+          font-size: 18px;
+        }
+
+        .section {
+          padding: 48px 0;
+        }
+
+        .work {
+          grid-template-columns: 1fr;
+          gap: 9px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>Linsheng He</h1>
-      <p>Personal homepage.</p>
-    </main>
+    <div class="site-shell">
+      <header class="topbar" aria-label="Site header">
+        <a class="wordmark" href="#">
+          <span class="seal" aria-hidden="true">LH</span>
+          <span>Linsheng He</span>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#cv">CV</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">Academic Homepage</p>
+            <h1 id="page-title">
+              Linsheng He
+              <span class="hanzi">何林晟</span>
+            </h1>
+            <p class="intro">
+              Ph.D. candidate in Public Administration at Tsinghua University,
+              studying policy design, behavioral public management, government
+              communication, and collaborative governance.
+            </p>
+            <div class="contact-row" aria-label="Contact links">
+              <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>
+              <span>School of Public Policy and Management, Tsinghua University</span>
+              <span>Last updated 2026</span>
+            </div>
+          </div>
+
+          <aside class="folio" aria-label="Research summary">
+            <p class="folio-title">Current Focus</p>
+            <ul class="folio-list">
+              <li>
+                <strong>Collaborative governance</strong>
+                <span>Communication mechanisms and conflict resolution in collaboration.</span>
+              </li>
+              <li>
+                <strong>Behavioral public management</strong>
+                <span>Behavioral assumptions, policy feedback, and experimental methods.</span>
+              </li>
+              <li>
+                <strong>Government communication</strong>
+                <span>Public attitudes, local cultures, and communication around policy issues.</span>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="section" id="research" aria-labelledby="research-title">
+          <p class="section-kicker">Research</p>
+          <div>
+            <h2 id="research-title">Public problems, behavioral mechanisms.</h2>
+            <p class="measure">
+              My research examines how governments design policy instruments,
+              communicate with publics, and coordinate across organizations. I use
+              behavioral experiments, comparative case analysis, meta-analysis, and
+              computational approaches to study public administration and policy processes.
+            </p>
+            <div class="research-grid" aria-label="Research themes">
+              <article class="research-item">
+                <h3>Theme I</h3>
+                <p>Policy design, evaluation, and policy process</p>
+              </article>
+              <article class="research-item">
+                <h3>Theme II</h3>
+                <p>Behavioral public management and experimental methods</p>
+              </article>
+              <article class="research-item">
+                <h3>Theme III</h3>
+                <p>Government communication, public attitudes, and policy feedback</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="publications" aria-labelledby="publications-title">
+          <p class="section-kicker">Publications</p>
+          <div>
+            <h2 id="publications-title">Selected publications</h2>
+            <div class="work-list">
+              <article class="work">
+                <time datetime="2025">2025</time>
+                <div>
+                  <h3>Aligning Behavioral Assumptions Underlying Policy Instruments</h3>
+                  <p>
+                    <strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration,
+                    Online First. SSCI, JCR Q1, ABS 4.
+                  </p>
+                </div>
+              </article>
+              <article class="work">
+                <time datetime="2024">2024</time>
+                <div>
+                  <h3>Communicating in Diverse Local Cultures</h3>
+                  <p>
+                    Guo, Y., & <strong>He, L.</strong> Review of Policy Research,
+                    41(4), 654-678. SSCI, JCR Q1.
+                  </p>
+                </div>
+              </article>
+              <article class="work">
+                <time datetime="2021">2021</time>
+                <div>
+                  <h3>政府采购人脸识别技术的政策反馈解释</h3>
+                  <p>
+                    郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论,
+                    14(05), 159-177. CSSCI.
+                  </p>
+                </div>
+              </article>
+              <article class="work">
+                <time datetime="2020">2020</time>
+                <div>
+                  <h3>“工具-叙事-反馈”：一个行为公共政策的研究框架</h3>
+                  <p>
+                    郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理,
+                    (05), 71-78. CSSCI.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="cv" aria-labelledby="cv-title">
+          <p class="section-kicker">CV</p>
+          <div>
+            <h2 id="cv-title">Current work and academic profile</h2>
+            <div class="work-list">
+              <article class="work">
+                <time datetime="2026">Pipeline</time>
+                <div>
+                  <h3>Working papers</h3>
+                  <p>
+                    Current projects examine social capital in coproduction,
+                    emotional memory and government reputation, anti-corruption and
+                    compliance in public health crises, and public risk perception
+                    during COVID-19.
+                  </p>
+                </div>
+              </article>
+              <article class="work">
+                <time datetime="2021">Education</time>
+                <div>
+                  <h3>Tsinghua University</h3>
+                  <p>
+                    Ph.D. candidate in Public Administration, School of Public Policy
+                    and Management. Dissertation: Communication Mechanisms and
+                    Conflict Resolution in Collaborative Governance.
+                  </p>
+                </div>
+              </article>
+              <article class="work">
+                <time datetime="2017">Education</time>
+                <div>
+                  <h3>Beijing Normal University</h3>
+                  <p>
+                    B.A. in Public Affairs Management, School of Government,
+                    2017-2021.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <ul class="compact-list" aria-label="Awards and academic service">
+              <li>
+                <strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student
+                Paper Award; ICCPS Best Paper Award; Best Paper Award from the
+                Public Administration Review Young Scholars Forum.
+              </li>
+              <li>
+                <strong>Academic service.</strong> Editorial assistant for
+                Public Administration; reviewer for Governance, Public Management
+                Review, Information Polity, and Chinese public administration journals.
+              </li>
+              <li>
+                <strong>Research projects.</strong> Participant in projects supported
+                by the National Natural Science Foundation of China, Cyrus Tang
+                Foundation, Tsinghua-Toyota Joint Research Institute, and policy
+                advisory work on nuclear safety governance.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="teaching" aria-labelledby="teaching-title">
+          <p class="section-kicker">Teaching</p>
+          <div class="notes">
+            <article class="note">
+              <h2 id="teaching-title">Teaching</h2>
+              <p>
+                Teaching assistant at Tsinghua University for doctoral, MPA, EMPA,
+                and International MPA courses, including Risk Management Theory and
+                Practice, History of Public Management Thought, Public Policy Analysis,
+                Hong Kong Public Administration, and Urban Development and Management.
+              </p>
+            </article>
+            <article class="note" id="contact">
+              <h2>Contact</h2>
+              <p>
+                Email is the primary contact channel for now:
+                <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>.
+                Academic profile links and a downloadable CV can be added after the
+                public versions are ready.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Linsheng He · Academic Homepage</p>
+        <a href="#">Back to top</a>
+      </footer>
+    </div>
   </body>
 </html>
