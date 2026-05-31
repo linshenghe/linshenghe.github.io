@@ -121,6 +121,27 @@
         text-decoration: none;
       }
 
+      .language-toggle {
+        display: inline-flex;
+        min-width: 74px;
+        min-height: 34px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        color: var(--ink);
+        background: rgba(247, 243, 234, 0.72);
+        font: 700 11px/1 var(--sans);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .language-toggle:hover {
+        border-color: var(--moss);
+        color: var(--moss);
+      }
+
       .hero {
         display: grid;
         grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
@@ -403,6 +424,116 @@
         line-height: 1.7;
       }
 
+      .map-panel {
+        display: grid;
+        gap: 26px;
+        align-items: start;
+      }
+
+      .travel-map {
+        position: relative;
+        height: clamp(320px, 38vw, 500px);
+        min-height: 360px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, rgba(20, 20, 17, 0.035) 1px, transparent 1px) 0 0 / 54px 54px,
+          linear-gradient(rgba(20, 20, 17, 0.028) 1px, transparent 1px) 0 0 / 54px 54px,
+          rgba(247, 243, 234, 0.72);
+      }
+
+      .travel-map svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-land {
+        fill: rgba(52, 72, 61, 0.13);
+        stroke: rgba(52, 72, 61, 0.24);
+        stroke-width: 1;
+      }
+
+      .map-graticule {
+        fill: none;
+        stroke: rgba(20, 20, 17, 0.08);
+        stroke-width: 1;
+      }
+
+      .map-route {
+        fill: none;
+        stroke: rgba(166, 95, 69, 0.48);
+        stroke-dasharray: 5 8;
+        stroke-linecap: round;
+        stroke-width: 2;
+      }
+
+      .map-dot {
+        fill: var(--clay);
+        stroke: var(--paper);
+        stroke-width: 4;
+      }
+
+      .map-dot.is-domestic {
+        fill: var(--moss);
+      }
+
+      .map-label {
+        fill: var(--muted);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+      }
+
+      .map-count {
+        fill: var(--paper);
+        font-family: var(--sans);
+        font-size: 10px;
+        font-weight: 700;
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+      }
+
+      .conference-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .conference-list li {
+        padding: 0 0 18px 18px;
+        border-bottom: 1px solid var(--line);
+        border-left: 1px solid var(--rule);
+      }
+
+      .conference-list strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      .conference-list span,
+      .conference-list small {
+        display: block;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .conference-list small {
+        color: var(--clay);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
       .footer {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -450,7 +581,8 @@
         }
 
         .research-grid,
-        .notes {
+        .notes,
+        .conference-list {
           grid-template-columns: 1fr;
         }
       }
@@ -481,6 +613,10 @@
           grid-template-columns: 1fr;
           gap: 9px;
         }
+
+        .travel-map {
+          min-height: 280px;
+        }
       }
     </style>
   </head>
@@ -489,56 +625,56 @@
       <header class="topbar" aria-label="Site header">
         <a class="wordmark" href="#">
           <span class="seal" aria-hidden="true">LH</span>
-          <span>Linsheng He</span>
+          <span data-i18n="wordmark">Linsheng He</span>
         </a>
         <nav class="nav" aria-label="Primary navigation">
-          <a href="#research">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#cv">CV</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#contact">Contact</a>
+          <a href="#research" data-i18n="navResearch">Research</a>
+          <a href="#publications" data-i18n="navPublications">Publications</a>
+          <a href="#cv" data-i18n="navCv">CV</a>
+          <a href="#conferences" data-i18n="navConferences">Conferences</a>
+          <a href="#teaching" data-i18n="navTeaching">Teaching</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+          <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
         </nav>
       </header>
 
       <main>
         <section class="hero" aria-labelledby="page-title">
           <div>
-            <p class="eyebrow">Academic Homepage</p>
+            <p class="eyebrow" data-i18n="heroEyebrow">Academic Homepage</p>
             <h1 id="page-title">
               Linsheng He
               <span class="hanzi">何林晟</span>
             </h1>
             <p class="intro">
-              Ph.D. candidate in Public Administration at Tsinghua University,
-              studying policy design, behavioral public management, government
-              communication, and collaborative governance.
+              <span data-i18n="heroIntro">Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.</span>
             </p>
             <div class="contact-row" aria-label="Contact links">
               <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>
-              <span>School of Public Policy and Management, Tsinghua University</span>
-              <span>Last updated 2026</span>
+              <span data-i18n="heroAffiliation">School of Public Policy and Management, Tsinghua University</span>
+              <span data-i18n="lastUpdated">Last updated 2026</span>
             </div>
           </div>
 
           <div class="hero-side">
             <figure class="portrait">
-              <img src="assets/images/portrait.png" alt="Illustrated portrait of Linsheng He">
+              <img src="assets/images/portrait.png" alt="Illustrated portrait of Linsheng He" data-i18n-alt="portraitAlt">
             </figure>
 
             <aside class="folio" aria-label="Research summary">
-              <p class="folio-title">Current Focus</p>
+              <p class="folio-title" data-i18n="focusTitle">Current Focus</p>
               <ul class="folio-list">
                 <li>
-                  <strong>Collaborative governance</strong>
-                  <span>Communication mechanisms and conflict resolution in collaboration.</span>
+                  <strong data-i18n="focusOneTitle">Collaborative governance</strong>
+                  <span data-i18n="focusOneText">Communication mechanisms and conflict resolution in collaboration.</span>
                 </li>
                 <li>
-                  <strong>Behavioral public management</strong>
-                  <span>Behavioral assumptions, policy feedback, and experimental methods.</span>
+                  <strong data-i18n="focusTwoTitle">Behavioral public management</strong>
+                  <span data-i18n="focusTwoText">Behavioral assumptions, policy feedback, and experimental methods.</span>
                 </li>
                 <li>
-                  <strong>Government communication</strong>
-                  <span>Public attitudes, local cultures, and communication around policy issues.</span>
+                  <strong data-i18n="focusThreeTitle">Government communication</strong>
+                  <span data-i18n="focusThreeText">Public attitudes, local cultures, and communication around policy issues.</span>
                 </li>
               </ul>
             </aside>
@@ -546,44 +682,40 @@
         </section>
 
         <section class="section" id="research" aria-labelledby="research-title">
-          <p class="section-kicker">Research</p>
+          <p class="section-kicker" data-i18n="researchKicker">Research</p>
           <div>
-            <h2 id="research-title">Public problems, behavioral mechanisms.</h2>
+            <h2 id="research-title" data-i18n="researchTitle">Public problems, behavioral mechanisms.</h2>
             <p class="measure">
-              My research examines how governments design policy instruments,
-              communicate with publics, and coordinate across organizations. I use
-              behavioral experiments, comparative case analysis, meta-analysis, and
-              computational approaches to study public administration and policy processes.
+              <span data-i18n="researchIntro">My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.</span>
             </p>
             <div class="research-grid" aria-label="Research themes">
               <article class="research-item">
-                <h3>Theme I</h3>
-                <p>Policy design, evaluation, and policy process</p>
+                <h3 data-i18n="themeOne">Theme I</h3>
+                <p data-i18n="themeOneText">Policy design, evaluation, and policy process</p>
               </article>
               <article class="research-item">
-                <h3>Theme II</h3>
-                <p>Behavioral public management and experimental methods</p>
+                <h3 data-i18n="themeTwo">Theme II</h3>
+                <p data-i18n="themeTwoText">Behavioral public management and experimental methods</p>
               </article>
               <article class="research-item">
-                <h3>Theme III</h3>
-                <p>Government communication, public attitudes, and policy feedback</p>
+                <h3 data-i18n="themeThree">Theme III</h3>
+                <p data-i18n="themeThreeText">Government communication, public attitudes, and policy feedback</p>
               </article>
             </div>
           </div>
         </section>
 
         <section class="section" id="publications" aria-labelledby="publications-title">
-          <p class="section-kicker">Publications</p>
+          <p class="section-kicker" data-i18n="publicationsKicker">Publications</p>
           <div>
-            <h2 id="publications-title">Selected publications</h2>
+            <h2 id="publications-title" data-i18n="publicationsTitle">Selected publications</h2>
             <div class="work-list">
               <article class="work">
                 <time datetime="2025">2025</time>
                 <div>
                   <h3>Aligning Behavioral Assumptions Underlying Policy Instruments</h3>
                   <p>
-                    <strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration,
-                    Online First. SSCI, JCR Q1, ABS 4.
+                    <span data-i18n-html="pubOne"><strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.</span>
                   </p>
                 </div>
               </article>
@@ -592,8 +724,7 @@
                 <div>
                   <h3>Communicating in Diverse Local Cultures</h3>
                   <p>
-                    Guo, Y., & <strong>He, L.</strong> Review of Policy Research,
-                    41(4), 654-678. SSCI, JCR Q1.
+                    <span data-i18n-html="pubTwo">Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.</span>
                   </p>
                 </div>
               </article>
@@ -602,8 +733,7 @@
                 <div>
                   <h3>政府采购人脸识别技术的政策反馈解释</h3>
                   <p>
-                    郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论,
-                    14(05), 159-177. CSSCI.
+                    <span data-i18n-html="pubThree">郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论, 14(05), 159-177. CSSCI.</span>
                   </p>
                 </div>
               </article>
@@ -612,8 +742,7 @@
                 <div>
                   <h3>“工具-叙事-反馈”：一个行为公共政策的研究框架</h3>
                   <p>
-                    郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理,
-                    (05), 71-78. CSSCI.
+                    <span data-i18n-html="pubFour">郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理, (05), 71-78. CSSCI.</span>
                   </p>
                 </div>
               </article>
@@ -622,39 +751,34 @@
         </section>
 
         <section class="section" id="cv" aria-labelledby="cv-title">
-          <p class="section-kicker">CV</p>
+          <p class="section-kicker" data-i18n="cvKicker">CV</p>
           <div>
-            <h2 id="cv-title">Current work and academic profile</h2>
+            <h2 id="cv-title" data-i18n="cvTitle">Current work and academic profile</h2>
             <div class="work-list">
               <article class="work">
-                <time datetime="2026">Pipeline</time>
+                <time datetime="2026" data-i18n="pipelineLabel">Pipeline</time>
                 <div>
-                  <h3>Working papers</h3>
+                  <h3 data-i18n="workingPapersTitle">Working papers</h3>
                   <p>
-                    Current projects examine social capital in coproduction,
-                    emotional memory and government reputation, anti-corruption and
-                    compliance in public health crises, and public risk perception
-                    during COVID-19.
+                    <span data-i18n="workingPapersText">Current projects examine social capital in coproduction, emotional memory and government reputation, anti-corruption and compliance in public health crises, and public risk perception during COVID-19.</span>
                   </p>
                 </div>
               </article>
               <article class="work">
-                <time datetime="2021">Education</time>
+                <time datetime="2021" data-i18n="educationLabel">Education</time>
                 <div>
                   <h3>Tsinghua University</h3>
                   <p>
-                    Ph.D. candidate in Public Administration, School of Public Policy
-                    and Management.
+                    <span data-i18n="tsinghuaText">Ph.D. candidate in Public Administration, School of Public Policy and Management.</span>
                   </p>
                 </div>
               </article>
               <article class="work">
-                <time datetime="2017">Education</time>
+                <time datetime="2017" data-i18n="educationLabel">Education</time>
                 <div>
                   <h3>Beijing Normal University</h3>
                   <p>
-                    B.A. in Public Affairs Management, School of Government,
-                    2017-2021.
+                    <span data-i18n="bnuText">B.A. in Public Affairs Management, School of Government, 2017-2021.</span>
                   </p>
                 </div>
               </article>
@@ -662,44 +786,57 @@
 
             <ul class="compact-list" aria-label="Awards and academic service">
               <li>
-                <strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student
-                Paper Award; ICCPS Best Paper Award; Best Paper Award from the
-                Public Administration Review Young Scholars Forum.
+                <span data-i18n-html="awards"><strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.</span>
               </li>
               <li>
-                <strong>Academic service.</strong> Editorial assistant for
-                Public Administration; reviewer for Governance, Public Management
-                Review, Information Polity, and Chinese public administration journals.
+                <span data-i18n-html="service"><strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.</span>
               </li>
               <li>
-                <strong>Research projects.</strong> Participant in projects supported
-                by the National Natural Science Foundation of China, Cyrus Tang
-                Foundation, Tsinghua-Toyota Joint Research Institute, and policy
-                advisory work on nuclear safety governance.
+                <span data-i18n-html="projects"><strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.</span>
               </li>
             </ul>
           </div>
         </section>
 
+        <section class="section" id="conferences" aria-labelledby="conferences-title">
+          <p class="section-kicker" data-i18n="conferencesKicker">Conferences</p>
+          <div>
+            <h2 id="conferences-title" data-i18n="conferencesTitle">Conference map</h2>
+            <p class="measure" data-i18n="conferencesIntro">
+              A public map of conference participation can be added here once the location list is finalized.
+            </p>
+            <div class="map-panel">
+              <div class="travel-map" aria-label="Conference travel map">
+                <svg viewBox="0 0 760 420" role="img" aria-labelledby="map-title map-desc">
+                  <title id="map-title" data-i18n="mapTitle">Conference travel map</title>
+                  <desc id="map-desc" data-i18n="mapDesc">A stylized paper map for conference locations.</desc>
+                  <path class="map-graticule" d="M0 105H760M0 210H760M0 315H760M190 0V420M380 0V420M570 0V420"></path>
+                  <path class="map-land" d="M95 118c31-36 82-53 128-42 40 10 52 40 91 43 31 3 45-14 70-3 25 12 36 40 21 61-17 25-60 24-84 42-30 22-16 69-52 82-41 15-76-34-116-26-30 6-46 41-78 35-28-5-47-37-43-68 5-42 42-59 38-87-2-14 12-25 25-37Z"></path>
+                  <path class="map-land" d="M379 120c36-28 88-35 124-15 30 17 25 46 57 58 27 10 49-2 72 15 26 20 34 62 14 90-25 34-79 22-102 49-23 26-5 69-34 84-35 18-69-33-109-26-29 5-46 37-76 27-28-9-40-48-25-79 19-38 63-36 78-67 15-32-24-52-14-91 4-16 8-32 15-45Z"></path>
+                  <path class="map-land" d="M612 279c27-17 67-9 84 17 18 27 9 66-19 84-27 17-66 9-84-17-18-27-9-66 19-84Z"></path>
+                  <path class="map-route" data-map-route d=""></path>
+                  <g data-map-dots></g>
+                  <g data-map-labels></g>
+                </svg>
+              </div>
+              <ul class="conference-list" aria-label="Conference locations" data-conference-list></ul>
+            </div>
+          </div>
+        </section>
+
         <section class="section" id="teaching" aria-labelledby="teaching-title">
-          <p class="section-kicker">Teaching</p>
+          <p class="section-kicker" data-i18n="teachingKicker">Teaching</p>
           <div class="notes">
             <article class="note">
-              <h2 id="teaching-title">Teaching</h2>
+              <h2 id="teaching-title" data-i18n="teachingTitle">Teaching</h2>
               <p>
-                Teaching assistant at Tsinghua University for doctoral, MPA, EMPA,
-                and International MPA courses, including Risk Management Theory and
-                Practice, History of Public Management Thought, Public Policy Analysis,
-                Hong Kong Public Administration, and Urban Development and Management.
+                <span data-i18n="teachingText">Teaching assistant at Tsinghua University for doctoral, MPA, EMPA, and International MPA courses, including Risk Management Theory and Practice, History of Public Management Thought, Public Policy Analysis, Hong Kong Public Administration, and Urban Development and Management.</span>
               </p>
             </article>
             <article class="note" id="contact">
-              <h2>Contact</h2>
+              <h2 data-i18n="contactTitle">Contact</h2>
               <p>
-                Email is the primary contact channel for now:
-                <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>.
-                Academic profile links and a downloadable CV can be added after the
-                public versions are ready.
+                <span data-i18n-html="contactText">Email is the primary contact channel for now: <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.</span>
               </p>
             </article>
           </div>
@@ -707,9 +844,476 @@
       </main>
 
       <footer class="footer">
-        <p>Linsheng He · Academic Homepage</p>
-        <a href="#">Back to top</a>
+        <p data-i18n="footerTitle">Linsheng He · Academic Homepage</p>
+        <a href="#" data-i18n="backTop">Back to top</a>
       </footer>
     </div>
+    <script>
+      const translations = {
+        en: {
+          documentTitle: "Linsheng He | Academic Homepage",
+          metaDescription: "Linsheng He academic homepage: research, writing, teaching, and contact.",
+          toggleLabel: "中文",
+          wordmark: "Linsheng He",
+          navResearch: "Research",
+          navPublications: "Publications",
+          navCv: "CV",
+          navConferences: "Conferences",
+          navTeaching: "Teaching",
+          navContact: "Contact",
+          heroEyebrow: "Academic Homepage",
+          heroIntro: "Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.",
+          heroAffiliation: "School of Public Policy and Management, Tsinghua University",
+          lastUpdated: "Last updated 2026",
+          portraitAlt: "Illustrated portrait of Linsheng He",
+          focusTitle: "Current Focus",
+          focusOneTitle: "Collaborative governance",
+          focusOneText: "Communication mechanisms and conflict resolution in collaboration.",
+          focusTwoTitle: "Behavioral public management",
+          focusTwoText: "Behavioral assumptions, policy feedback, and experimental methods.",
+          focusThreeTitle: "Government communication",
+          focusThreeText: "Public attitudes, local cultures, and communication around policy issues.",
+          researchKicker: "Research",
+          researchTitle: "Public problems, behavioral mechanisms.",
+          researchIntro: "My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.",
+          themeOne: "Theme I",
+          themeOneText: "Policy design, evaluation, and policy process",
+          themeTwo: "Theme II",
+          themeTwoText: "Behavioral public management and experimental methods",
+          themeThree: "Theme III",
+          themeThreeText: "Government communication, public attitudes, and policy feedback",
+          publicationsKicker: "Publications",
+          publicationsTitle: "Selected publications",
+          pubOne: "<strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.",
+          pubTwo: "Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.",
+          pubThree: "Guo, Y., Hong, J., & <strong>He, L.</strong> Public Administration Review, 14(05), 159-177. CSSCI.",
+          pubFour: "Guo, Y., <strong>He, L.</strong>, & Su, J. Chinese Public Administration, (05), 71-78. CSSCI.",
+          cvKicker: "CV",
+          cvTitle: "Current work and academic profile",
+          pipelineLabel: "Pipeline",
+          educationLabel: "Education",
+          workingPapersTitle: "Working papers",
+          workingPapersText: "Current projects examine social capital in coproduction, emotional memory and government reputation, anti-corruption and compliance in public health crises, and public risk perception during COVID-19.",
+          tsinghuaText: "Ph.D. candidate in Public Administration, School of Public Policy and Management.",
+          bnuText: "B.A. in Public Affairs Management, School of Government, 2017-2021.",
+          awards: "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
+          service: "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
+          projects: "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
+          conferencesKicker: "Conferences",
+          conferencesTitle: "Conference map",
+          conferencesIntro: "Selected conference presentations and reports are mapped by in-person city. Online events are listed without map markers.",
+          mapTitle: "Conference travel map",
+          mapDesc: "A stylized paper map for conference locations.",
+          teachingKicker: "Teaching",
+          teachingTitle: "Teaching",
+          teachingText: "Teaching assistant at Tsinghua University for doctoral, MPA, EMPA, and International MPA courses, including Risk Management Theory and Practice, History of Public Management Thought, Public Policy Analysis, Hong Kong Public Administration, and Urban Development and Management.",
+          contactTitle: "Contact",
+          contactText: "Email is the primary contact channel for now: <a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.",
+          footerTitle: "Linsheng He · Academic Homepage",
+          backTop: "Back to top",
+        },
+        zh: {
+          documentTitle: "何林晟 | 学术主页",
+          metaDescription: "何林晟的学术主页：研究、论文、教学与联系方式。",
+          toggleLabel: "EN",
+          wordmark: "何林晟",
+          navResearch: "研究",
+          navPublications: "论文",
+          navCv: "履历",
+          navConferences: "会议",
+          navTeaching: "教学",
+          navContact: "联系",
+          heroEyebrow: "学术主页",
+          heroIntro: "清华大学公共管理学院公共管理专业博士生，研究方向包括政策设计、行为公共管理、政府沟通与协同治理。",
+          heroAffiliation: "清华大学公共管理学院",
+          lastUpdated: "更新于 2026",
+          portraitAlt: "何林晟头像插画",
+          focusTitle: "近期关注",
+          focusOneTitle: "协同治理",
+          focusOneText: "协作中的沟通机制与冲突调解。",
+          focusTwoTitle: "行为公共管理",
+          focusTwoText: "行为假设、政策反馈与实验方法。",
+          focusThreeTitle: "政府沟通",
+          focusThreeText: "公众态度、地方文化与政策议题沟通。",
+          researchKicker: "研究",
+          researchTitle: "公共问题与行为机制。",
+          researchIntro: "我的研究关注政府如何设计政策工具、与公众沟通并在组织间协同。研究方法包括行为实验、比较案例分析、元分析和计算方法。",
+          themeOne: "主题一",
+          themeOneText: "政策设计、政策评估与政策过程",
+          themeTwo: "主题二",
+          themeTwoText: "行为公共管理与实验方法",
+          themeThree: "主题三",
+          themeThreeText: "政府沟通、公众态度与政策反馈",
+          publicationsKicker: "论文",
+          publicationsTitle: "代表性论文",
+          pubOne: "<strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.",
+          pubTwo: "Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.",
+          pubThree: "郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论, 14(05), 159-177. CSSCI.",
+          pubFour: "郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理, (05), 71-78. CSSCI.",
+          cvKicker: "履历",
+          cvTitle: "当前研究与学术履历",
+          pipelineLabel: "在研",
+          educationLabel: "教育",
+          workingPapersTitle: "工作论文",
+          workingPapersText: "当前项目关注合作生产中的社会资本、情感记忆与政府声誉、公共卫生危机中的反腐败与遵从，以及新冠疫情中的公众风险感知。",
+          tsinghuaText: "公共管理专业博士生，公共管理学院。",
+          bnuText: "公共事业管理专业管理学学士，政府管理学院，2017-2021。",
+          awards: "<strong>奖项。</strong> 国家奖学金；ASPA-SCPA Best Student Paper Award；ICCPS Best Paper Award；《公共行政评论》青年学者论坛最佳论文奖。",
+          service: "<strong>学术服务。</strong> Public Administration 编辑助理；Governance、Public Management Review、Information Polity 及中文公共管理期刊审稿人。",
+          projects: "<strong>研究项目。</strong> 参与国家自然科学基金、唐仲英基金会、清华-丰田联合研究院项目，以及核安全治理政策咨询工作。",
+          conferencesKicker: "会议",
+          conferencesTitle: "学术会议地图",
+          conferencesIntro: "以下展示公开学术会议与报告经历。地图仅标注线下会议城市，线上会议保留在列表中。",
+          mapTitle: "学术会议地图",
+          mapDesc: "用于展示会议地点的纸面风格地图。",
+          teachingKicker: "教学",
+          teachingTitle: "教学",
+          teachingText: "在清华大学担任博士生、MPA、EMPA 与国际 MPA 课程助教，课程包括风险管理理论与实践、公共管理思想史、公共政策分析、香港公共行政、城市发展与管理等。",
+          contactTitle: "联系",
+          contactText: "目前主要联系方式为邮箱：<a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>。学术主页链接和公开版 CV 可在准备好后加入。",
+          footerTitle: "何林晟 · 学术主页",
+          backTop: "返回顶部",
+        },
+      };
+
+      const conferenceEntries = [
+        {
+          year: "2026",
+          type: "international",
+          city: { en: "Hollywood, CA, United States", zh: "美国加州好莱坞" },
+          coordinates: { lat: 34.10, lon: -118.33 },
+          title: {
+            en: "American Society for Public Administration (ASPA) Annual Conference",
+            zh: "American Society for Public Administration (ASPA) Annual Conference",
+          },
+          paper: {
+            en: "Anti-Corruption, Trust, and Compliance in Public Health Crises: Cross-Country Evidence",
+            zh: "Anti-Corruption, Trust, and Compliance in Public Health Crises: Cross-Country Evidence",
+          },
+        },
+        {
+          year: "2026",
+          type: "international",
+          city: { en: "Perth, Australia", zh: "澳大利亚珀斯" },
+          coordinates: { lat: -31.95, lon: 115.86 },
+          title: {
+            en: "International Research Society for Public Management (IRSPM) Conference",
+            zh: "International Research Society for Public Management (IRSPM) Conference",
+          },
+          paper: {
+            en: "Decentralising Government Reputation: Central Signals, Local Differentiation, and Peer Network Effects",
+            zh: "Decentralising Government Reputation: Central Signals, Local Differentiation, and Peer Network Effects",
+          },
+        },
+        {
+          year: "2025",
+          type: "international",
+          city: { en: "Seoul, Korea", zh: "韩国首尔" },
+          coordinates: { lat: 37.57, lon: 126.98 },
+          title: {
+            en: "Public Management Research Conference (PMRC)",
+            zh: "Public Management Research Conference (PMRC)",
+          },
+          paper: {
+            en: "Not All Ties Are Equal: Actor- and Type-Specific Social Capital in Coproduction",
+            zh: "Not All Ties Are Equal: Actor- and Type-Specific Social Capital in Coproduction",
+          },
+        },
+        {
+          year: "2025",
+          type: "international",
+          city: { en: "Beijing, China", zh: "中国北京" },
+          coordinates: { lat: 39.90, lon: 116.41 },
+          title: {
+            en: "The International Conference on China Policy Studies (ICCPS)",
+            zh: "The International Conference on China Policy Studies (ICCPS)",
+          },
+          paper: {
+            en: "Not All Ties Are Equal: Actor- and Type-Specific Social Capital in Coproduction",
+            zh: "Not All Ties Are Equal: Actor- and Type-Specific Social Capital in Coproduction",
+          },
+        },
+        {
+          year: "2024",
+          type: "international",
+          city: { en: "Seattle, United States", zh: "美国西雅图" },
+          coordinates: { lat: 47.61, lon: -122.33 },
+          title: {
+            en: "Public Management Research Conference (PMRC)",
+            zh: "Public Management Research Conference (PMRC)",
+          },
+          paper: {
+            en: "In the Shadow of Memory: Experimental Insights into Government Reputation in the Covid-19 Age",
+            zh: "In the Shadow of Memory: Experimental Insights into Government Reputation in the Covid-19 Age",
+          },
+        },
+        {
+          year: "2024",
+          type: "international",
+          city: { en: "Beijing, China", zh: "中国北京" },
+          coordinates: { lat: 39.90, lon: 116.41 },
+          title: {
+            en: "The International Conference on China Policy Studies (ICCPS)",
+            zh: "The International Conference on China Policy Studies (ICCPS)",
+          },
+          paper: {
+            en: "Aligning Behavioral Assumptions Underlying Policy Instruments: A Principle for Designing Policy Mixes Targeting Behavioral Change",
+            zh: "Aligning Behavioral Assumptions Underlying Policy Instruments: A Principle for Designing Policy Mixes Targeting Behavioral Change",
+          },
+          note: { en: "Best Paper Award", zh: "最佳论文奖" },
+        },
+        {
+          year: "2023",
+          type: "international",
+          city: { en: "Hong Kong, China", zh: "中国香港" },
+          coordinates: { lat: 22.32, lon: 114.17 },
+          title: {
+            en: "Asia-Pacific Public Policy Network Conference (AP-PPN)",
+            zh: "Asia-Pacific Public Policy Network Conference (AP-PPN)",
+          },
+          paper: {
+            en: "Public Risk Perception during the COVID-19 Pandemic: A Meta-analysis of Antecedents and Behavioral Consequences",
+            zh: "Public Risk Perception during the COVID-19 Pandemic: A Meta-analysis of Antecedents and Behavioral Consequences",
+          },
+        },
+        {
+          year: "2022",
+          type: "international",
+          city: { en: "Shanghai, China", zh: "中国上海" },
+          coordinates: { lat: 31.23, lon: 121.47 },
+          title: {
+            en: "Asian Association for Public Administration Annual Conference (AAPA)",
+            zh: "Asian Association for Public Administration Annual Conference (AAPA)",
+          },
+          paper: {
+            en: "Matching behavioral assumptions behind policy tools; The Effect of Memory on Government Reputation Evaluation",
+            zh: "Matching behavioral assumptions behind policy tools；The Effect of Memory on Government Reputation Evaluation",
+          },
+        },
+        {
+          year: "2021",
+          type: "international",
+          city: { en: "Online", zh: "线上" },
+          title: {
+            en: "Association for Public Policy Analysis and Management Fall Research Conference (APPAM)",
+            zh: "Association for Public Policy Analysis and Management Fall Research Conference (APPAM)",
+          },
+          paper: {
+            en: "Influencing Public Awareness: Policy Design By Tool Selection, Framing, and Narratives",
+            zh: "Influencing Public Awareness: Policy Design By Tool Selection, Framing, and Narratives",
+          },
+          note: { en: "Panel Organizer", zh: "Panel Organizer" },
+        },
+        {
+          year: "2020",
+          type: "international",
+          city: { en: "Online", zh: "线上" },
+          title: {
+            en: "International Public Management Network Conference (IPMN)",
+            zh: "International Public Management Network Conference (IPMN)",
+          },
+          paper: {
+            en: "Serving Different People with Different Dishes: The Effects of Social constructions of Target Population on Policy Narrative Strategies",
+            zh: "Serving Different People with Different Dishes: The Effects of Social constructions of Target Population on Policy Narrative Strategies",
+          },
+        },
+        {
+          year: "2019",
+          type: "international",
+          city: { en: "Location to be confirmed", zh: "地点待补充" },
+          title: {
+            en: "Asia-Pacific Public Policy Network Conference (AP-PPN)",
+            zh: "Asia-Pacific Public Policy Network Conference (AP-PPN)",
+          },
+          paper: {
+            en: "Does Policy Familiarity Breed Public Service Motivation? The Influence of Policies on the PSM of Future Public Service Providers",
+            zh: "Does Policy Familiarity Breed Public Service Motivation? The Influence of Policies on the PSM of Future Public Service Providers",
+          },
+        },
+        {
+          year: "2025",
+          type: "domestic",
+          city: { en: "Dalian, China", zh: "大连" },
+          coordinates: { lat: 38.91, lon: 121.61 },
+          title: { en: "11th China Public Management Annual Conference", zh: "第十一届中国公共管理学术年会" },
+          paper: {
+            en: "The Role of Emotional Memory in Shaping Government Reputation",
+            zh: "The Role of Emotional Memory in Shaping Government Reputation",
+          },
+        },
+        {
+          year: "2025",
+          type: "domestic",
+          city: { en: "Nanning, China", zh: "南宁" },
+          coordinates: { lat: 22.82, lon: 108.37 },
+          title: { en: "13th Chinese Public Administration Scholars Seminar", zh: "第十三届华人公共管理学者研讨会" },
+          paper: {
+            en: "The Role of Emotional Memory in Shaping Government Reputation",
+            zh: "The Role of Emotional Memory in Shaping Government Reputation",
+          },
+        },
+        {
+          year: "2023",
+          type: "domestic",
+          city: { en: "Shanghai, China", zh: "上海" },
+          coordinates: { lat: 31.23, lon: 121.47 },
+          title: { en: "China Public Management Annual Conference", zh: "中国公共管理学术年会" },
+          paper: {
+            en: "A Meta-analysis of the Antecedents and Consequences of Public Risk Perception: Evidence from COVID-19",
+            zh: "公众风险感知前因与后果的元分析：以新冠肺炎疫情为例",
+          },
+        },
+        {
+          year: "2021",
+          type: "domestic",
+          city: { en: "Online", zh: "线上" },
+          title: { en: "5th Young Scholars Forum of Public Administration Review", zh: "《公共行政评论》第五届青年学者论坛" },
+          paper: {
+            en: "A Policy Feedback Explanation of Government Procurement of Facial Recognition Technology: A Case Comparison of Hangzhou and San Francisco",
+            zh: "政府采购人脸识别技术的政策反馈解释：基于杭州与旧金山的案例比较",
+          },
+          note: { en: "Best Paper Award", zh: "最佳论文奖" },
+        },
+        {
+          year: "2019",
+          type: "domestic",
+          city: { en: "Wuhan, China", zh: "武汉" },
+          coordinates: { lat: 30.59, lon: 114.31 },
+          title: { en: "China Public Management Annual Conference and Young Scholars Forum", zh: "中国公共管理学术年会暨第五届公共管理青年学者论坛" },
+          paper: {
+            en: "Narrative Strategies and Logic of Public Communication in China's Nuclear Power Plant Siting Policy Process: A Comparative Case Study",
+            zh: "我国核电选址政策过程中公众沟通的叙事策略与逻辑：基于双案例比较研究",
+          },
+        },
+      ];
+
+      const setLanguage = (language) => {
+        const copy = translations[language];
+        document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+        document.title = copy.documentTitle;
+        document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          if (copy[key]) {
+            element.textContent = copy[key];
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+          const key = element.dataset.i18nHtml;
+          if (copy[key]) {
+            element.innerHTML = copy[key];
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+          const key = element.dataset.i18nAlt;
+          if (copy[key]) {
+            element.setAttribute("alt", copy[key]);
+          }
+        });
+
+        const toggle = document.querySelector("[data-language-toggle]");
+        toggle.textContent = copy.toggleLabel;
+        toggle.setAttribute("aria-pressed", String(language === "zh"));
+        localStorage.setItem("site-language", language);
+        renderConferences(language);
+      };
+
+      const projectPoint = ({ lat, lon }) => ({
+        x: ((lon + 180) / 360) * 760,
+        y: ((90 - lat) / 180) * 420,
+      });
+
+      const renderConferences = (language) => {
+        const list = document.querySelector("[data-conference-list]");
+        const dots = document.querySelector("[data-map-dots]");
+        const labels = document.querySelector("[data-map-labels]");
+        const route = document.querySelector("[data-map-route]");
+        const copy = translations[language];
+        const typeNames = {
+          en: { international: "International", domestic: "Domestic" },
+          zh: { international: "国际会议", domestic: "国内会议" },
+        };
+
+        list.innerHTML = "";
+        dots.innerHTML = "";
+        labels.innerHTML = "";
+
+        const mappedEntries = conferenceEntries.filter((entry) => entry.coordinates);
+        const cityGroups = mappedEntries.reduce((groups, entry) => {
+          const key = `${entry.coordinates.lat},${entry.coordinates.lon}`;
+          if (!groups.has(key)) {
+            groups.set(key, {
+              city: entry.city,
+              coordinates: entry.coordinates,
+              type: entry.type,
+              count: 0,
+            });
+          }
+          groups.get(key).count += 1;
+          return groups;
+        }, new Map());
+
+        const routePath = mappedEntries
+          .slice()
+          .reverse()
+          .map((entry, index) => {
+            const point = projectPoint(entry.coordinates);
+            return `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+          })
+          .join(" ");
+        route.setAttribute("d", routePath);
+
+        cityGroups.forEach((group) => {
+          const point = projectPoint(group.coordinates);
+          const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          circle.setAttribute("class", `map-dot${group.type === "domestic" ? " is-domestic" : ""}`);
+          circle.setAttribute("cx", point.x.toFixed(1));
+          circle.setAttribute("cy", point.y.toFixed(1));
+          circle.setAttribute("r", String(group.count > 1 ? 11 : 8));
+          dots.appendChild(circle);
+
+          if (group.count > 1) {
+            const count = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            count.setAttribute("class", "map-count");
+            count.setAttribute("x", point.x.toFixed(1));
+            count.setAttribute("y", point.y.toFixed(1));
+            count.textContent = String(group.count);
+            dots.appendChild(count);
+          }
+
+          const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          label.setAttribute("class", "map-label");
+          label.setAttribute("x", (point.x + 13).toFixed(1));
+          label.setAttribute("y", (point.y - 10).toFixed(1));
+          label.textContent = group.city[language];
+          labels.appendChild(label);
+        });
+
+        conferenceEntries.forEach((entry) => {
+          const item = document.createElement("li");
+          const type = document.createElement("small");
+          const title = document.createElement("strong");
+          const details = document.createElement("span");
+          const note = entry.note ? ` · ${entry.note[language]}` : "";
+
+          type.textContent = `${entry.year} · ${typeNames[language][entry.type]}`;
+          title.textContent = entry.title[language];
+          details.textContent = `${entry.city[language]}${note}. ${language === "zh" ? "论文" : "Paper"}: "${entry.paper[language]}"`;
+
+          item.append(type, title, details);
+          list.appendChild(item);
+        });
+      };
+
+      const initialLanguage = localStorage.getItem("site-language") === "zh" ? "zh" : "en";
+      setLanguage(initialLanguage);
+      document.querySelector("[data-language-toggle]").addEventListener("click", () => {
+        const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
+        setLanguage(nextLanguage);
+      });
+    </script>
   </body>
 </html>
