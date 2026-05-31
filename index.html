@@ -185,6 +185,27 @@
         padding-bottom: 4px;
       }
 
+      .hero-side {
+        display: grid;
+        gap: 28px;
+      }
+
+      .portrait {
+        margin: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        background: rgba(247, 243, 234, 0.62);
+      }
+
+      .portrait img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: cover;
+        filter: saturate(0.9) contrast(0.98);
+      }
+
       .folio {
         position: relative;
         padding: 26px 0 0 26px;
@@ -499,23 +520,29 @@
             </div>
           </div>
 
-          <aside class="folio" aria-label="Research summary">
-            <p class="folio-title">Current Focus</p>
-            <ul class="folio-list">
-              <li>
-                <strong>Collaborative governance</strong>
-                <span>Communication mechanisms and conflict resolution in collaboration.</span>
-              </li>
-              <li>
-                <strong>Behavioral public management</strong>
-                <span>Behavioral assumptions, policy feedback, and experimental methods.</span>
-              </li>
-              <li>
-                <strong>Government communication</strong>
-                <span>Public attitudes, local cultures, and communication around policy issues.</span>
-              </li>
-            </ul>
-          </aside>
+          <div class="hero-side">
+            <figure class="portrait">
+              <img src="assets/images/portrait.png" alt="Illustrated portrait of Linsheng He">
+            </figure>
+
+            <aside class="folio" aria-label="Research summary">
+              <p class="folio-title">Current Focus</p>
+              <ul class="folio-list">
+                <li>
+                  <strong>Collaborative governance</strong>
+                  <span>Communication mechanisms and conflict resolution in collaboration.</span>
+                </li>
+                <li>
+                  <strong>Behavioral public management</strong>
+                  <span>Behavioral assumptions, policy feedback, and experimental methods.</span>
+                </li>
+                <li>
+                  <strong>Government communication</strong>
+                  <span>Public attitudes, local cultures, and communication around policy issues.</span>
+                </li>
+              </ul>
+            </aside>
+          </div>
         </section>
 
         <section class="section" id="research" aria-labelledby="research-title">
@@ -617,8 +644,7 @@
                   <h3>Tsinghua University</h3>
                   <p>
                     Ph.D. candidate in Public Administration, School of Public Policy
-                    and Management. Dissertation: Communication Mechanisms and
-                    Conflict Resolution in Collaborative Governance.
+                    and Management.
                   </p>
                 </div>
               </article>
