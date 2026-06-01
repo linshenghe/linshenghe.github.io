@@ -21,7 +21,12 @@ html {
   color: var(--ink);
   background: var(--paper);
   font-family: var(--serif);
-  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -59,9 +64,36 @@ a:hover {
   text-decoration-color: var(--moss);
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .site-shell {
   width: min(100% - 40px, var(--max));
   margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 13px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-offset: 2px;
 }
 
 .topbar {
@@ -124,6 +156,7 @@ a:hover {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .language-toggle:hover {
@@ -155,6 +188,13 @@ h2,
 h3,
 p {
   margin-top: 0;
+  scroll-margin-top: 80px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 h1 {

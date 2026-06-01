@@ -233,15 +233,17 @@ const renderConferences = (language) => {
   conferenceEntries.forEach((entry) => {
     const item = document.createElement("li");
     const type = document.createElement("small");
-    const title = document.createElement("strong");
-    const details = document.createElement("span");
-    const note = entry.note ? ` · ${entry.note[language]}` : "";
+    const city = document.createElement("strong");
+    const note = document.createElement("span");
 
     type.textContent = `${entry.year} · ${typeNames[language][entry.type]}`;
-    title.textContent = entry.title[language];
-    details.textContent = `${entry.city[language]}${note}. ${language === "zh" ? "论文" : "Paper"}: "${entry.paper[language]}"`;
+    city.textContent = entry.city[language];
+    if (entry.note) {
+      note.textContent = entry.note[language];
+    }
 
-    item.append(type, title, details);
+    item.append(type, city);
+    if (entry.note) item.append(note);
     list.appendChild(item);
   });
 };
