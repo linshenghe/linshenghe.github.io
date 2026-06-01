@@ -1,24 +1,24 @@
 const translations = {
   en: {
     documentTitle: "Linsheng He | Academic Homepage",
-    metaDescription: "Linsheng He academic homepage: research, writing, teaching, and contact.",
+    metaDescription: "Linsheng He academic homepage: research, writing, and contact.",
     toggleLabel: "中文",
     wordmark: "Linsheng He",
     navResearch: "Research",
     navPublications: "Publications",
     navCv: "CV",
     navConferences: "Conferences",
-    navTeaching: "Teaching",
     navContact: "Contact",
     heroEyebrow: "Academic Homepage",
-    heroIntro: "Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.",
+    hanziName: "",
+    heroIntro: "Ph.D. candidate",
     heroAffiliation: "School of Public Policy and Management, Tsinghua University",
     lastUpdated: "Last updated 2026",
     portraitAlt: "Illustrated portrait of Linsheng He",
     focusTitle: "Current Focus",
     focusOneTitle: "Collaborative governance",
     focusOneText: "Communication mechanisms and conflict resolution in collaboration.",
-    focusTwoTitle: "Behavioral public management",
+    focusTwoTitle: "Behavioral public administration",
     focusTwoText: "Behavioral assumptions, policy feedback, and experimental methods.",
     focusThreeTitle: "Government communication",
     focusThreeText: "Public attitudes, local cultures, and communication around policy issues.",
@@ -28,7 +28,7 @@ const translations = {
     themeOne: "Theme I",
     themeOneText: "Policy design, evaluation, and policy process",
     themeTwo: "Theme II",
-    themeTwoText: "Behavioral public management and experimental methods",
+    themeTwoText: "Behavioral public administration and experimental methods",
     themeThree: "Theme III",
     themeThreeText: "Government communication, public attitudes, and policy feedback",
     publicationsKicker: "Publications",
@@ -38,24 +38,16 @@ const translations = {
     pubThree: "Guo, Y., Hong, J., & <strong>He, L.</strong> Public Administration Review, 14(05), 159-177. CSSCI.",
     pubFour: "Guo, Y., <strong>He, L.</strong>, & Su, J. Chinese Public Administration, (05), 71-78. CSSCI.",
     cvKicker: "CV",
-    cvTitle: "Current work and academic profile",
-    pipelineLabel: "Pipeline",
-    educationLabel: "Education",
-    workingPapersTitle: "Working papers",
-    workingPapersText: "Current projects examine social capital in coproduction, emotional memory and government reputation, anti-corruption and compliance in public health crises, and public risk perception during COVID-19.",
-    tsinghuaText: "Ph.D. candidate in Public Administration, School of Public Policy and Management.",
-    bnuText: "B.A. in Public Affairs Management, School of Government, 2017-2021.",
+    cvTitle: "Education and profile",
+    tsinghuaText: "Ph.D. candidate in Public Administration, School of Public Policy and Management, Tsinghua University.",
+    bnuText: "B.A. in Public Affairs Management, School of Government, Beijing Normal University.",
     awards: "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
     service: "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
     projects: "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
     conferencesKicker: "Conferences",
-    conferencesTitle: "Conference map",
-    conferencesIntro: "Selected conference presentations and reports are mapped by in-person city. Online events are listed without map markers.",
-    mapTitle: "Conference travel map",
-    mapDesc: "A stylized paper map for conference locations.",
-    teachingKicker: "Teaching",
-    teachingTitle: "Teaching",
-    teachingText: "Teaching assistant at Tsinghua University for doctoral, MPA, EMPA, and International MPA courses, including Risk Management Theory and Practice, History of Public Management Thought, Public Policy Analysis, Hong Kong Public Administration, and Urban Development and Management.",
+    conferencesTitle: "Conferences",
+    conferencesIntro: "Selected conference presentations listed below.",
+    contactKicker: "Contact",
     contactTitle: "Contact",
     contactText: "Email is the primary contact channel for now: <a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.",
     footerTitle: "Linsheng He · Academic Homepage",
@@ -63,16 +55,16 @@ const translations = {
   },
   zh: {
     documentTitle: "何林晟 | 学术主页",
-    metaDescription: "何林晟的学术主页：研究、论文、教学与联系方式。",
+    metaDescription: "何林晟的学术主页：研究、论文与联系方式。",
     toggleLabel: "EN",
     wordmark: "何林晟",
     navResearch: "研究",
     navPublications: "论文",
     navCv: "履历",
     navConferences: "会议",
-    navTeaching: "教学",
     navContact: "联系",
     heroEyebrow: "学术主页",
+    hanziName: "何林晟",
     heroIntro: "清华大学公共管理学院公共管理专业博士生，研究方向包括政策设计、行为公共管理、政府沟通与协同治理。",
     heroAffiliation: "清华大学公共管理学院",
     lastUpdated: "更新于 2026",
@@ -100,24 +92,16 @@ const translations = {
     pubThree: "郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论, 14(05), 159-177. CSSCI.",
     pubFour: "郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理, (05), 71-78. CSSCI.",
     cvKicker: "履历",
-    cvTitle: "当前研究与学术履历",
-    pipelineLabel: "在研",
-    educationLabel: "教育",
-    workingPapersTitle: "工作论文",
-    workingPapersText: "当前项目关注合作生产中的社会资本、情感记忆与政府声誉、公共卫生危机中的反腐败与遵从，以及新冠疫情中的公众风险感知。",
-    tsinghuaText: "公共管理专业博士生，公共管理学院。",
-    bnuText: "公共事业管理专业管理学学士，政府管理学院，2017-2021。",
+    cvTitle: "教育与学术履历",
+    tsinghuaText: "公共管理专业博士生，清华大学公共管理学院。",
+    bnuText: "公共事业管理专业管理学学士，北京师范大学政府管理学院。",
     awards: "<strong>奖项。</strong> 国家奖学金；ASPA-SCPA Best Student Paper Award；ICCPS Best Paper Award；《公共行政评论》青年学者论坛最佳论文奖。",
     service: "<strong>学术服务。</strong> Public Administration 编辑助理；Governance、Public Management Review、Information Polity 及中文公共管理期刊审稿人。",
     projects: "<strong>研究项目。</strong> 参与国家自然科学基金、唐仲英基金会、清华-丰田联合研究院项目，以及核安全治理政策咨询工作。",
     conferencesKicker: "会议",
     conferencesTitle: "学术会议地图",
-    conferencesIntro: "以下展示公开学术会议与报告经历。地图仅标注线下会议城市，线上会议保留在列表中。",
-    mapTitle: "学术会议地图",
-    mapDesc: "用于展示会议地点的纸面风格地图。",
-    teachingKicker: "教学",
-    teachingTitle: "教学",
-    teachingText: "在清华大学担任博士生、MPA、EMPA 与国际 MPA 课程助教，课程包括风险管理理论与实践、公共管理思想史、公共政策分析、香港公共行政、城市发展与管理等。",
+    conferencesIntro: "以下为近年参加的学术会议。",
+    contactKicker: "联系",
     contactTitle: "联系",
     contactText: "目前主要联系方式为邮箱：<a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>。学术主页链接和公开版 CV 可在准备好后加入。",
     footerTitle: "何林晟 · 学术主页",
@@ -133,8 +117,9 @@ const setLanguage = (language) => {
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
-    if (copy[key]) {
+    if (copy[key] !== undefined) {
       element.textContent = copy[key];
+      element.hidden = copy[key] === "";
     }
   });
 
@@ -159,16 +144,20 @@ const setLanguage = (language) => {
   renderConferences(language);
 };
 
-const projectPoint = ({ lat, lon }) => ({
-  x: ((lon + 180) / 360) * 760,
-  y: ((90 - lat) / 180) * 420,
-});
+let confMap = null;
+
+const initMap = () => {
+  const el = document.getElementById("map");
+  if (!el || confMap) return;
+  confMap = L.map(el, { scrollWheelZoom: false }).setView([30, 110], 3);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
+    maxZoom: 18,
+  }).addTo(confMap);
+};
 
 const renderConferences = (language) => {
   const list = document.querySelector("[data-conference-list]");
-  const dots = document.querySelector("[data-map-dots]");
-  const labels = document.querySelector("[data-map-labels]");
-  const route = document.querySelector("[data-map-route]");
   const copy = translations[language];
   const typeNames = {
     en: { international: "International", domestic: "Domestic" },
@@ -176,74 +165,51 @@ const renderConferences = (language) => {
   };
 
   list.innerHTML = "";
-  dots.innerHTML = "";
-  labels.innerHTML = "";
 
-  const mappedEntries = conferenceEntries.filter((entry) => entry.coordinates);
-  const cityGroups = mappedEntries.reduce((groups, entry) => {
-    const key = `${entry.coordinates.lat},${entry.coordinates.lon}`;
-    if (!groups.has(key)) {
-      groups.set(key, {
-        city: entry.city,
-        coordinates: entry.coordinates,
-        type: entry.type,
-        count: 0,
+  initMap();
+  if (confMap) {
+    confMap.eachLayer((layer) => {
+      if (layer instanceof L.Marker) confMap.removeLayer(layer);
+    });
+
+    const bounds = [];
+    conferenceEntries.filter((e) => e.coordinates).forEach((entry) => {
+      const { lat, lon } = entry.coordinates;
+      const color = entry.type === "domestic" ? "#34483d" : "#a65f45";
+      bounds.push([lat, lon]);
+
+      L.circleMarker([lat, lon], {
+        radius: 7,
+        fillColor: color,
+        color: "#f7f3ea",
+        weight: 2,
+        fillOpacity: 0.88,
+      }).addTo(confMap).bindTooltip(entry.city[language], {
+        direction: "top",
+        offset: [0, -8],
       });
+    });
+
+    if (bounds.length > 0) {
+      confMap.fitBounds(bounds, { padding: [28, 28] });
     }
-    groups.get(key).count += 1;
-    return groups;
-  }, new Map());
-
-  const routePath = mappedEntries
-    .slice()
-    .reverse()
-    .map((entry, index) => {
-      const point = projectPoint(entry.coordinates);
-      return `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
-    })
-    .join(" ");
-  route.setAttribute("d", routePath);
-
-  cityGroups.forEach((group) => {
-    const point = projectPoint(group.coordinates);
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("class", `map-dot${group.type === "domestic" ? " is-domestic" : ""}`);
-    circle.setAttribute("cx", point.x.toFixed(1));
-    circle.setAttribute("cy", point.y.toFixed(1));
-    circle.setAttribute("r", String(group.count > 1 ? 11 : 8));
-    dots.appendChild(circle);
-
-    if (group.count > 1) {
-      const count = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      count.setAttribute("class", "map-count");
-      count.setAttribute("x", point.x.toFixed(1));
-      count.setAttribute("y", point.y.toFixed(1));
-      count.textContent = String(group.count);
-      dots.appendChild(count);
-    }
-
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    label.setAttribute("class", "map-label");
-    label.setAttribute("x", (point.x + 13).toFixed(1));
-    label.setAttribute("y", (point.y - 10).toFixed(1));
-    label.textContent = group.city[language];
-    labels.appendChild(label);
-  });
+  }
 
   conferenceEntries.forEach((entry) => {
     const item = document.createElement("li");
     const type = document.createElement("small");
-    const city = document.createElement("strong");
-    const note = document.createElement("span");
+    const title = document.createElement("strong");
+    const noteEl = document.createElement("span");
 
     type.textContent = `${entry.year} · ${typeNames[language][entry.type]}`;
-    city.textContent = entry.city[language];
+    title.textContent = entry.title[language];
+    title.setAttribute("translate", "no");
     if (entry.note) {
-      note.textContent = entry.note[language];
+      noteEl.textContent = entry.note[language];
     }
 
-    item.append(type, city);
-    if (entry.note) item.append(note);
+    item.append(type, title);
+    if (entry.note) item.append(noteEl);
     list.appendChild(item);
   });
 };

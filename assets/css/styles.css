@@ -428,29 +428,58 @@ h1 {
   font-weight: 400;
 }
 
-.notes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px;
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--rule);
 }
 
-.note {
-  border-top: 1px solid var(--rule);
-  padding-top: 18px;
+.timeline li {
+  position: relative;
+  padding: 0 0 32px 28px;
 }
 
-.note h3 {
-  margin-bottom: 11px;
-  font-size: 27px;
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--clay);
+  content: "";
+}
+
+.timeline time {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--clay);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline h3 {
+  margin-bottom: 6px;
+  font-size: 23px;
   font-weight: 400;
+  line-height: 1.22;
 }
 
-.note p {
+.timeline p {
+  max-width: 620px;
   margin-bottom: 0;
   color: var(--muted);
   font-family: var(--sans);
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .map-panel {
@@ -460,68 +489,15 @@ h1 {
 }
 
 .travel-map {
-  position: relative;
   height: clamp(320px, 38vw, 500px);
   min-height: 360px;
-  overflow: hidden;
   border: 1px solid var(--line);
-  background:
-    linear-gradient(90deg, rgba(20, 20, 17, 0.035) 1px, transparent 1px) 0 0 / 54px 54px,
-    linear-gradient(rgba(20, 20, 17, 0.028) 1px, transparent 1px) 0 0 / 54px 54px,
-    rgba(247, 243, 234, 0.72);
 }
 
-.travel-map svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.map-land {
-  fill: rgba(52, 72, 61, 0.13);
-  stroke: rgba(52, 72, 61, 0.24);
-  stroke-width: 1;
-}
-
-.map-graticule {
-  fill: none;
-  stroke: rgba(20, 20, 17, 0.08);
-  stroke-width: 1;
-}
-
-.map-route {
-  fill: none;
-  stroke: rgba(166, 95, 69, 0.48);
-  stroke-dasharray: 5 8;
-  stroke-linecap: round;
-  stroke-width: 2;
-}
-
-.map-dot {
-  fill: var(--clay);
-  stroke: var(--paper);
-  stroke-width: 4;
-}
-
-.map-dot.is-domestic {
-  fill: var(--moss);
-}
-
-.map-label {
-  fill: var(--muted);
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-}
-
-.map-count {
-  fill: var(--paper);
+.travel-map .leaflet-control-attribution {
   font-family: var(--sans);
   font-size: 10px;
-  font-weight: 700;
-  text-anchor: middle;
-  dominant-baseline: central;
-  pointer-events: none;
+  background: rgba(247, 243, 234, 0.82);
 }
 
 .conference-list {
@@ -610,7 +586,6 @@ h1 {
   }
 
   .research-grid,
-  .notes,
   .conference-list {
     grid-template-columns: 1fr;
   }

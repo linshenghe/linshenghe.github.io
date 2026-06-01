@@ -10,6 +10,7 @@
     >
     <title>Linsheng He | Academic Homepage</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -24,7 +25,6 @@
           <a href="#publications" data-i18n="navPublications">Publications</a>
           <a href="#cv" data-i18n="navCv">CV</a>
           <a href="#conferences" data-i18n="navConferences">Conferences</a>
-          <a href="#teaching" data-i18n="navTeaching">Teaching</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
           <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
         </nav>
@@ -36,7 +36,7 @@
             <p class="eyebrow" data-i18n="heroEyebrow">Academic Homepage</p>
             <h1 id="page-title">
               Linsheng He
-              <span class="hanzi">何林晟</span>
+              <span class="hanzi" data-i18n="hanziName">何林晟</span>
             </h1>
             <p class="intro">
               <span data-i18n="heroIntro">Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.</span>
@@ -145,36 +145,27 @@
         <section class="section" id="cv" aria-labelledby="cv-title">
           <p class="section-kicker" data-i18n="cvKicker">CV</p>
           <div>
-            <h2 id="cv-title" data-i18n="cvTitle">Current work and academic profile</h2>
-            <div class="work-list">
-              <article class="work">
-                <time datetime="2026" data-i18n="pipelineLabel">Pipeline</time>
-                <div>
-                  <h3 data-i18n="workingPapersTitle">Working papers</h3>
-                  <p>
-                    <span data-i18n="workingPapersText">Current projects examine social capital in coproduction, emotional memory and government reputation, anti-corruption and compliance in public health crises, and public risk perception during COVID-19.</span>
-                  </p>
-                </div>
-              </article>
-              <article class="work">
-                <time datetime="2021" data-i18n="educationLabel">Education</time>
+            <h2 id="cv-title" data-i18n="cvTitle">Education and profile</h2>
+            <ol class="timeline" aria-label="Education timeline">
+              <li>
+                <time datetime="2021">2021–Present</time>
                 <div>
                   <h3>Tsinghua University</h3>
                   <p>
                     <span data-i18n="tsinghuaText">Ph.D. candidate in Public Administration, School of Public Policy and Management.</span>
                   </p>
                 </div>
-              </article>
-              <article class="work">
-                <time datetime="2017" data-i18n="educationLabel">Education</time>
+              </li>
+              <li>
+                <time datetime="2017">2017–2021</time>
                 <div>
                   <h3>Beijing Normal University</h3>
                   <p>
-                    <span data-i18n="bnuText">B.A. in Public Affairs Management, School of Government, 2017-2021.</span>
+                    <span data-i18n="bnuText">B.A. in Public Affairs Management, School of Government.</span>
                   </p>
                 </div>
-              </article>
-            </div>
+              </li>
+            </ol>
 
             <ul class="compact-list" aria-label="Awards and academic service">
               <li>
@@ -193,44 +184,22 @@
         <section class="section" id="conferences" aria-labelledby="conferences-title">
           <p class="section-kicker" data-i18n="conferencesKicker">Conferences</p>
           <div>
-            <h2 id="conferences-title" data-i18n="conferencesTitle">Conference map</h2>
+            <h2 id="conferences-title" data-i18n="conferencesTitle">Conferences</h2>
             <p class="measure" data-i18n="conferencesIntro">
-              A public map of conference participation can be added here once the location list is finalized.
+              Selected conference presentations listed below.
             </p>
             <div class="map-panel">
-              <div class="travel-map" aria-label="Conference travel map">
-                <svg viewBox="0 0 760 420" role="img" aria-labelledby="map-title map-desc">
-                  <title id="map-title" data-i18n="mapTitle">Conference travel map</title>
-                  <desc id="map-desc" data-i18n="mapDesc">A stylized paper map for conference locations.</desc>
-                  <path class="map-graticule" d="M0 105H760M0 210H760M0 315H760M190 0V420M380 0V420M570 0V420"></path>
-                  <path class="map-land" d="M95 118c31-36 82-53 128-42 40 10 52 40 91 43 31 3 45-14 70-3 25 12 36 40 21 61-17 25-60 24-84 42-30 22-16 69-52 82-41 15-76-34-116-26-30 6-46 41-78 35-28-5-47-37-43-68 5-42 42-59 38-87-2-14 12-25 25-37Z"></path>
-                  <path class="map-land" d="M379 120c36-28 88-35 124-15 30 17 25 46 57 58 27 10 49-2 72 15 26 20 34 62 14 90-25 34-79 22-102 49-23 26-5 69-34 84-35 18-69-33-109-26-29 5-46 37-76 27-28-9-40-48-25-79 19-38 63-36 78-67 15-32-24-52-14-91 4-16 8-32 15-45Z"></path>
-                  <path class="map-land" d="M612 279c27-17 67-9 84 17 18 27 9 66-19 84-27 17-66 9-84-17-18-27-9-66 19-84Z"></path>
-                  <path class="map-route" data-map-route d=""></path>
-                  <g data-map-dots></g>
-                  <g data-map-labels></g>
-                </svg>
-              </div>
-              <ul class="conference-list" aria-label="Conference locations" data-conference-list></ul>
+              <div id="map" class="travel-map" aria-label="Conference map"></div>
+              <ul class="conference-list" aria-label="Conference list" data-conference-list></ul>
             </div>
           </div>
         </section>
 
-        <section class="section" id="teaching" aria-labelledby="teaching-title">
-          <p class="section-kicker" data-i18n="teachingKicker">Teaching</p>
-          <div class="notes">
-            <article class="note">
-              <h2 id="teaching-title" data-i18n="teachingTitle">Teaching</h2>
-              <p>
-                <span data-i18n="teachingText">Teaching assistant at Tsinghua University for doctoral, MPA, EMPA, and International MPA courses, including Risk Management Theory and Practice, History of Public Management Thought, Public Policy Analysis, Hong Kong Public Administration, and Urban Development and Management.</span>
-              </p>
-            </article>
-            <article class="note" id="contact">
-              <h2 data-i18n="contactTitle">Contact</h2>
-              <p>
-                <span data-i18n-html="contactText">Email is the primary contact channel for now: <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.</span>
-              </p>
-            </article>
+        <section class="section" id="contact" aria-labelledby="contact-title">
+          <p class="section-kicker" data-i18n="contactKicker">Contact</p>
+          <div>
+            <h2 id="contact-title" data-i18n="contactTitle">Contact</h2>
+            <p class="measure" data-i18n-html="contactText">Email is the primary contact channel for now: <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.</p>
           </div>
         </section>
       </main>
@@ -240,6 +209,7 @@
         <a href="#" data-i18n="backTop">Back to top</a>
       </footer>
     </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="assets/data/conferences.js"></script>
     <script src="assets/js/site.js"></script>
   </body>
