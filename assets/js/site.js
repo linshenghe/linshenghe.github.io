@@ -45,8 +45,21 @@ const translations = {
     service: "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
     projects: "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
     conferencesKicker: "Conferences",
-    conferencesTitle: "Conferences",
-    conferencesIntro: "Selected conference presentations listed below.",
+    conferencesTitle: "Conference calendar and map",
+    conferencesIntro: "Upcoming conference nodes and selected presentation locations across public administration and policy studies.",
+    upcomingConferencesTitle: "Upcoming nodes",
+    upcomingConferencesNote: "Officially listed conference dates and milestones to monitor.",
+    pastConferencesTitle: "Selected past presentations",
+    pastConferencesNote: "Presentation locations are also shown on the map.",
+    legendUpcoming: "Upcoming",
+    legendPast: "Attended",
+    dateRangeJoin: "to",
+    daysUntil: "in",
+    daysUnit: "days",
+    todayLabel: "today",
+    sourceLabel: "Source",
+    noUpcomingConferences: "No upcoming conference nodes are listed yet.",
+    noPastConferences: "No presentation locations are listed yet.",
     contactKicker: "Contact",
     contactTitle: "Contact",
     contactText: "Email is the primary contact channel for now: <a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.",
@@ -99,8 +112,21 @@ const translations = {
     service: "<strong>学术服务。</strong> Public Administration 编辑助理；Governance、Public Management Review、Information Polity 及中文公共管理期刊审稿人。",
     projects: "<strong>研究项目。</strong> 参与国家自然科学基金、唐仲英基金会、清华-丰田联合研究院项目，以及核安全治理政策咨询工作。",
     conferencesKicker: "会议",
-    conferencesTitle: "学术会议地图",
-    conferencesIntro: "以下为近年参加的学术会议。",
+    conferencesTitle: "学术会议时间节点与地图",
+    conferencesIntro: "记录未来会议时间节点，并展示已参加会议的学术足迹。",
+    upcomingConferencesTitle: "未来节点",
+    upcomingConferencesNote: "来自会议官网的未来日期与需要跟踪的时间节点。",
+    pastConferencesTitle: "已参加会议",
+    pastConferencesNote: "报告地点也会显示在地图上。",
+    legendUpcoming: "未来会议",
+    legendPast: "已参加",
+    dateRangeJoin: "至",
+    daysUntil: "还有",
+    daysUnit: "天",
+    todayLabel: "今天",
+    sourceLabel: "来源",
+    noUpcomingConferences: "暂未列出未来会议节点。",
+    noPastConferences: "暂未列出报告地点。",
     contactKicker: "联系",
     contactTitle: "联系",
     contactText: "目前主要联系方式为邮箱：<a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>。学术主页链接和公开版 CV 可在准备好后加入。",
@@ -145,15 +171,153 @@ const setLanguage = (language) => {
 };
 
 let confMap = null;
+let conferenceLayer = null;
+const conferenceMarkers = new Map();
+
+const getToday = () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
+};
+
+const parseDate = (value) => {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+};
+
+const formatDate = (value, language) => {
+  const date = parseDate(value);
+  return new Intl.DateTimeFormat(language === "zh" ? "zh-CN" : "en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+};
+
+const formatDateRange = (entry, language, copy) => {
+  const start = formatDate(entry.startDate, language);
+  const end = formatDate(entry.endDate, language);
+  return entry.startDate === entry.endDate ? start : `${start} ${copy.dateRangeJoin} ${end}`;
+};
+
+const formatCountdown = (entry, language, copy) => {
+  const start = parseDate(entry.startDate);
+  const diff = Math.ceil((start - getToday()) / 86400000);
+  if (diff === 0) return copy.todayLabel;
+  if (diff > 0) return language === "zh" ? `${copy.daysUntil} ${diff} ${copy.daysUnit}` : `${copy.daysUntil} ${diff} ${copy.daysUnit}`;
+  return "";
+};
+
+const setActiveConference = (id) => {
+  document.querySelectorAll("[data-conference-id]").forEach((element) => {
+    element.classList.toggle("is-active", element.dataset.conferenceId === id);
+  });
+};
 
 const initMap = () => {
   const el = document.getElementById("map");
-  if (!el || confMap) return;
+  if (!el || confMap || typeof L === "undefined") return;
   confMap = L.map(el, { scrollWheelZoom: false }).setView([30, 110], 3);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
     maxZoom: 18,
   }).addTo(confMap);
+  conferenceLayer = L.layerGroup().addTo(confMap);
+};
+
+const addConferenceMarker = (entry, language, kind) => {
+  if (!confMap || !conferenceLayer || !entry.coordinates) return null;
+  const { lat, lon } = entry.coordinates;
+  const color = kind === "upcoming" ? "#a65f45" : "#34483d";
+  const marker = L.circleMarker([lat, lon], {
+    radius: kind === "upcoming" ? 8 : 6,
+    fillColor: color,
+    color: "#f7f3ea",
+    weight: 2,
+    fillOpacity: 0.9,
+  }).addTo(conferenceLayer);
+
+  const title = entry.title[language];
+  const city = entry.city[language];
+  marker.bindTooltip(`${entry.organization ? `${entry.organization}: ` : ""}${city}`, {
+    direction: "top",
+    offset: [0, -8],
+  });
+  marker.bindPopup(`<strong>${title}</strong><br>${city}`);
+  marker.on("click", () => setActiveConference(entry.id));
+  conferenceMarkers.set(entry.id, marker);
+  return [lat, lon];
+};
+
+const focusConference = (entry) => {
+  if (!confMap || !entry.coordinates) return;
+  const marker = conferenceMarkers.get(entry.id);
+  const { lat, lon } = entry.coordinates;
+  confMap.flyTo([lat, lon], Math.max(confMap.getZoom(), 5), { duration: 0.45 });
+  if (marker) marker.openPopup();
+  setActiveConference(entry.id);
+};
+
+const renderUpcomingConferences = (language, copy) => {
+  const list = document.querySelector("[data-upcoming-conference-list]");
+  if (!list) return;
+  list.innerHTML = "";
+
+  if (!upcomingConferences.length) {
+    const empty = document.createElement("p");
+    empty.className = "conference-empty";
+    empty.textContent = copy.noUpcomingConferences;
+    list.appendChild(empty);
+    return;
+  }
+
+  upcomingConferences.forEach((entry) => {
+    const card = document.createElement("article");
+    const meta = document.createElement("div");
+    const org = document.createElement("span");
+    const countdown = document.createElement("span");
+    const title = document.createElement("h4");
+    const place = document.createElement("p");
+    const milestones = document.createElement("ul");
+    const source = document.createElement("a");
+
+    card.className = "upcoming-card";
+    card.tabIndex = 0;
+    card.dataset.conferenceId = entry.id;
+    meta.className = "upcoming-meta";
+    org.textContent = entry.organization;
+    countdown.textContent = formatCountdown(entry, language, copy);
+    title.textContent = entry.title[language];
+    place.textContent = `${formatDateRange(entry, language, copy)} · ${entry.city[language]} · ${entry.venue}`;
+    milestones.className = "milestone-list";
+
+    entry.milestones.forEach((milestone) => {
+      const item = document.createElement("li");
+      const label = document.createElement("span");
+      const date = document.createElement("strong");
+      label.textContent = milestone.label[language];
+      date.textContent = milestone.dateText[language];
+      item.append(label, date);
+      milestones.appendChild(item);
+    });
+
+    source.href = entry.sourceUrl;
+    source.textContent = `${copy.sourceLabel}: ${entry.sourceLabel}`;
+    source.target = "_blank";
+    source.rel = "noreferrer";
+
+    meta.append(org);
+    if (countdown.textContent) meta.append(countdown);
+    card.append(meta, title, place, milestones, source);
+    card.addEventListener("click", () => focusConference(entry));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        focusConference(entry);
+      }
+    });
+    list.appendChild(card);
+  });
 };
 
 const renderConferences = (language) => {
@@ -164,30 +328,25 @@ const renderConferences = (language) => {
     zh: { international: "国际会议", domestic: "国内会议" },
   };
 
+  if (!list) return;
   list.innerHTML = "";
+  renderUpcomingConferences(language, copy);
 
   initMap();
-  if (confMap) {
-    confMap.eachLayer((layer) => {
-      if (layer instanceof L.Marker) confMap.removeLayer(layer);
-    });
+  conferenceMarkers.clear();
+  if (conferenceLayer) {
+    conferenceLayer.clearLayers();
 
     const bounds = [];
-    conferenceEntries.filter((e) => e.coordinates).forEach((entry) => {
-      const { lat, lon } = entry.coordinates;
-      const color = entry.type === "domestic" ? "#34483d" : "#a65f45";
-      bounds.push([lat, lon]);
+    upcomingConferences.forEach((entry) => {
+      const coordinates = addConferenceMarker(entry, language, "upcoming");
+      if (coordinates) bounds.push(coordinates);
+    });
 
-      L.circleMarker([lat, lon], {
-        radius: 7,
-        fillColor: color,
-        color: "#f7f3ea",
-        weight: 2,
-        fillOpacity: 0.88,
-      }).addTo(confMap).bindTooltip(entry.city[language], {
-        direction: "top",
-        offset: [0, -8],
-      });
+    conferenceEntries.filter((e) => e.coordinates).forEach((entry, index) => {
+      const normalizedEntry = { ...entry, id: entry.id || `past-${index}` };
+      const coordinates = addConferenceMarker(normalizedEntry, language, "past");
+      if (coordinates) bounds.push(coordinates);
     });
 
     if (bounds.length > 0) {
@@ -195,21 +354,34 @@ const renderConferences = (language) => {
     }
   }
 
-  conferenceEntries.forEach((entry) => {
+  conferenceEntries.forEach((entry, index) => {
+    const normalizedEntry = { ...entry, id: entry.id || `past-${index}` };
     const item = document.createElement("li");
     const type = document.createElement("small");
     const title = document.createElement("strong");
     const noteEl = document.createElement("span");
 
-    type.textContent = `${entry.year} · ${typeNames[language][entry.type]}`;
-    title.textContent = entry.title[language];
+    item.dataset.conferenceId = normalizedEntry.id;
+    item.tabIndex = normalizedEntry.coordinates ? 0 : -1;
+    item.classList.toggle("is-mappable", Boolean(normalizedEntry.coordinates));
+    type.textContent = `${normalizedEntry.year} · ${typeNames[language][normalizedEntry.type]}`;
+    title.textContent = normalizedEntry.title[language];
     title.setAttribute("translate", "no");
-    if (entry.note) {
-      noteEl.textContent = entry.note[language];
+    if (normalizedEntry.note) {
+      noteEl.textContent = normalizedEntry.note[language];
     }
 
     item.append(type, title);
-    if (entry.note) item.append(noteEl);
+    if (normalizedEntry.note) item.append(noteEl);
+    if (normalizedEntry.coordinates) {
+      item.addEventListener("click", () => focusConference(normalizedEntry));
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          focusConference(normalizedEntry);
+        }
+      });
+    }
     list.appendChild(item);
   });
 };

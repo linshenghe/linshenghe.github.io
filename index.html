@@ -186,11 +186,30 @@
           <div>
             <h2 id="conferences-title" data-i18n="conferencesTitle">Conferences</h2>
             <p class="measure" data-i18n="conferencesIntro">
-              Selected conference presentations listed below.
+              Future conference dates and selected presentation locations.
             </p>
             <div class="map-panel">
-              <div id="map" class="travel-map" aria-label="Conference map"></div>
-              <ul class="conference-list" aria-label="Conference list" data-conference-list></ul>
+              <div class="conference-board">
+                <div>
+                  <div class="conference-group-heading">
+                    <h3 data-i18n="upcomingConferencesTitle">Upcoming nodes</h3>
+                    <p data-i18n="upcomingConferencesNote">Officially listed conference dates and milestones to monitor.</p>
+                  </div>
+                  <div class="upcoming-list" aria-label="Upcoming conferences" data-upcoming-conference-list></div>
+                </div>
+                <div class="map-column">
+                  <div id="map" class="travel-map" aria-label="Conference map"></div>
+                  <div class="map-legend" aria-label="Map legend">
+                    <span><i class="legend-dot legend-dot-upcoming" aria-hidden="true"></i><span data-i18n="legendUpcoming">Upcoming</span></span>
+                    <span><i class="legend-dot legend-dot-past" aria-hidden="true"></i><span data-i18n="legendPast">Attended</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="conference-group-heading conference-group-heading-past">
+                <h3 data-i18n="pastConferencesTitle">Selected past presentations</h3>
+                <p data-i18n="pastConferencesNote">Presentation locations are also shown on the map.</p>
+              </div>
+              <ul class="conference-list" aria-label="Past conference list" data-conference-list></ul>
             </div>
           </div>
         </section>

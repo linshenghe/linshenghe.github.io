@@ -1,3 +1,103 @@
+const upcomingConferences = [
+  {
+    id: "appam-2026",
+    organization: "APPAM",
+    title: {
+      en: "APPAM Fall Research Conference",
+      zh: "APPAM Fall Research Conference",
+    },
+    city: { en: "Boston, MA, United States", zh: "美国马萨诸塞州波士顿" },
+    venue: "Marriott Copley Place",
+    coordinates: { lat: 42.36, lon: -71.06 },
+    startDate: "2026-11-05",
+    endDate: "2026-11-07",
+    sourceUrl: "https://www.appam.org/conference-events/2026appam/",
+    sourceLabel: "APPAM 2026",
+    status: { en: "Confirmed", zh: "已确认" },
+    milestones: [
+      {
+        label: { en: "Registration opens", zh: "注册开放" },
+        dateText: { en: "Late July 2026", zh: "2026 年 7 月下旬" },
+        status: { en: "Upcoming", zh: "即将开始" },
+      },
+      {
+        label: { en: "Participant registration deadline", zh: "参会者注册截止" },
+        dateText: { en: "September 2026", zh: "2026 年 9 月" },
+        status: { en: "Upcoming", zh: "即将截止" },
+      },
+    ],
+  },
+  {
+    id: "appam-2027",
+    organization: "APPAM",
+    title: {
+      en: "APPAM Fall Research Conference",
+      zh: "APPAM Fall Research Conference",
+    },
+    city: { en: "Indianapolis, IN, United States", zh: "美国印第安纳州印第安纳波利斯" },
+    venue: "JW Marriott",
+    coordinates: { lat: 39.77, lon: -86.16 },
+    startDate: "2027-11-11",
+    endDate: "2027-11-13",
+    sourceUrl: "https://www.appam.org/conference-events/future-conferences-events/",
+    sourceLabel: "APPAM future conferences",
+    status: { en: "Confirmed", zh: "已确认" },
+    milestones: [
+      {
+        label: { en: "Call and submission details", zh: "征稿与投稿信息" },
+        dateText: { en: "To monitor", zh: "待跟踪" },
+        status: { en: "Monitor", zh: "待更新" },
+      },
+    ],
+  },
+  {
+    id: "appam-2028",
+    organization: "APPAM",
+    title: {
+      en: "APPAM Fall Research Conference",
+      zh: "APPAM Fall Research Conference",
+    },
+    city: { en: "Washington, DC, United States", zh: "美国华盛顿特区" },
+    venue: "Washington, DC",
+    coordinates: { lat: 38.91, lon: -77.04 },
+    startDate: "2028-11-09",
+    endDate: "2028-11-11",
+    sourceUrl: "https://www.appam.org/conference-events/future-conferences-events/",
+    sourceLabel: "APPAM future conferences",
+    status: { en: "Confirmed", zh: "已确认" },
+    milestones: [
+      {
+        label: { en: "Call and submission details", zh: "征稿与投稿信息" },
+        dateText: { en: "To monitor", zh: "待跟踪" },
+        status: { en: "Monitor", zh: "待更新" },
+      },
+    ],
+  },
+  {
+    id: "irspm-2027",
+    organization: "IRSPM",
+    title: {
+      en: "IRSPM Conference",
+      zh: "IRSPM Conference",
+    },
+    city: { en: "Trondheim, Norway", zh: "挪威特隆赫姆" },
+    venue: "Trondheim",
+    coordinates: { lat: 63.43, lon: 10.40 },
+    startDate: "2027-04-28",
+    endDate: "2027-04-30",
+    sourceUrl: "https://www.irspm.org/conferences/conference-2027",
+    sourceLabel: "IRSPM 2027",
+    status: { en: "Confirmed", zh: "已确认" },
+    milestones: [
+      {
+        label: { en: "Panel and paper details", zh: "小组与论文信息" },
+        dateText: { en: "To monitor", zh: "待跟踪" },
+        status: { en: "Monitor", zh: "待更新" },
+      },
+    ],
+  },
+];
+
 const conferenceEntries = [
   {
     year: "2026",
