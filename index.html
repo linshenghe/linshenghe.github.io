@@ -4,11 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f3ea">
+    <meta name="color-scheme" content="light dark">
     <meta
       name="description"
       content="Linsheng He academic homepage: research, writing, teaching, and contact."
     >
     <title>Linsheng He | Academic Homepage</title>
+    <script>
+      (() => {
+        const hour = new Date().getHours();
+        const theme = hour >= 18 || hour < 6 ? "night" : "day";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme === "night" ? "dark" : "light";
+      })();
+    </script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   </head>

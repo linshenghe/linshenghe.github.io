@@ -139,6 +139,20 @@ const translations = {
 
 const pages = ["home", "research", "publications", "cv", "conferences", "contact"];
 
+const getTimeTheme = () => {
+  const hour = new Date().getHours();
+  return hour >= 18 || hour < 6 ? "night" : "day";
+};
+
+const applyTimeTheme = () => {
+  const theme = getTimeTheme();
+  const themeColor = theme === "night" ? "#101916" : "#f7f3ea";
+  const colorScheme = theme === "night" ? "dark" : "light";
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = colorScheme;
+  document.querySelector("meta[name='theme-color']").setAttribute("content", themeColor);
+};
+
 const getRoute = () => {
   const route = window.location.hash.replace("#", "");
   return pages.includes(route) ? route : "home";
@@ -431,6 +445,7 @@ const renderConferences = (language) => {
 };
 
 const initialLanguage = localStorage.getItem("site-language") === "zh" ? "zh" : "en";
+applyTimeTheme();
 setLanguage(initialLanguage);
 setRoute(getRoute());
 document.querySelector("[data-language-toggle]").addEventListener("click", () => {
@@ -447,3 +462,5 @@ document.querySelectorAll("[data-route]").forEach((link) => {
 window.addEventListener("hashchange", () => {
   setRoute(getRoute());
 });
+
+window.setInterval(applyTimeTheme, 300000);
