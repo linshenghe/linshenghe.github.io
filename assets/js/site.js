@@ -143,6 +143,7 @@ const translations = {
 
 const pages = ["home", "research", "publications", "cv", "conferences", "contact"];
 const themeStorageKey = "site-theme";
+const languageStorageKey = "site-language";
 
 const getTimeTheme = () => {
   const hour = new Date().getHours();
@@ -186,6 +187,31 @@ const updateThemeToggle = () => {
 const getRoute = () => {
   const route = window.location.hash.replace("#", "");
   return pages.includes(route) ? route : "home";
+};
+
+const getUrlLanguage = () => {
+  const language = new URLSearchParams(window.location.search).get("lang");
+  return language === "zh" || language === "en" ? language : "";
+};
+
+const getSavedLanguage = () => {
+  try {
+    const language = localStorage.getItem(languageStorageKey);
+    return language === "zh" || language === "en" ? language : "";
+  } catch (error) {
+    return "";
+  }
+};
+
+const getBrowserLanguage = () => {
+  const languages = navigator.languages && navigator.languages.length > 0 ? navigator.languages : [navigator.language];
+  return languages.some((language) => language.toLowerCase().startsWith("zh")) ? "zh" : "en";
+};
+
+const getInitialLanguage = () => {
+  const urlLanguage = getUrlLanguage();
+  if (urlLanguage) return urlLanguage;
+  return getSavedLanguage() || getBrowserLanguage();
 };
 
 const setRoute = (route) => {
@@ -252,7 +278,11 @@ const setLanguage = (language) => {
   const toggle = document.querySelector("[data-language-toggle]");
   toggle.textContent = copy.toggleLabel;
   toggle.setAttribute("aria-pressed", String(language === "zh"));
-  localStorage.setItem("site-language", language);
+  try {
+    localStorage.setItem(languageStorageKey, language);
+  } catch (error) {
+    // Language switching still works for this page view when storage is unavailable.
+  }
   updateThemeToggle();
   renderConferences(language);
 };
@@ -475,7 +505,7 @@ const renderConferences = (language) => {
   });
 };
 
-const initialLanguage = localStorage.getItem("site-language") === "zh" ? "zh" : "en";
+const initialLanguage = getInitialLanguage();
 applyTimeTheme();
 setLanguage(initialLanguage);
 setRoute(getRoute());
