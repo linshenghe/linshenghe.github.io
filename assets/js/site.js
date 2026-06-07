@@ -3,6 +3,8 @@ const translations = {
     documentTitle: "Linsheng He | Academic Homepage",
     metaDescription: "Linsheng He academic homepage: research, writing, and contact.",
     toggleLabel: "中文",
+    themeToNight: "Night",
+    themeToDay: "Day",
     wordmark: "Linsheng He",
     navHome: "Home",
     navResearch: "Research",
@@ -71,6 +73,8 @@ const translations = {
     documentTitle: "何林晟 | 学术主页",
     metaDescription: "何林晟的学术主页：研究、论文与联系方式。",
     toggleLabel: "EN",
+    themeToNight: "夜间",
+    themeToDay: "白天",
     wordmark: "何林晟",
     navHome: "主页",
     navResearch: "研究",
@@ -138,19 +142,45 @@ const translations = {
 };
 
 const pages = ["home", "research", "publications", "cv", "conferences", "contact"];
+const themeStorageKey = "site-theme";
 
 const getTimeTheme = () => {
   const hour = new Date().getHours();
   return hour >= 18 || hour < 6 ? "night" : "day";
 };
 
-const applyTimeTheme = () => {
-  const theme = getTimeTheme();
+const getSavedTheme = () => {
+  try {
+    const theme = localStorage.getItem(themeStorageKey);
+    return theme === "day" || theme === "night" ? theme : "";
+  } catch (error) {
+    return "";
+  }
+};
+
+const setTheme = (theme) => {
   const themeColor = theme === "night" ? "#101916" : "#f7f3ea";
   const colorScheme = theme === "night" ? "dark" : "light";
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = colorScheme;
   document.querySelector("meta[name='theme-color']").setAttribute("content", themeColor);
+  updateThemeToggle();
+};
+
+const applyTimeTheme = () => {
+  setTheme(getSavedTheme() || getTimeTheme());
+};
+
+const updateThemeToggle = () => {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+  const language = document.documentElement.lang === "zh-CN" ? "zh" : "en";
+  const copy = translations[language];
+  const currentTheme = document.documentElement.dataset.theme;
+  const label = currentTheme === "night" ? copy.themeToDay : copy.themeToNight;
+  toggle.textContent = label;
+  toggle.setAttribute("aria-label", label);
+  toggle.setAttribute("aria-pressed", String(currentTheme === "night"));
 };
 
 const getRoute = () => {
@@ -223,6 +253,7 @@ const setLanguage = (language) => {
   toggle.textContent = copy.toggleLabel;
   toggle.setAttribute("aria-pressed", String(language === "zh"));
   localStorage.setItem("site-language", language);
+  updateThemeToggle();
   renderConferences(language);
 };
 
@@ -451,6 +482,17 @@ setRoute(getRoute());
 document.querySelector("[data-language-toggle]").addEventListener("click", () => {
   const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
   setLanguage(nextLanguage);
+});
+
+document.querySelector("[data-theme-toggle]").addEventListener("click", () => {
+  const currentTheme = document.documentElement.dataset.theme === "night" ? "night" : "day";
+  const nextTheme = currentTheme === "night" ? "day" : "night";
+  try {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  } catch (error) {
+    // Theme switching still works for this page view when storage is unavailable.
+  }
+  setTheme(nextTheme);
 });
 
 document.querySelectorAll("[data-route]").forEach((link) => {

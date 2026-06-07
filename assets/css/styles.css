@@ -230,7 +230,8 @@ main {
   background: linear-gradient(135deg, var(--gold), var(--moss));
 }
 
-.language-toggle {
+.language-toggle,
+.theme-toggle {
   display: inline-flex;
   min-width: 64px;
   min-height: 32px;
@@ -247,15 +248,22 @@ main {
   touch-action: manipulation;
 }
 
-[data-theme="night"] .language-toggle {
+[data-theme="night"] .language-toggle,
+[data-theme="night"] .theme-toggle {
   border-color: rgba(244, 239, 228, 0.18);
   color: var(--ink);
   background: rgba(244, 239, 228, 0.08);
 }
 
-.language-toggle:hover {
+.language-toggle:hover,
+.theme-toggle:hover {
   border-color: var(--moss);
   color: var(--moss);
+}
+
+[data-theme="night"] .theme-toggle[aria-pressed="true"] {
+  color: #101916;
+  background: linear-gradient(135deg, var(--gold), var(--moss));
 }
 
 .hero {

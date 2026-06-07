@@ -13,7 +13,14 @@
     <script>
       (() => {
         const hour = new Date().getHours();
-        const theme = hour >= 18 || hour < 6 ? "night" : "day";
+        let savedTheme = "";
+        try {
+          savedTheme = localStorage.getItem("site-theme") || "";
+        } catch (error) {
+          savedTheme = "";
+        }
+        const timeTheme = hour >= 18 || hour < 6 ? "night" : "day";
+        const theme = savedTheme === "day" || savedTheme === "night" ? savedTheme : timeTheme;
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme === "night" ? "dark" : "light";
       })();
@@ -36,6 +43,7 @@
           <a href="#cv" data-route="cv" data-i18n="navCv">CV</a>
           <a href="#conferences" data-route="conferences" data-i18n="navConferences">Conferences</a>
           <a href="#contact" data-route="contact" data-i18n="navContact">Contact</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Night</button>
           <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
         </nav>
       </header>
