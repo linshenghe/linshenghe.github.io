@@ -11,7 +11,7 @@ const translations = {
     navContact: "Contact",
     heroEyebrow: "Academic Homepage",
     hanziName: "",
-    heroIntro: "Ph.D. candidate",
+    heroIntro: "Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.",
     heroAffiliation: "School of Public Policy and Management, Tsinghua University",
     lastUpdated: "Last updated 2026",
     portraitAlt: "Illustrated portrait of Linsheng He",
@@ -64,7 +64,7 @@ const translations = {
     contactTitle: "Contact",
     contactText: "Email is the primary contact channel for now: <a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.",
     footerTitle: "Linsheng He · Academic Homepage",
-    backTop: "Back to top",
+    backTop: "Home",
   },
   zh: {
     documentTitle: "何林晟 | 学术主页",
@@ -131,8 +131,48 @@ const translations = {
     contactTitle: "联系",
     contactText: "目前主要联系方式为邮箱：<a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>。学术主页链接和公开版 CV 可在准备好后加入。",
     footerTitle: "何林晟 · 学术主页",
-    backTop: "返回顶部",
+    backTop: "主页",
   },
+};
+
+const pages = ["home", "research", "publications", "cv", "conferences", "contact"];
+
+const getRoute = () => {
+  const route = window.location.hash.replace("#", "");
+  return pages.includes(route) ? route : "home";
+};
+
+const setRoute = (route) => {
+  const nextRoute = pages.includes(route) ? route : "home";
+
+  document.querySelectorAll("[data-page]").forEach((page) => {
+    const isActive = page.dataset.page === nextRoute;
+    page.hidden = !isActive;
+    page.classList.toggle("is-active", isActive);
+  });
+
+  document.querySelectorAll("[data-route]").forEach((link) => {
+    const isActive = link.dataset.route === nextRoute;
+    link.classList.toggle("is-active", isActive);
+    if (link.matches(".nav a")) {
+      link.setAttribute("aria-current", isActive ? "page" : "false");
+    }
+  });
+
+  document.documentElement.dataset.route = nextRoute;
+
+  if (nextRoute === "conferences" && confMap) {
+    window.requestAnimationFrame(() => {
+      confMap.invalidateSize();
+      if (conferenceBounds.length > 0) {
+        confMap.fitBounds(conferenceBounds, { padding: [28, 28] });
+      }
+    });
+  }
+
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
 };
 
 const setLanguage = (language) => {
@@ -172,6 +212,7 @@ const setLanguage = (language) => {
 
 let confMap = null;
 let conferenceLayer = null;
+let conferenceBounds = [];
 const conferenceMarkers = new Map();
 
 const getToday = () => {
@@ -349,6 +390,7 @@ const renderConferences = (language) => {
       if (coordinates) bounds.push(coordinates);
     });
 
+    conferenceBounds = bounds;
     if (bounds.length > 0) {
       confMap.fitBounds(bounds, { padding: [28, 28] });
     }
@@ -388,7 +430,18 @@ const renderConferences = (language) => {
 
 const initialLanguage = localStorage.getItem("site-language") === "zh" ? "zh" : "en";
 setLanguage(initialLanguage);
+setRoute(getRoute());
 document.querySelector("[data-language-toggle]").addEventListener("click", () => {
   const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
   setLanguage(nextLanguage);
+});
+
+document.querySelectorAll("[data-route]").forEach((link) => {
+  link.addEventListener("click", () => {
+    setRoute(link.dataset.route);
+  });
+});
+
+window.addEventListener("hashchange", () => {
+  setRoute(getRoute());
 });

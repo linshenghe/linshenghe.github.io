@@ -16,22 +16,22 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="topbar" aria-label="Site header">
-        <a class="wordmark" href="#">
+        <a class="wordmark" href="#home" data-route="home">
           <span class="seal" aria-hidden="true">LH</span>
           <span data-i18n="wordmark">Linsheng He</span>
         </a>
         <nav class="nav" aria-label="Primary navigation">
-          <a href="#research" data-i18n="navResearch">Research</a>
-          <a href="#publications" data-i18n="navPublications">Publications</a>
-          <a href="#cv" data-i18n="navCv">CV</a>
-          <a href="#conferences" data-i18n="navConferences">Conferences</a>
-          <a href="#contact" data-i18n="navContact">Contact</a>
+          <a href="#research" data-route="research" data-i18n="navResearch">Research</a>
+          <a href="#publications" data-route="publications" data-i18n="navPublications">Publications</a>
+          <a href="#cv" data-route="cv" data-i18n="navCv">CV</a>
+          <a href="#conferences" data-route="conferences" data-i18n="navConferences">Conferences</a>
+          <a href="#contact" data-route="contact" data-i18n="navContact">Contact</a>
           <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
         </nav>
       </header>
 
       <main id="main">
-        <section class="hero" aria-labelledby="page-title">
+        <section class="hero page-view is-active" id="home" data-page="home" aria-labelledby="page-title">
           <div>
             <p class="eyebrow" data-i18n="heroEyebrow">Academic Homepage</p>
             <h1 id="page-title">
@@ -73,7 +73,7 @@
           </div>
         </section>
 
-        <section class="section" id="research" aria-labelledby="research-title">
+        <section class="section page-view" id="research" data-page="research" aria-labelledby="research-title" hidden>
           <p class="section-kicker" data-i18n="researchKicker">Research</p>
           <div>
             <h2 id="research-title" data-i18n="researchTitle">Public problems, behavioral mechanisms.</h2>
@@ -97,7 +97,7 @@
           </div>
         </section>
 
-        <section class="section" id="publications" aria-labelledby="publications-title">
+        <section class="section page-view" id="publications" data-page="publications" aria-labelledby="publications-title" hidden>
           <p class="section-kicker" data-i18n="publicationsKicker">Publications</p>
           <div>
             <h2 id="publications-title" data-i18n="publicationsTitle">Selected publications</h2>
@@ -142,13 +142,13 @@
           </div>
         </section>
 
-        <section class="section" id="cv" aria-labelledby="cv-title">
+        <section class="section page-view" id="cv" data-page="cv" aria-labelledby="cv-title" hidden>
           <p class="section-kicker" data-i18n="cvKicker">CV</p>
           <div>
             <h2 id="cv-title" data-i18n="cvTitle">Education and profile</h2>
             <ol class="timeline" aria-label="Education timeline">
               <li>
-                <time datetime="2021">2021–Present</time>
+                <time datetime="2021">2021-Present</time>
                 <div>
                   <h3>Tsinghua University</h3>
                   <p>
@@ -157,7 +157,7 @@
                 </div>
               </li>
               <li>
-                <time datetime="2017">2017–2021</time>
+                <time datetime="2017">2017-2021</time>
                 <div>
                   <h3>Beijing Normal University</h3>
                   <p>
@@ -181,7 +181,7 @@
           </div>
         </section>
 
-        <section class="section" id="conferences" aria-labelledby="conferences-title">
+        <section class="section page-view" id="conferences" data-page="conferences" aria-labelledby="conferences-title" hidden>
           <p class="section-kicker" data-i18n="conferencesKicker">Conferences</p>
           <div>
             <h2 id="conferences-title" data-i18n="conferencesTitle">Conferences</h2>
@@ -214,7 +214,7 @@
           </div>
         </section>
 
-        <section class="section" id="contact" aria-labelledby="contact-title">
+        <section class="section page-view" id="contact" data-page="contact" aria-labelledby="contact-title" hidden>
           <p class="section-kicker" data-i18n="contactKicker">Contact</p>
           <div>
             <h2 id="contact-title" data-i18n="contactTitle">Contact</h2>
@@ -225,7 +225,7 @@
 
       <footer class="footer">
         <p data-i18n="footerTitle">Linsheng He · Academic Homepage</p>
-        <a href="#" data-i18n="backTop">Back to top</a>
+        <a href="#home" data-route="home" data-i18n="backTop">Back to top</a>
       </footer>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
