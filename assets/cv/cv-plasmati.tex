@@ -1,0 +1,237 @@
+\documentclass[10pt, a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+%   Plasmati Graduate CV — clean, elegant, self-contained
+%   No external .cls needed. Compile with pdfLaTeX.
+%----------------------------------------------------------------------------------------
+
+\usepackage[top=0.55in, bottom=0.55in, left=0.7in, right=0.7in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{paracol}
+
+\setlength{\parindent}{0pt}
+
+%----------------------------------------------------------------------------------------
+%   Colours
+%----------------------------------------------------------------------------------------
+\definecolor{accent}{HTML}{1a3a4a}     % dark teal-blue
+\definecolor{soft}{HTML}{6b7c8a}       % muted slate
+
+%----------------------------------------------------------------------------------------
+%   Header style — name large, contact line below
+%----------------------------------------------------------------------------------------
+\newcommand{\makeplasmatiheader}{
+  \begin{center}
+    {\fontsize{28pt}{34pt}\selectfont\bfseries Linsheng He}
+
+    \vspace{6pt}
+
+    {\color{soft}\large Ph.D.\ Candidate in Public Administration}
+
+    \vspace{6pt}
+
+    {\color{accent}\rule{0.4\textwidth}{0.8pt}}
+
+    \vspace{8pt}
+
+    {\small
+      \faEnvelope\enspace\href{mailto:hels21@mails.tsinghua.edu.cn}{hels21@mails.tsinghua.edu.cn}
+      \hspace{2em}
+      \faMapMarker*\enspace Tsinghua University, Beijing
+      \hspace{2em}
+      \faGlobe\enspace\href{https://linshenghe.github.io}{linshenghe.github.io}
+    }
+
+    \vspace{4pt}
+    {\color{accent}\rule{0.4\textwidth}{0.3pt}}
+  \end{center}
+  \vspace{8pt}
+}
+
+%----------------------------------------------------------------------------------------
+%   Section headings — uppercase small caps with rule
+%----------------------------------------------------------------------------------------
+\titleformat{\section}
+  {\color{accent}\scshape\large\raggedright}
+  {}{0em}{}[\vspace{-0.3\baselineskip}{\color{accent}\titlerule[0.6pt]}\vspace{4pt}]
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+%----------------------------------------------------------------------------------------
+%   Utilities
+%----------------------------------------------------------------------------------------
+\newcommand{\entry}[4]{
+  % {year}{role}{institution}{location}
+  {\color{soft}\small #1} \hfill
+  \textbf{#2} \\
+  #3 \hfill {\color{soft}\small #4}
+}
+
+\newcommand{\pubitem}[4]{
+  % {authors}{year}{title}{journal/info}
+  #1\ (#2).\ \textit{``#3''} #4.
+}
+
+\begin{document}
+
+\makeplasmatiheader
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+
+\entry{2021.09 -- 2026.12 (exp.)}
+  {Ph.D.\ Candidate, Public Administration}
+  {Tsinghua University, School of Public Policy \& Management}
+  {Beijing, China}
+
+\vspace{4pt}
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{Advisor:} Prof.\ Yixin Dai
+  \item \textbf{Dissertation:} Communication Mechanisms and Conflict Resolution in Collaborative Governance
+  \item \textbf{Honors:} National Scholarship; Tsinghua Comprehensive Excellence Scholarship
+\end{itemize}
+
+\vspace{8pt}
+
+\entry{2017.09 -- 2021.06}
+  {B.A.\ in Public Affairs Management}
+  {Beijing Normal University, School of Government}
+  {Beijing, China}
+
+%----------------------------------------------------------------------------------------
+%   PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\section{Publications}
+
+\vspace{2pt}
+{\color{accent}\scshape English-language journals}
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=2em, itemsep=6pt]
+  \item \textbf{He, L.}, Dai, Y., \& Guo, Y.\ (2025).
+    \textit{``Aligning Behavioral Assumptions Underlying Policy Instruments.''}
+    \textit{Public Administration}, Online First.
+    \hfill {\color{soft}\textbf{SSCI, JCR Q1 / ABS 4}}
+
+  \item Guo, Y., \& \textbf{He, L.\ (corresponding author)}.\ (2024).
+    \textit{``Communicating in Diverse Local Cultures.''}
+    \textit{Review of Policy Research}, 41(4), 654--678.
+    \hfill {\color{soft}\textbf{SSCI, JCR Q1}}
+\end{enumerate}
+
+\vspace{4pt}
+{\color{accent}\scshape Chinese-language journals}
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=2em, itemsep=6pt, resume]
+  \item Guo, Y., Hong, J., \& \textbf{He, L.}\ (2021).
+    \textit{``A Policy Feedback Explanation of Government Procurement of Facial Recognition Technology.''}
+    \textit{Journal of Public Administration Review} [公共行政评论], 14(05), 159--177.
+    \hfill {\color{soft}\textbf{CSSCI}}
+
+  \item Guo, Y., \textbf{He, L.}, \& Su, J.\ (2020).
+    \textit{``Instruments--Narratives--Feedback'': A Behavioral Public Policy Research Framework.}
+    \textit{Chinese Public Administration} [中国行政管理], (05), 71--78.
+    \hfill {\color{soft}\textbf{CSSCI}}
+
+  \item Guo, Y., Hong, J., \& \textbf{He, L.}\ (2020).
+    \textit{``Policy Intervention Effect on Public Service Motivation.''}
+    \textit{Leadership Science Forum} [领导科学论坛], (23), 20--30.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%   WORKING PAPERS
+%----------------------------------------------------------------------------------------
+\section{Working Papers}
+
+\begin{enumerate}[leftmargin=2em, itemsep=5pt]
+  \item Hong, J., \& \textbf{He, L.\ (corresponding author)}.
+    ``Not All Ties Are Equal.'' \textit{Public Management Review}.
+    \hfill {\color{soft}\textbf{R\&R, 2nd Round}}
+
+  \item \textbf{He, L.}, \& Dai, Y.
+    ``The Micro-foundations of Reputational Persistence.''
+    \hfill {\color{soft}\textbf{Under Review}}
+
+  \item Chen, Z., \& \textbf{He, L.\ (corresponding author)}.
+    ``Anti-Corruption, Trust, and Compliance in Public Health Crises.''
+    \textit{Humanities and Social Sciences Communications}.
+    \hfill {\color{soft}\textbf{Under Review}}
+
+  \item Fu, X., \textbf{He, L.}, Zhong, W., \& Dai, Y.
+    ``Public Risk Perception during the COVID-19 Pandemic: A Meta-analysis.''
+    \hfill {\color{soft}\textbf{In Preparation}}
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%   CONFERENCES (condensed — Plasmati style favours brevity)
+%----------------------------------------------------------------------------------------
+\section{Selected Conference Presentations}
+
+\begin{itemize}[leftmargin=2em, itemsep=4pt]
+  \item \textbf{2026} --- ASPA (Hollywood); IRSPM (Perth)
+  \item \textbf{2025} --- PMRC (Seoul); ICCPS (Beijing)
+  \item \textbf{2024} --- PMRC (Seattle); ICCPS (Beijing) \textit{--- Best Paper Award}
+  \item \textbf{2023} --- AP-PPN (Hong Kong)
+  \item \textbf{2022} --- AAPA (Shanghai) \textit{--- 2 papers}
+  \item \textbf{2021} --- APPAM Fall Conference (Online) \textit{--- Panel Organizer}
+  \item \textbf{2020} --- IPMN (Online)
+  \item \textbf{2019} --- AP-PPN
+\end{itemize}
+
+\vspace{4pt}
+Full list available upon request.
+
+%----------------------------------------------------------------------------------------
+%   TEACHING
+%----------------------------------------------------------------------------------------
+\section{Teaching Experience}
+
+\entry{2022 -- 2026}
+  {Teaching Assistant, Tsinghua University}
+  {9 courses across Ph.D., MPA, EMPA, and IMPA programs}
+  {}
+
+\vspace{4pt}
+\begin{itemize}[leftmargin=2em]
+  \item Public Policy Analysis (English, IMPA core)
+  \item History of Public Administration Thought (Ph.D.\ core)
+  \item Frontiers in Risk Management; Advanced Academic Writing; Urban Development; and others.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%   HONOURS
+%----------------------------------------------------------------------------------------
+\section{Honours \& Awards}
+
+\begin{itemize}[leftmargin=2em, itemsep=3pt]
+  \item ASPA-SCPA \textbf{Best Student Paper Award}
+    \hfill {\color{soft}2026}
+  \item National Scholarship
+    \hfill {\color{soft}2025}
+  \item ICCPS \textbf{Best Paper Award}
+    \hfill {\color{soft}2024}
+  \item \textbf{Best Paper Award}, Young Scholars Forum, \textit{Journal of Public Administration Review}
+    \hfill {\color{soft}2021}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%   SERVICE
+%----------------------------------------------------------------------------------------
+\section{Academic Service}
+
+\begin{itemize}[leftmargin=2em, itemsep=3pt]
+  \item \textbf{Editorial Assistant}, \textit{Public Administration}, 2024--present.
+  \item \textbf{Journal reviewer:} \textit{Governance}; \textit{Public Management Review}; \textit{Information Polity}.
+  \item \textbf{Memberships:} ASPA; IRSPM.
+\end{itemize}
+
+\end{document}

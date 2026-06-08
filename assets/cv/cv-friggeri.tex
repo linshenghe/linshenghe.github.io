@@ -1,0 +1,291 @@
+\documentclass[10pt, a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+%   Friggeri CV — modern, coloured sidebar, self-contained
+%   No external .cls needed. Compile with pdfLaTeX.
+%   Approximates the original friggeri-cv.cls look using article + paracol.
+%----------------------------------------------------------------------------------------
+
+\usepackage[top=0in, bottom=0in, left=0in, right=0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{paracol}
+\usepackage{tikz}
+
+\setlength{\parindent}{0pt}
+
+%----------------------------------------------------------------------------------------
+%   Colours
+%----------------------------------------------------------------------------------------
+\definecolor{sidebar}{HTML}{2C3E50}      % deep navy sidebar
+\definecolor{sidebartext}{HTML}{D5DFE5}  % light text on sidebar
+\definecolor{accent}{HTML}{3A6B8C}       % medium blue for links
+\definecolor{soft}{HTML}{8899A6}         % muted
+\definecolor{bodybg}{HTML}{FFFFFF}       % main panel background
+\definecolor{sectionline}{HTML}{B0BEC5}  % light rule
+
+%----------------------------------------------------------------------------------------
+%   Sidebar section command
+%----------------------------------------------------------------------------------------
+\newcommand{\sidesection}[1]{%
+  \vspace{12pt}
+  {\color{sidebartext}\scshape\large #1}
+
+  \vspace{4pt}
+  {\color{sidebartext!50}\rule{0.6\textwidth}{0.4pt}}
+
+  \vspace{6pt}
+}
+
+%----------------------------------------------------------------------------------------
+%   Sidebar item
+%----------------------------------------------------------------------------------------
+\newcommand{\sideitem}[1]{%
+  {\small\color{sidebartext!90} #1}\\[2pt]
+}
+
+\newcommand{\sideentry}[2]{%
+  {\small\color{sidebartext!90} \textbf{#1}}\\
+  {\footnotesize\color{sidebartext!70} #2}\\[4pt]
+}
+
+%----------------------------------------------------------------------------------------
+%   Main section command
+%----------------------------------------------------------------------------------------
+\titleformat{\section}
+  {\color{sidebar}\scshape\Large\raggedright}
+  {}{0em}{}[\vspace{-0.3\baselineskip}{\color{sectionline}\titlerule[0.6pt]}\vspace{6pt}]
+\titlespacing{\section}{0pt}{16pt}{6pt}
+
+%----------------------------------------------------------------------------------------
+%   Main entry commands
+%----------------------------------------------------------------------------------------
+\newcommand{\mainentry}[4]{%
+  % {title}{institution}{dates}{notes}
+  \textbf{#1} \hfill {\color{soft}\small #3}
+
+  #2
+
+  \ifx&#4&\else{\color{soft}\small #4}\\\fi
+  \vspace{4pt}
+}
+
+%----------------------------------------------------------------------------------------
+%   Publication item
+%----------------------------------------------------------------------------------------
+\newcommand{\pubentry}[5]{%
+  % {number}{authors}{year}{title}{journal}
+  {[\arabic{#1}]}\stepcounter{#1}\
+  #2\ (#3).\ ``#4'' \textit{#5}.
+  \vspace{4pt}
+
+}
+
+\newcounter{pubcount}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%   TWO-COLUMN LAYOUT: 0.32 sidebar / 0.68 main
+%----------------------------------------------------------------------------------------
+\setcolumnwidth{0.32\textwidth, 0.68\textwidth}
+\columnsep=0pt
+
+\begin{paracol}{2}
+
+% ============================================================
+%   LEFT — Sidebar
+% ============================================================
+\begin{leftcolumn}
+
+\begin{tikzpicture}[overlay, remember picture]
+  \fill[sidebar] (0,0) rectangle (\columntextwidth, \paperheight);
+\end{tikzpicture}
+
+% Name block
+\vspace{2.5cm}
+\begin{center}
+  {\color{sidebartext}\fontsize{18pt}{22pt}\selectfont\bfseries LINSHENG HE}
+
+  \vspace{6pt}
+
+  {\color{sidebartext!80}\small Ph.D.\ Candidate}
+
+  {\color{sidebartext!80}\small Public Administration}
+
+  \vspace{4pt}
+  {\color{sidebartext!50}\rule{0.5\textwidth}{0.4pt}}
+\end{center}
+
+\vspace{8pt}
+
+\sidesection{Contact}
+
+\sideitem{\faEnvelope\enspace\href{mailto:hels21@mails.tsinghua.edu.cn}{\color{accent!80} hels21@...tsinghua.edu.cn}}
+
+\sideitem{\faMapMarker*\enspace Tsinghua University\\[1pt] \hspace{1.4em} Beijing, China}
+
+\sideitem{\faGlobe\enspace\href{https://linshenghe.github.io}{\color{accent!80} linshenghe.github.io}}
+
+\sidesection{Research Areas}
+
+\sideitem{Policy design \& evaluation}
+\sideitem{Behavioral public management}
+\sideitem{Government communication}
+\sideitem{Collaborative governance}
+
+\sidesection{Methods}
+
+\sideitem{Behavioral experiments}
+\sideitem{Comparative case analysis}
+\sideitem{Meta-analysis}
+\sideitem{Computational text analysis}
+
+\sidesection{Languages}
+
+\sideitem{Chinese {\small(native)}}
+\sideitem{English {\small(fluent)}}
+
+\sidesection{Technical Skills}
+
+\sideitem{R \quad Stata \quad Python}
+\sideitem{\LaTeX \quad Markdown}
+\sideitem{Qualtrics \quad oTree}
+
+\sidesection{Affiliations}
+
+\sideitem{ASPA}
+\sideitem{IRSPM}
+\sideitem{\textit{Public Administration}\\[1pt]\hspace{0pt}{\footnotesize Editorial Assistant}}
+
+\end{leftcolumn}
+
+% ============================================================
+%   RIGHT — Main content
+% ============================================================
+\begin{rightcolumn}
+
+\vspace{2.5cm}  % match sidebar name height
+
+\section{Education}
+
+\mainentry
+  {Ph.D.\ Candidate, Public Administration}
+  {Tsinghua University, School of Public Policy \& Management}
+  {2021.09 -- 2026.12 (exp.)}
+  {Advisor: Prof.\ Yixin Dai. Dissertation: Communication Mechanisms and Conflict Resolution in Collaborative Governance. Honors: National Scholarship; Tsinghua Comprehensive Excellence Scholarship.}
+
+\mainentry
+  {B.A.\ in Public Affairs Management}
+  {Beijing Normal University, School of Government}
+  {2017.09 -- 2021.06}
+  {}
+
+%----------------------------------------------------------------------------------------
+
+\section{Publications}
+
+\setcounter{pubcount}{1}
+
+\pubentry{pubcount}
+  {\textbf{He, L.}, Dai, Y., \& Guo, Y.}
+  {2025}
+  {Aligning Behavioral Assumptions Underlying Policy Instruments}
+  {Public Administration, Online First. \textbf{SSCI, JCR Q1 / ABS 4}}
+
+\pubentry{pubcount}
+  {Guo, Y., \& \textbf{He, L.\ (corresponding author)}}
+  {2024}
+  {Communicating in Diverse Local Cultures}
+  {Review of Policy Research, 41(4), 654--678. \textbf{SSCI, JCR Q1}}
+
+\pubentry{pubcount}
+  {Guo, Y., Hong, J., \& \textbf{He, L.}}
+  {2021}
+  {A Policy Feedback Explanation of Government Procurement of Facial Recognition Technology}
+  {Journal of Public Administration Review [公共行政评论], 14(05), 159--177. \textbf{CSSCI}}
+
+\pubentry{pubcount}
+  {Guo, Y., \textbf{He, L.}, \& Su, J.}
+  {2020}
+  {``Instruments--Narratives--Feedback'': A Behavioral Public Policy Research Framework}
+  {Chinese Public Administration [中国行政管理], (05), 71--78. \textbf{CSSCI}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Working Papers}
+
+\begin{enumerate}[leftmargin=1.8em, itemsep=5pt]
+  \item Hong, J., \& \textbf{He, L.\ (corresponding author)}.\
+    ``Not All Ties Are Equal: Actor- and Type-Specific Social Capital in Coproduction.''
+    \textit{Public Management Review}. \textbf{R\&R, 2nd Round}.
+
+  \item \textbf{He, L.}, \& Dai, Y.\
+    ``The Micro-foundations of Reputational Persistence.'' \textbf{Under Review}.
+
+  \item Chen, Z., \& \textbf{He, L.\ (corresponding author)}.\
+    ``Anti-Corruption, Trust, and Compliance in Public Health Crises.''
+    \textit{Humanities and Social Sciences Communications}. \textbf{Under Review}.
+
+  \item Fu, X., \textbf{He, L.}, Zhong, W., \& Dai, Y.\
+    ``Public Risk Perception during the COVID-19 Pandemic: A Meta-analysis.''
+    \textbf{In Preparation}.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\section{Selected Conferences}
+
+{\small
+\mainentry{ASPA (Hollywood); IRSPM (Perth)}{}{2026}{}
+\mainentry{PMRC (Seoul); ICCPS (Beijing)}{}{2025}{}
+\mainentry{PMRC (Seattle); ICCPS (Beijing) --- Best Paper Award}{}{2024}{}
+\mainentry{AP-PPN (Hong Kong)}{}{2023}{}
+\mainentry{AAPA (Shanghai) --- 2 papers}{}{2022}{}
+\mainentry{APPAM Fall Conference (Online) --- Panel Organizer}{}{2021}{}
+}
+
+\vspace{4pt}
+{\color{soft}\small Full conference list (10+ international, 4+ domestic) available upon request.}
+
+%----------------------------------------------------------------------------------------
+
+\section{Teaching Experience}
+
+\mainentry
+  {Teaching Assistant}
+  {School of Public Policy \& Management, Tsinghua University}
+  {2022 -- 2026}
+  {9 courses: Public Policy Analysis (English, IMPA), History of Public Administration Thought (Ph.D.\ core), Frontiers in Risk Management, Urban Development, and others.}
+
+%----------------------------------------------------------------------------------------
+
+\section{Honours \& Awards}
+
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt]
+  \item ASPA-SCPA \textbf{Best Student Paper Award}
+    \hfill {\color{soft}2026}
+  \item National Scholarship \hfill {\color{soft}2025}
+  \item ICCPS \textbf{Best Paper Award} \hfill {\color{soft}2024}
+  \item \textbf{Best Paper Award}, Young Scholars Forum \hfill {\color{soft}2021}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+
+\section{Service}
+
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt]
+  \item \textbf{Editorial Assistant}, \textit{Public Administration}, 2024--present.
+  \item \textbf{Journal reviewer:} \textit{Governance}; \textit{Public Management Review}; \textit{Information Polity}.
+\end{itemize}
+
+\end{rightcolumn}
+
+\end{paracol}
+
+\end{document}
