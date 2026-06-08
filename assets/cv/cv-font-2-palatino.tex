@@ -1,24 +1,37 @@
 \documentclass[11pt, a4paper]{article}
-% === Palatino ===
+% === Palatino (newpxtext) ===
 \usepackage[top=0.6in, bottom=0.6in, left=0.8in, right=0.8in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{newpxtext,newpxmath}
 \usepackage{microtype}
 \usepackage{fontawesome5}
+\usepackage{setspace}
 \setlength{\parindent}{0pt}
+\setstretch{1.3}
 \begin{document}
 
-{\fontsize{22pt}{28pt}\selectfont\bfseries\textls[80]{Linsheng He}}
-
-\vspace{8pt}
-{\large Ph.D.\ Candidate in Public Administration}
+{\fontsize{24pt}{30pt}\selectfont\bfseries Linsheng He}
 
 \vspace{6pt}
-\faEnvelope\ hels21@mails.tsinghua.edu.cn
-\quad
-\faMapMarker*\ Tsinghua University, Beijing
+{\LARGE Palatino \textbullet\ newpxtext}
 
-\vspace{10pt}
-\textbf{Education.} Ph.D., Tsinghua University. \textbf{Publications.} \textit{Public Administration}, \textit{Review of Policy Research}. \textbf{Research.} Policy design, behavioral public management, government communication.
+\vspace{12pt}
+{\footnotesize 识别特征：}\\[2pt]
+{\large \textbf{Bold} \textit{Italic} \textsc{Small Caps} Rg Regular}\\[4pt]
+{\large Policy design, behavioral public management, government communication.}\\[4pt]
+{\large\itshape Public Administration, Review of Policy Research.}
+
+\vspace{16pt}
+{\footnotesize\bfseries 字号对比：}\\[2pt]
+{\tiny Linsheng} {\scriptsize Linsheng} {\footnotesize Linsheng} {\small Linsheng}
+Linsheng {\large Linsheng} {\Large Linsheng}
+
+\vspace{12pt}
+\begin{itemize}
+    \item W --- 交叉处平滑过渡，不像 Charter 那样尖锐
+    \item g --- 单层结构，底环封闭
+    \item a --- 顶部衬线平直，整体比 Charter 窄
+    \item Palatino 特点：\textbf{纤细}\ 且 \textbf{精致}，横细竖粗对比明显
+\end{itemize}
 
 \end{document}
