@@ -7,7 +7,7 @@
     <meta name="color-scheme" content="light dark">
     <meta
       name="description"
-      content="Linsheng He academic homepage: research, writing, teaching, and contact."
+      content="Linsheng He academic homepage: research, publications, CV, and conference activities."
     >
     <title>Linsheng He | Academic Homepage</title>
     <script>
@@ -42,7 +42,6 @@
           <a href="#publications" data-route="publications" data-i18n="navPublications">Publications</a>
           <a href="#cv" data-route="cv" data-i18n="navCv">CV</a>
           <a href="#conferences" data-route="conferences" data-i18n="navConferences">Conferences</a>
-          <a href="#contact" data-route="contact" data-i18n="navContact">Contact</a>
           <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Night</button>
           <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
         </nav>
@@ -61,6 +60,7 @@
             </p>
             <div class="contact-row" aria-label="Contact links">
               <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>
+              <a href="assets/cv/linsheng-he-cv.pdf" target="_blank" rel="noreferrer" data-i18n="downloadCv">Download CV</a>
               <span data-i18n="heroAffiliation">School of Public Policy and Management, Tsinghua University</span>
               <span data-i18n="lastUpdated">Last updated 2026</span>
             </div>
@@ -92,7 +92,6 @@
         </section>
 
         <section class="section page-view" id="research" data-page="research" aria-labelledby="research-title" hidden>
-          <p class="section-kicker" data-i18n="researchKicker">Research</p>
           <div>
             <h2 id="research-title" data-i18n="researchTitle">Public problems, behavioral mechanisms.</h2>
             <p class="measure">
@@ -116,7 +115,6 @@
         </section>
 
         <section class="section page-view" id="publications" data-page="publications" aria-labelledby="publications-title" hidden>
-          <p class="section-kicker" data-i18n="publicationsKicker">Publications</p>
           <div>
             <h2 id="publications-title" data-i18n="publicationsTitle">Selected publications</h2>
             <div class="work-list">
@@ -161,59 +159,66 @@
         </section>
 
         <section class="section page-view" id="cv" data-page="cv" aria-labelledby="cv-title" hidden>
-          <p class="section-kicker" data-i18n="cvKicker">CV</p>
           <div>
-            <h2 id="cv-title" data-i18n="cvTitle">Education and profile</h2>
-            <ol class="timeline" aria-label="Education timeline">
-              <li>
-                <time datetime="2021">2021-Present</time>
-                <div>
-                  <h3>Tsinghua University</h3>
-                  <p>
-                    <span data-i18n="tsinghuaText">Ph.D. candidate in Public Administration, School of Public Policy and Management.</span>
-                  </p>
+            <h2 id="cv-title" data-i18n="cvTitle">Curriculum vitae</h2>
+            <div class="cv-layout">
+              <aside class="cv-summary">
+                <p data-i18n="cvIntro">A concise public CV is embedded here for quick review. The PDF version remains the source of truth for full academic details.</p>
+                <dl>
+                  <div>
+                    <dt data-i18n="cvStatusLabel">Current status</dt>
+                    <dd data-i18n="cvStatusText">Ph.D. candidate, Tsinghua University</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="cvAreasLabel">Research areas</dt>
+                    <dd data-i18n="cvAreasText">Policy design, behavioral public management, government communication, collaborative governance</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="cvUpdatedLabel">Updated</dt>
+                    <dd data-i18n="lastUpdated">Last updated 2026</dd>
+                  </div>
+                </dl>
+                <div class="cv-actions">
+                  <a class="button-link" href="assets/cv/linsheng-he-cv.pdf" target="_blank" rel="noreferrer" data-i18n="openCv">Open PDF</a>
+                  <a href="assets/cv/linsheng-he-cv.pdf" download data-i18n="downloadCv">Download CV</a>
                 </div>
-              </li>
-              <li>
-                <time datetime="2017">2017-2021</time>
-                <div>
-                  <h3>Beijing Normal University</h3>
-                  <p>
-                    <span data-i18n="bnuText">B.A. in Public Affairs Management, School of Government.</span>
-                  </p>
-                </div>
-              </li>
-            </ol>
-
-            <ul class="compact-list" aria-label="Awards and academic service">
-              <li>
-                <span data-i18n-html="awards"><strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.</span>
-              </li>
-              <li>
-                <span data-i18n-html="service"><strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.</span>
-              </li>
-              <li>
-                <span data-i18n-html="projects"><strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.</span>
-              </li>
-            </ul>
+              </aside>
+              <object class="cv-frame" data="assets/cv/linsheng-he-cv.pdf" type="application/pdf" aria-label="Curriculum vitae PDF preview">
+                <p data-i18n-html="cvPdfFallback">PDF preview is not available in this browser. <a href="assets/cv/linsheng-he-cv.pdf">Open the CV PDF</a>.</p>
+              </object>
+            </div>
           </div>
         </section>
 
         <section class="section page-view" id="conferences" data-page="conferences" aria-labelledby="conferences-title" hidden>
-          <p class="section-kicker" data-i18n="conferencesKicker">Conferences</p>
           <div>
             <h2 id="conferences-title" data-i18n="conferencesTitle">Conferences</h2>
             <p class="measure" data-i18n="conferencesIntro">
-              Future conference dates and selected presentation locations.
+              Future conference dates, selected presentation records, and a map of academic travel.
             </p>
             <div class="map-panel">
-              <div class="conference-board">
-                <div>
-                  <div class="conference-group-heading">
-                    <h3 data-i18n="upcomingConferencesTitle">Upcoming nodes</h3>
-                    <p data-i18n="upcomingConferencesNote">Officially listed conference dates and milestones to monitor.</p>
-                  </div>
-                  <div class="upcoming-list" aria-label="Upcoming conferences" data-upcoming-conference-list></div>
+              <div class="conference-group-heading">
+                <h3 data-i18n="conferenceStatsTitle">Conference stats</h3>
+                <p data-i18n="conferenceStatsNote">A compact view of past presentations and future conference nodes.</p>
+              </div>
+              <div class="conference-stats" aria-label="Conference statistics" data-conference-stats></div>
+
+              <div class="conference-group-heading">
+                <h3 data-i18n="upcomingConferencesTitle">Upcoming conferences</h3>
+                <p data-i18n="upcomingConferencesNote">Officially listed conference dates and milestones to monitor.</p>
+              </div>
+              <div class="upcoming-list" aria-label="Upcoming conferences" data-upcoming-conference-list></div>
+
+              <div class="conference-group-heading conference-group-heading-past">
+                <h3 data-i18n="pastConferencesTitle">Past presentations</h3>
+                <p data-i18n="pastConferencesNote">Selected conference presentations, grouped as an academic activity record.</p>
+              </div>
+              <ul class="conference-list" aria-label="Past conference list" data-conference-list></ul>
+
+              <div class="conference-map-section">
+                <div class="conference-group-heading">
+                  <h3 data-i18n="conferenceMapTitle">Conference map</h3>
+                  <p data-i18n="conferenceMapNote">Presentation locations and future meeting sites are shown as a geographic supplement.</p>
                 </div>
                 <div class="map-column">
                   <div id="map" class="travel-map" aria-label="Conference map"></div>
@@ -223,27 +228,18 @@
                   </div>
                 </div>
               </div>
-              <div class="conference-group-heading conference-group-heading-past">
-                <h3 data-i18n="pastConferencesTitle">Selected past presentations</h3>
-                <p data-i18n="pastConferencesNote">Presentation locations are also shown on the map.</p>
-              </div>
-              <ul class="conference-list" aria-label="Past conference list" data-conference-list></ul>
             </div>
-          </div>
-        </section>
-
-        <section class="section page-view" id="contact" data-page="contact" aria-labelledby="contact-title" hidden>
-          <p class="section-kicker" data-i18n="contactKicker">Contact</p>
-          <div>
-            <h2 id="contact-title" data-i18n="contactTitle">Contact</h2>
-            <p class="measure" data-i18n-html="contactText">Email is the primary contact channel for now: <a href="mailto:hels21@mails.tsinghua.edu.cn">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.</p>
           </div>
         </section>
       </main>
 
       <footer class="footer">
         <p data-i18n="footerTitle">Linsheng He · Academic Homepage</p>
-        <a href="#home" data-route="home" data-i18n="backTop">Back to top</a>
+        <div class="footer-links" aria-label="Footer links">
+          <a href="mailto:hels21@mails.tsinghua.edu.cn">Email</a>
+          <a href="assets/cv/linsheng-he-cv.pdf" target="_blank" rel="noreferrer" data-i18n="navCv">CV</a>
+          <a href="#home" data-route="home" data-i18n="backTop">Home</a>
+        </div>
       </footer>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

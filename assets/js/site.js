@@ -1,7 +1,7 @@
 const translations = {
   en: {
     documentTitle: "Linsheng He | Academic Homepage",
-    metaDescription: "Linsheng He academic homepage: research, writing, and contact.",
+    metaDescription: "Linsheng He academic homepage: research, publications, CV, and conference activities.",
     toggleLabel: "中文",
     themeToNight: "Night",
     themeToDay: "Day",
@@ -11,12 +11,12 @@ const translations = {
     navPublications: "Publications",
     navCv: "CV",
     navConferences: "Conferences",
-    navContact: "Contact",
     heroEyebrow: "Academic Homepage",
     hanziName: "",
     heroIntro: "Ph.D. candidate in Public Administration at Tsinghua University, studying policy design, behavioral public management, government communication, and collaborative governance.",
     heroAffiliation: "School of Public Policy and Management, Tsinghua University",
     lastUpdated: "Last updated 2026",
+    downloadCv: "Download CV",
     portraitAlt: "Illustrated portrait of Linsheng He",
     focusTitle: "Current Focus",
     focusOneTitle: "Collaborative governance",
@@ -41,19 +41,37 @@ const translations = {
     pubThree: "Guo, Y., Hong, J., & <strong>He, L.</strong> Public Administration Review, 14(05), 159-177. CSSCI.",
     pubFour: "Guo, Y., <strong>He, L.</strong>, & Su, J. Chinese Public Administration, (05), 71-78. CSSCI.",
     cvKicker: "CV",
-    cvTitle: "Education and profile",
+    cvTitle: "Curriculum vitae",
+    cvIntro: "The public English CV is embedded here for quick review. Use the PDF for the complete academic record.",
+    cvStatusLabel: "Current status",
+    cvStatusText: "Ph.D. candidate, Tsinghua University",
+    cvAreasLabel: "Research areas",
+    cvAreasText: "Policy design, behavioral public management, government communication, collaborative governance",
+    cvUpdatedLabel: "Updated",
+    openCv: "Open PDF",
+    cvPdfFallback: "PDF preview is not available in this browser. <a href=\"assets/cv/linsheng-he-cv.pdf\">Open the CV PDF</a>.",
     tsinghuaText: "Ph.D. candidate in Public Administration, School of Public Policy and Management, Tsinghua University.",
     bnuText: "B.A. in Public Affairs Management, School of Government, Beijing Normal University.",
     awards: "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
     service: "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
     projects: "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
     conferencesKicker: "Conferences",
-    conferencesTitle: "Conference calendar and map",
-    conferencesIntro: "Upcoming conference nodes and selected presentation locations across public administration and policy studies.",
-    upcomingConferencesTitle: "Upcoming nodes",
+    conferencesTitle: "Conferences",
+    conferencesIntro: "Future conference dates, selected presentation records, and a map of academic travel.",
+    conferenceStatsTitle: "Conference stats",
+    conferenceStatsNote: "A compact view of past presentations and future conference nodes.",
+    statPast: "Past presentations",
+    statInternational: "International",
+    statDomestic: "Domestic",
+    statUpcoming: "Upcoming",
+    statPlaces: "Mapped places",
+    statHonors: "Awards or roles",
+    upcomingConferencesTitle: "Upcoming conferences",
     upcomingConferencesNote: "Officially listed conference dates and milestones to monitor.",
-    pastConferencesTitle: "Selected past presentations",
-    pastConferencesNote: "Presentation locations are also shown on the map.",
+    pastConferencesTitle: "Past presentations",
+    pastConferencesNote: "Selected conference presentations, grouped as an academic activity record.",
+    conferenceMapTitle: "Conference map",
+    conferenceMapNote: "Presentation locations and future meeting sites are shown as a geographic supplement.",
     legendUpcoming: "Upcoming",
     legendPast: "Attended",
     dateRangeJoin: "to",
@@ -63,15 +81,12 @@ const translations = {
     sourceLabel: "Source",
     noUpcomingConferences: "No upcoming conference nodes are listed yet.",
     noPastConferences: "No presentation locations are listed yet.",
-    contactKicker: "Contact",
-    contactTitle: "Contact",
-    contactText: "Email is the primary contact channel for now: <a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>. Academic profile links and a downloadable CV can be added after the public versions are ready.",
     footerTitle: "Linsheng He · Academic Homepage",
     backTop: "Home",
   },
   zh: {
     documentTitle: "何林晟 | 学术主页",
-    metaDescription: "何林晟的学术主页：研究、论文与联系方式。",
+    metaDescription: "何林晟的学术主页：研究、论文、简历与会议活动。",
     toggleLabel: "EN",
     themeToNight: "夜间",
     themeToDay: "白天",
@@ -81,12 +96,12 @@ const translations = {
     navPublications: "论文",
     navCv: "履历",
     navConferences: "会议",
-    navContact: "联系",
     heroEyebrow: "学术主页",
     hanziName: "何林晟",
     heroIntro: "清华大学公共管理学院公共管理专业博士生，研究方向包括政策设计、行为公共管理、政府沟通与协同治理。",
     heroAffiliation: "清华大学公共管理学院",
     lastUpdated: "更新于 2026",
+    downloadCv: "下载简历",
     portraitAlt: "何林晟头像插画",
     focusTitle: "近期关注",
     focusOneTitle: "协同治理",
@@ -111,19 +126,37 @@ const translations = {
     pubThree: "郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论, 14(05), 159-177. CSSCI.",
     pubFour: "郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理, (05), 71-78. CSSCI.",
     cvKicker: "履历",
-    cvTitle: "教育与学术履历",
+    cvTitle: "学术简历",
+    cvIntro: "这里嵌入英文公开版简历，便于快速预览。完整学术履历以 PDF 版本为准。",
+    cvStatusLabel: "当前身份",
+    cvStatusText: "清华大学公共管理专业博士生",
+    cvAreasLabel: "研究方向",
+    cvAreasText: "政策设计、行为公共管理、政府沟通、协同治理",
+    cvUpdatedLabel: "更新时间",
+    openCv: "打开 PDF",
+    cvPdfFallback: "当前浏览器无法预览 PDF。<a href=\"assets/cv/linsheng-he-cv.pdf\">打开简历 PDF</a>。",
     tsinghuaText: "公共管理专业博士生，清华大学公共管理学院。",
     bnuText: "公共事业管理专业管理学学士，北京师范大学政府管理学院。",
     awards: "<strong>奖项。</strong> 国家奖学金；ASPA-SCPA Best Student Paper Award；ICCPS Best Paper Award；《公共行政评论》青年学者论坛最佳论文奖。",
     service: "<strong>学术服务。</strong> Public Administration 编辑助理；Governance、Public Management Review、Information Polity 及中文公共管理期刊审稿人。",
     projects: "<strong>研究项目。</strong> 参与国家自然科学基金、唐仲英基金会、清华-丰田联合研究院项目，以及核安全治理政策咨询工作。",
     conferencesKicker: "会议",
-    conferencesTitle: "学术会议时间节点与地图",
-    conferencesIntro: "记录未来会议时间节点，并展示已参加会议的学术足迹。",
-    upcomingConferencesTitle: "未来节点",
+    conferencesTitle: "学术会议",
+    conferencesIntro: "记录未来会议时间节点、已参加会议列表，以及会议地点地图。",
+    conferenceStatsTitle: "会议统计",
+    conferenceStatsNote: "快速查看已参加报告、未来会议和会议足迹。",
+    statPast: "已参加报告",
+    statInternational: "国际会议",
+    statDomestic: "国内会议",
+    statUpcoming: "未来会议",
+    statPlaces: "地图地点",
+    statHonors: "获奖或组织",
+    upcomingConferencesTitle: "未来会议",
     upcomingConferencesNote: "来自会议官网的未来日期与需要跟踪的时间节点。",
     pastConferencesTitle: "已参加会议",
-    pastConferencesNote: "报告地点也会显示在地图上。",
+    pastConferencesNote: "保留已参加会议与报告记录，作为学术活动列表。",
+    conferenceMapTitle: "会议地图",
+    conferenceMapNote: "地图放在最后，作为会议地点和未来会议信息的补充。",
     legendUpcoming: "未来会议",
     legendPast: "已参加",
     dateRangeJoin: "至",
@@ -133,15 +166,12 @@ const translations = {
     sourceLabel: "来源",
     noUpcomingConferences: "暂未列出未来会议节点。",
     noPastConferences: "暂未列出报告地点。",
-    contactKicker: "联系",
-    contactTitle: "联系",
-    contactText: "目前主要联系方式为邮箱：<a href=\"mailto:hels21@mails.tsinghua.edu.cn\">hels21@mails.tsinghua.edu.cn</a>。学术主页链接和公开版 CV 可在准备好后加入。",
     footerTitle: "何林晟 · 学术主页",
     backTop: "主页",
   },
 };
 
-const pages = ["home", "research", "publications", "cv", "conferences", "contact"];
+const pages = ["home", "research", "publications", "cv", "conferences"];
 const themeStorageKey = "site-theme";
 const languageStorageKey = "site-language";
 
@@ -406,7 +436,7 @@ const renderUpcomingConferences = (language, copy) => {
     org.textContent = entry.organization;
     countdown.textContent = formatCountdown(entry, language, copy);
     title.textContent = entry.title[language];
-    place.textContent = `${formatDateRange(entry, language, copy)} · ${entry.city[language]} · ${entry.venue}`;
+    place.textContent = `${formatDateRange(entry, language, copy)} - ${entry.city[language]} - ${entry.venue}`;
     milestones.className = "milestone-list";
 
     entry.milestones.forEach((milestone) => {
@@ -438,6 +468,37 @@ const renderUpcomingConferences = (language, copy) => {
   });
 };
 
+const renderConferenceStats = (language, copy) => {
+  const stats = document.querySelector("[data-conference-stats]");
+  if (!stats) return;
+
+  const mappedPlaces = new Set(
+    [...conferenceEntries, ...upcomingConferences]
+      .filter((entry) => entry.coordinates)
+      .map((entry) => entry.city[language])
+  );
+  const honors = conferenceEntries.filter((entry) => entry.note).length;
+  const rows = [
+    [copy.statPast, conferenceEntries.length],
+    [copy.statInternational, conferenceEntries.filter((entry) => entry.type === "international").length],
+    [copy.statDomestic, conferenceEntries.filter((entry) => entry.type === "domestic").length],
+    [copy.statUpcoming, upcomingConferences.length],
+    [copy.statPlaces, mappedPlaces.size],
+    [copy.statHonors, honors],
+  ];
+
+  stats.innerHTML = "";
+  rows.forEach(([label, value]) => {
+    const item = document.createElement("article");
+    const number = document.createElement("strong");
+    const text = document.createElement("span");
+    number.textContent = value;
+    text.textContent = label;
+    item.append(number, text);
+    stats.appendChild(item);
+  });
+};
+
 const renderConferences = (language) => {
   const list = document.querySelector("[data-conference-list]");
   const copy = translations[language];
@@ -448,6 +509,7 @@ const renderConferences = (language) => {
 
   if (!list) return;
   list.innerHTML = "";
+  renderConferenceStats(language, copy);
   renderUpcomingConferences(language, copy);
 
   initMap();
@@ -483,7 +545,7 @@ const renderConferences = (language) => {
     item.dataset.conferenceId = normalizedEntry.id;
     item.tabIndex = normalizedEntry.coordinates ? 0 : -1;
     item.classList.toggle("is-mappable", Boolean(normalizedEntry.coordinates));
-    type.textContent = `${normalizedEntry.year} · ${typeNames[language][normalizedEntry.type]}`;
+    type.textContent = `${normalizedEntry.year} - ${typeNames[language][normalizedEntry.type]}`;
     title.textContent = normalizedEntry.title[language];
     title.setAttribute("translate", "no");
     if (normalizedEntry.note) {
