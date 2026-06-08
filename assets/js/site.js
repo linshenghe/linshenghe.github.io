@@ -11,7 +11,7 @@ const translations = {
     navPublications: "Publications",
     navCv: "CV",
     navConferences: "Conferences",
-    hanziName: "",
+    hanziName: "何林晟",
     heroIntro: "Hi, I’m Linsheng, a Ph.D. candidate in Public Administration at Tsinghua University’s School of Public Policy and Management. I study policy design, behavioral public administration, and collaborative governance.",
     lastUpdated: "Last updated 2026",
     downloadCv: "Download CV",
@@ -261,9 +261,7 @@ const getBrowserLanguage = () => {
 };
 
 const getInitialLanguage = () => {
-  const urlLanguage = getUrlLanguage();
-  if (urlLanguage) return urlLanguage;
-  return getSavedLanguage() || getBrowserLanguage();
+  return "en";
 };
 
 const setRoute = (route) => {
@@ -328,6 +326,11 @@ const setLanguage = (language) => {
   });
 
   const toggle = document.querySelector("[data-language-toggle]");
+  if (!toggle) {
+    updateThemeToggle();
+    renderConferences(language);
+    return;
+  }
   toggle.textContent = copy.toggleLabel;
   toggle.setAttribute("aria-pressed", String(language === "zh"));
   try {
@@ -593,10 +596,13 @@ const initialLanguage = getInitialLanguage();
 applyTimeTheme();
 setLanguage(initialLanguage);
 setRoute(getRoute());
-document.querySelector("[data-language-toggle]").addEventListener("click", () => {
-  const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
-  setLanguage(nextLanguage);
-});
+const languageToggle = document.querySelector("[data-language-toggle]");
+if (languageToggle) {
+  languageToggle.addEventListener("click", () => {
+    const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
+    setLanguage(nextLanguage);
+  });
+}
 
 document.querySelector("[data-theme-toggle]").addEventListener("click", () => {
   const currentTheme = document.documentElement.dataset.theme === "night" ? "night" : "day";
