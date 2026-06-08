@@ -447,10 +447,11 @@ h1 {
 }
 
 .ipa {
-  color: var(--muted);
-  font-size: 0.68em;
+  display: inline-block;
+  color: #8a7f6f;
+  font-size: 0.74em;
   font-style: normal;
-  margin-left: 0.18em;
+  margin-left: 0.3em;
   letter-spacing: 0;
   white-space: nowrap;
 }
