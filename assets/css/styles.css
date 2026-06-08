@@ -232,9 +232,53 @@ main {
   stroke-linejoin: round;
 }
 
+.quick-links svg.email-icon,
+.quick-links svg.scholar-icon {
+  fill: none;
+  stroke: none;
+}
+
 .quick-links img {
   display: block;
   object-fit: contain;
+}
+
+.email-body {
+  fill: #ffffff;
+  stroke: #dadce0;
+  stroke-width: 1.1;
+}
+
+.email-red {
+  stroke: #ea4335;
+}
+
+.email-blue {
+  stroke: #4285f4;
+}
+
+.email-yellow {
+  stroke: #fbbc05;
+}
+
+.email-green {
+  stroke: #34a853;
+}
+
+.email-flap {
+  fill: none;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.scholar-cap {
+  fill: #4285f4;
+}
+
+.scholar-tassel {
+  stroke: #1a73e8;
+  fill: #1a73e8;
 }
 
 .seal {
