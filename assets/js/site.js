@@ -3,8 +3,8 @@ const translations = {
     documentTitle: "Linsheng He | Academic Homepage",
     metaDescription: "Linsheng He academic homepage: research, publications, CV, and conference activities.",
     toggleLabel: "中文",
-    themeToNight: "Night",
-    themeToDay: "Day",
+    themeToNight: "Switch to night mode",
+    themeToDay: "Switch to day mode",
     wordmark: "Linsheng He",
     navHome: "Home",
     navResearch: "Research",
@@ -12,8 +12,8 @@ const translations = {
     navCv: "CV",
     navConferences: "Conferences",
     hanziName: "何林晟",
-    heroIntro: "Hi, I’m Linsheng, a Ph.D. candidate in Public Administration at Tsinghua University’s School of Public Policy and Management. I study policy design, behavioral public administration, and collaborative governance.",
-    heroDetail: "My work focuses on collaborative governance, behavioral public administration, and government communication. I examine communication mechanisms and conflict resolution in collaboration, behavioral assumptions and policy feedback through experimental methods, and how public attitudes and local cultures shape communication around policy issues.",
+    heroIntro: "I’m Linsheng He, a Ph.D. candidate in Public Administration at Tsinghua University’s School of Public Policy and Management. I study how policy design, behavior, and collaboration shape public outcomes.",
+    heroDetail: "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
     lastUpdated: "Last updated 2026",
     downloadCv: "Download CV",
     portraitAlt: "Illustrated portrait of Linsheng He",
@@ -92,8 +92,8 @@ const translations = {
     documentTitle: "何林晟 | 学术主页",
     metaDescription: "何林晟的学术主页：研究、论文、简历与会议活动。",
     toggleLabel: "EN",
-    themeToNight: "夜间",
-    themeToDay: "白天",
+    themeToNight: "切换到夜间模式",
+    themeToDay: "切换到日间模式",
     wordmark: "何林晟",
     navHome: "主页",
     navResearch: "研究",
@@ -101,8 +101,8 @@ const translations = {
     navCv: "履历",
     navConferences: "会议",
     hanziName: "何林晟",
-    heroIntro: "你好，我是何林晟，清华大学公共管理学院公共管理专业博士生。我的研究关注政策设计、行为公共管理与协同治理。",
-    heroDetail: "我的研究主要集中在协同治理、行为公共管理和政府沟通。我关注协作中的沟通机制与冲突调解，使用实验方法研究行为假设与政策反馈，并分析公众态度与地方文化如何影响政策议题沟通。",
+    heroIntro: "我是何林晟，清华大学公共管理学院公共管理专业博士生。我关注政策设计、行为机制与协同如何共同塑造公共结果。",
+    heroDetail: "我尤其关注治理中的“人”的一面：人们如何沟通、协作，以及如何回应政策。我使用实验和比较方法，研究协作、政策反馈与具体情境中的公众态度。",
     lastUpdated: "更新于 2026",
     downloadCv: "下载简历",
     portraitAlt: "何林晟头像插画",
@@ -182,6 +182,12 @@ const translations = {
 const pages = ["home", "research", "publications", "cv", "conferences"];
 const themeStorageKey = "site-theme";
 const languageStorageKey = "site-language";
+const themeIconSvg = {
+  moon:
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>',
+  sun:
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.8v2.1M12 19.1v2.1M4.9 4.9 6.4 6.4M17.6 17.6l1.5 1.5M2.8 12h2.1M19.1 12h2.1M4.9 19.1 6.4 17.6M17.6 6.4l1.5-1.5"></path></svg>',
+};
 
 const getTimeTheme = () => {
   const hour = new Date().getHours();
@@ -217,8 +223,9 @@ const updateThemeToggle = () => {
   const copy = translations[language];
   const currentTheme = document.documentElement.dataset.theme;
   const label = currentTheme === "night" ? copy.themeToDay : copy.themeToNight;
-  toggle.textContent = label;
+  toggle.innerHTML = currentTheme === "night" ? themeIconSvg.sun : themeIconSvg.moon;
   toggle.setAttribute("aria-label", label);
+  toggle.setAttribute("title", label);
   toggle.setAttribute("aria-pressed", String(currentTheme === "night"));
 };
 
