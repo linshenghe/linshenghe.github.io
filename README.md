@@ -2,12 +2,15 @@
 
 This repository hosts the personal homepage published with GitHub Pages.
 
-Site URL: https://linshenghe.github.io
+Site URL: https://linshenghe.com
+
+Fallback GitHub Pages URL: https://linshenghe.github.io
 
 ## Maintenance
 
 The site is a lightweight static homepage without a build system.
 
+- `CNAME`: GitHub Pages custom domain configuration for `linshenghe.com`.
 - `index.html`: page structure and content sections.
 - `assets/css/styles.css`: visual design, layout, spacing, typography, and responsive rules.
 - `assets/js/site.js`: language switching and conference map rendering logic.
