@@ -1,6 +1,6 @@
 const translations = {
   en: {
-    documentTitle: "Linsheng He | Academic Homepage",
+    documentTitle: "Linsheng He 何林晟",
     metaDescription: "Linsheng He academic homepage: research, publications, CV, and conference activities.",
     toggleLabel: "中文",
     themeToNight: "Switch to night mode",
@@ -12,7 +12,7 @@ const translations = {
     navCv: "CV",
     navConferences: "Conferences",
     hanziName: "何林晟",
-    heroIntro: "I’m Linsheng He, a Ph.D. candidate in Public Administration at Tsinghua University’s School of Public Policy and Management. I study how policy design, behavior, and collaboration shape public outcomes.",
+    heroIntro: "I’m Linsheng He, a Ph.D. candidate in Public Administration at <a href=\"https://www.sppm.tsinghua.edu.cn\" target=\"_blank\" rel=\"noreferrer\">Tsinghua University’s School of Public Policy and Management</a>. I study how policy design, behavior, and collaboration shape public outcomes.",
     heroDetail: "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
     lastUpdated: "Last updated 2026",
     downloadCv: "Download CV",
@@ -89,7 +89,7 @@ const translations = {
     footerCopyright: "© Copyright 2026 Linsheng He. Last updated: June 8, 2026.",
   },
   zh: {
-    documentTitle: "何林晟 | 学术主页",
+    documentTitle: "Linsheng He 何林晟",
     metaDescription: "何林晟的学术主页：研究、论文、简历与会议活动。",
     toggleLabel: "EN",
     themeToNight: "切换到夜间模式",

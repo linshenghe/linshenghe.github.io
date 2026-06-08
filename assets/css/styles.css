@@ -412,7 +412,15 @@ h1 {
   line-height: 1.62;
 }
 
+.intro a,
+.hero-copy a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
 [data-theme="night"] .intro,
+[data-theme="night"] .hero-copy,
 [data-theme="night"] .measure {
   color: #e6ddcf;
 }
