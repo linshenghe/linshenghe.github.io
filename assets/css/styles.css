@@ -448,8 +448,9 @@ h1 {
 
 .ipa {
   color: var(--muted);
-  font-size: 0.62em;
+  font-size: 0.68em;
   font-style: normal;
+  margin-left: 0.18em;
   letter-spacing: 0;
   white-space: nowrap;
 }
