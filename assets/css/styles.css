@@ -402,6 +402,14 @@ h1 {
   line-height: 1;
 }
 
+.ipa {
+  color: var(--muted);
+  font-size: 0.62em;
+  font-style: normal;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .intro {
   max-width: 720px;
   margin-bottom: 16px;
