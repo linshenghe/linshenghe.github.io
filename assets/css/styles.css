@@ -343,6 +343,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 32px;
   border: 1px solid rgba(20, 20, 17, 0.18);
   border-radius: 999px;
   color: var(--ink);
@@ -430,10 +431,10 @@ html:lang(zh-CN) h3 {
 
 h1 {
   max-width: 780px;
-  margin-bottom: 26px;
-  font-size: clamp(52px, 7.4vw, 96px);
+  margin-bottom: 22px;
+  font-size: clamp(52px, 6.8vw, 86px);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: 0.96;
   letter-spacing: 0;
 }
 
@@ -466,7 +467,7 @@ h1 {
 
 .hero-copy {
   max-width: 720px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: #312d25;
   font-size: clamp(18px, 1.75vw, 22px);
   line-height: 1.62;
@@ -485,7 +486,8 @@ h1 {
   color: #e6ddcf;
 }
 
-.contact-row {
+.contact-row,
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 16px;
@@ -507,6 +509,76 @@ h1 {
 
 .contact-row a {
   padding-bottom: 4px;
+}
+
+.hero-actions {
+  margin-bottom: 28px;
+  gap: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-actions a:not(.button-link) {
+  color: var(--ink);
+  text-decoration-color: var(--line);
+}
+
+[data-theme="night"] .hero-actions a:not(.button-link) {
+  color: #f4efe4;
+}
+
+.home-publications {
+  max-width: 720px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.home-publications h2 {
+  margin-bottom: 12px;
+  color: var(--clay);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.home-publication-list {
+  display: grid;
+  gap: 10px;
+}
+
+.home-publication-list a {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-publication-list a:hover strong {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.home-publication-list span {
+  color: var(--clay);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.home-publication-list strong {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.28;
 }
 
 .hero-side {
@@ -614,9 +686,20 @@ h1 {
 }
 
 .research-item p {
-  margin-bottom: 0;
+  margin-bottom: 22px;
   font-size: 22px;
   line-height: 1.25;
+}
+
+.research-item span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.55;
+  text-transform: uppercase;
 }
 
 .work-list {
@@ -726,6 +809,17 @@ h1 {
 
 [data-theme="night"] .work .pub-summary {
   color: #e6ddcf;
+}
+
+[data-theme="night"] .pub-meta,
+[data-theme="night"] .work time,
+[data-theme="night"] .cv-summary dt,
+[data-theme="night"] .conference-list small,
+[data-theme="night"] .upcoming-meta,
+[data-theme="night"] .home-publications h2,
+[data-theme="night"] .home-publication-list span,
+[data-theme="night"] .conference-stats span {
+  color: #e1bd88;
 }
 
 .pub-links {
@@ -1356,8 +1450,19 @@ h1 {
 
   .language-toggle,
   .theme-toggle {
-    width: 26px;
     height: 26px;
+  }
+
+  .language-toggle {
+    width: auto;
+    min-height: 26px;
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    width: 26px;
+    padding: 0;
   }
 
   .nav a:hover,
@@ -1376,7 +1481,9 @@ h1 {
   }
 
   h1 {
-    font-size: 52px;
+    margin-bottom: 18px;
+    font-size: 46px;
+    line-height: 0.98;
   }
 
   .hanzi {
@@ -1388,6 +1495,45 @@ h1 {
 
   .intro {
     font-size: 18px;
+  }
+
+  .hero-copy {
+    margin-bottom: 18px;
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  .hero-actions {
+    margin-bottom: 24px;
+    gap: 10px 14px;
+  }
+
+  .home-publications {
+    padding-top: 14px;
+  }
+
+  .home-publication-list a {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-bottom: 8px;
+  }
+
+  .home-publication-list strong {
+    display: block;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .research-item {
+    min-height: auto;
+  }
+
+  .research-item h3 {
+    margin-bottom: 28px;
+  }
+
+  .research-item p {
+    font-size: 20px;
   }
 
   .section {

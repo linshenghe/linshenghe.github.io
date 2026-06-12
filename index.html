@@ -25,7 +25,7 @@
         document.documentElement.style.colorScheme = theme === "night" ? "dark" : "light";
       })();
     </script>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260612b">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   </head>
   <body>
@@ -66,6 +66,7 @@
           <a href="#publications" data-route="publications" data-i18n="navPublications">Publications</a>
           <a href="#cv" data-route="cv" data-i18n="navCv">CV</a>
           <a href="#conferences" data-route="conferences" data-i18n="navConferences">Conferences</a>
+          <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">中文</button>
           <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch theme" title="Switch theme"></button>
         </nav>
       </header>
@@ -83,8 +84,24 @@
             <p class="hero-copy">
               <span data-i18n="heroDetail">I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.</span>
             </p>
-            <div class="contact-row" aria-label="Contact links">
-              <a href="mailto:contact@linshenghe.com">contact@linshenghe.com</a>
+            <div class="hero-actions" aria-label="Academic links">
+              <a class="button-link" href="assets/cv/linsheng-he-cv.pdf" download data-i18n="downloadCv">Download CV</a>
+              <a href="https://scholar.google.com/citations?user=QOLXk7MAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+              <a href="https://orcid.org/0000-0002-1003-5499" target="_blank" rel="noreferrer">ORCID</a>
+              <a href="mailto:contact@linshenghe.com">Email</a>
+            </div>
+            <div class="home-publications" aria-labelledby="home-publications-title">
+              <h2 id="home-publications-title" data-i18n="homePublicationsTitle">Representative work</h2>
+              <div class="home-publication-list">
+                <a href="#publications" data-route="publications">
+                  <span>2025</span>
+                  <strong>Aligning Behavioral Assumptions Underlying Policy Instruments</strong>
+                </a>
+                <a href="#publications" data-route="publications">
+                  <span>2024</span>
+                  <strong>Communicating in Diverse Local Cultures</strong>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -97,22 +114,25 @@
 
         <section class="section page-view" id="research" data-page="research" aria-labelledby="research-title" hidden>
           <div>
-            <h2 id="research-title" data-i18n="researchTitle">Public problems, behavioral mechanisms.</h2>
+            <h2 id="research-title" data-i18n="researchTitle">Research agenda</h2>
             <p class="measure">
               <span data-i18n="researchIntro">My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.</span>
             </p>
             <div class="research-grid" aria-label="Research themes">
               <article class="research-item">
-                <h3 data-i18n="themeOne">Theme I</h3>
-                <p data-i18n="themeOneText">Policy design, evaluation, and policy process</p>
+                <h3 data-i18n="themeOne">Policy design</h3>
+                <p data-i18n="themeOneText">How do behavioral assumptions shape policy instruments and policy mixes?</p>
+                <span data-i18n="themeOneMethods">Policy process; evaluation; comparative analysis</span>
               </article>
               <article class="research-item">
-                <h3 data-i18n="themeTwo">Theme II</h3>
-                <p data-i18n="themeTwoText">Behavioral public management and experimental methods</p>
+                <h3 data-i18n="themeTwo">Behavioral governance</h3>
+                <p data-i18n="themeTwoText">How do people perceive, remember, and respond to government action?</p>
+                <span data-i18n="themeTwoMethods">Experiments; public attitudes; policy feedback</span>
               </article>
               <article class="research-item">
-                <h3 data-i18n="themeThree">Theme III</h3>
-                <p data-i18n="themeThreeText">Government communication, public attitudes, and policy feedback</p>
+                <h3 data-i18n="themeThree">Collaboration</h3>
+                <p data-i18n="themeThreeText">How do organizations and publics coordinate in complex governance settings?</p>
+                <span data-i18n="themeThreeMethods">Coproduction; networks; collaborative governance</span>
               </article>
             </div>
           </div>
@@ -283,6 +303,6 @@
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="assets/data/conferences.js"></script>
-    <script src="assets/js/site.js"></script>
+    <script src="assets/js/site.js?v=20260612b"></script>
   </body>
 </html>

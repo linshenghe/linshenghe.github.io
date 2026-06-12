@@ -14,18 +14,22 @@ const translations = {
     hanziName: "何林晟 <span class=\"ipa\" aria-label=\"Pronunciation\">[ˈlɪnʃʌŋ hʌ]</span>",
     heroIntro: "I’m Linsheng He, a Ph.D. candidate in Public Administration at <a href=\"https://www.sppm.tsinghua.edu.cn\" target=\"_blank\" rel=\"noreferrer\">Tsinghua University’s School of Public Policy and Management</a>. I study how policy design, behavior, and collaboration shape public outcomes.",
     heroDetail: "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
+    homePublicationsTitle: "Representative work",
     lastUpdated: "Last updated 2026",
     downloadCv: "Download CV",
     portraitAlt: "Illustrated portrait of Linsheng He",
     researchKicker: "Research",
-    researchTitle: "Public problems, behavioral mechanisms.",
+    researchTitle: "Research agenda",
     researchIntro: "My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.",
-    themeOne: "Theme I",
-    themeOneText: "Policy design, evaluation, and policy process",
-    themeTwo: "Theme II",
-    themeTwoText: "Behavioral public administration and experimental methods",
-    themeThree: "Theme III",
-    themeThreeText: "Government communication, public attitudes, and policy feedback",
+    themeOne: "Policy design",
+    themeOneText: "How do behavioral assumptions shape policy instruments and policy mixes?",
+    themeOneMethods: "Policy process; evaluation; comparative analysis",
+    themeTwo: "Behavioral governance",
+    themeTwoText: "How do people perceive, remember, and respond to government action?",
+    themeTwoMethods: "Experiments; public attitudes; policy feedback",
+    themeThree: "Collaboration",
+    themeThreeText: "How do organizations and publics coordinate in complex governance settings?",
+    themeThreeMethods: "Coproduction; networks; collaborative governance",
     publicationsKicker: "Publications",
     publicationsTitle: "Selected publications",
     pubStatusArticle: "Journal article",
@@ -103,18 +107,22 @@ const translations = {
     hanziName: "何林晟 <span class=\"ipa\" aria-label=\"Pronunciation\">[ˈlɪnʃʌŋ hʌ]</span>",
     heroIntro: "我是何林晟，清华大学公共管理学院公共管理专业博士生。我关注政策设计、行为机制与协同如何共同塑造公共结果。",
     heroDetail: "我尤其关注治理中的“人”的一面：人们如何沟通、协作，以及如何回应政策。我使用实验和比较方法，研究协作、政策反馈与具体情境中的公众态度。",
+    homePublicationsTitle: "代表作",
     lastUpdated: "更新于 2026",
     downloadCv: "下载简历",
     portraitAlt: "何林晟头像插画",
     researchKicker: "研究",
-    researchTitle: "公共问题与行为机制。",
+    researchTitle: "研究议程",
     researchIntro: "我的研究关注政府如何设计政策工具、与公众沟通并在组织间协同。研究方法包括行为实验、比较案例分析、元分析和计算方法。",
-    themeOne: "主题一",
-    themeOneText: "政策设计、政策评估与政策过程",
-    themeTwo: "主题二",
-    themeTwoText: "行为公共管理与实验方法",
-    themeThree: "主题三",
-    themeThreeText: "政府沟通、公众态度与政策反馈",
+    themeOne: "政策设计",
+    themeOneText: "行为假设如何影响政策工具与政策组合的设计？",
+    themeOneMethods: "政策过程；政策评估；比较分析",
+    themeTwo: "行为治理",
+    themeTwoText: "公众如何感知、记忆并回应政府行为？",
+    themeTwoMethods: "实验；公众态度；政策反馈",
+    themeThree: "协同治理",
+    themeThreeText: "组织与公众如何在复杂治理情境中协作？",
+    themeThreeMethods: "共同生产；网络；协同治理",
     publicationsKicker: "论文",
     publicationsTitle: "代表性论文",
     pubStatusArticle: "期刊论文",
@@ -182,6 +190,9 @@ const translations = {
 const pages = ["home", "research", "publications", "cv", "conferences"];
 const themeStorageKey = "site-theme";
 const languageStorageKey = "site-language";
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
 const themeIconSvg = {
   moon:
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>',
@@ -254,7 +265,7 @@ const getBrowserLanguage = () => {
 };
 
 const getInitialLanguage = () => {
-  return "en";
+  return getUrlLanguage() || getSavedLanguage() || "en";
 };
 
 const setRoute = (route) => {
