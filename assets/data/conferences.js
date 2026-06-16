@@ -120,7 +120,8 @@ const conferenceEntries = [
       "lon": -118.33
     },
     "title": "American Society for Public Administration (ASPA) Annual Conference",
-    "paper": "Anti-Corruption, Trust, and Compliance in Public Health Crises: Cross-Country Evidence"
+    "paper": "Anti-Corruption, Trust, and Compliance in Public Health Crises: Cross-Country Evidence",
+    "note": "Best Student Paper Award"
   },
   {
     "year": "2026",
