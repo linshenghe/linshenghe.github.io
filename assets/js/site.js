@@ -1,198 +1,103 @@
-const translations = {
-  en: {
-    documentTitle: "Linsheng He 何林晟",
-    metaDescription: "Linsheng He academic homepage: research, publications, CV, and conference activities.",
-    toggleLabel: "中文",
-    themeToNight: "Switch to night mode",
-    themeToDay: "Switch to day mode",
-    wordmark: "Linsheng He",
-    navHome: "Home",
-    navResearch: "Research",
-    navPublications: "Publications",
-    navCv: "CV",
-    navConferences: "Conferences",
-    hanziName: "何林晟 <span class=\"ipa\" aria-label=\"Pronunciation\">[ˈlɪnʃʌŋ hʌ]</span>",
-    heroIntro: "I’m Linsheng He, a Ph.D. candidate in Public Administration at <a href=\"https://www.sppm.tsinghua.edu.cn\" target=\"_blank\" rel=\"noreferrer\">Tsinghua University’s School of Public Policy and Management</a>. I study how policy design, behavior, and collaboration shape public outcomes.",
-    heroDetail: "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
-    homePublicationsTitle: "Representative work",
-    lastUpdated: "Last updated 2026",
-    downloadCv: "Download CV",
-    portraitAlt: "Illustrated portrait of Linsheng He",
-    researchKicker: "Research",
-    researchTitle: "Research agenda",
-    researchIntro: "My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.",
-    themeOne: "Policy design",
-    themeOneText: "How do behavioral assumptions shape policy instruments and policy mixes?",
-    themeOneMethods: "Policy process; evaluation; comparative analysis",
-    themeTwo: "Behavioral governance",
-    themeTwoText: "How do people perceive, remember, and respond to government action?",
-    themeTwoMethods: "Experiments; public attitudes; policy feedback",
-    themeThree: "Collaboration",
-    themeThreeText: "How do organizations and publics coordinate in complex governance settings?",
-    themeThreeMethods: "Coproduction; networks; collaborative governance",
-    publicationsKicker: "Publications",
-    publicationsTitle: "Selected publications",
-    pubStatusArticle: "Journal article",
-    pubStatusChinese: "Chinese journal article",
-    pubOne: "<strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.",
-    pubOneSummary: "Shows that policy mixes are more effective when the behavioral assumptions embedded in their instruments are consistent.",
-    pubOneKeywords: "Policy mix; behavioral assumptions; policy instruments",
-    pubTwo: "Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.",
-    pubTwoSummary: "Examines how local culture can guide audience segmentation and communication strategies around nuclear power projects.",
-    pubTwoKeywords: "Government communication; local culture; nuclear power",
-    pubThreeTitle: "Policy feedback explanations for government adoption of facial recognition technology",
-    pubThreeJournal: "Journal of Public Administration",
-    pubThree: "Guo, Y., Hong, J., & <strong>He, L.</strong> Journal of Public Administration, 14(05), 159-177. CSSCI.",
-    pubThreeSummary: "Uses a comparative case study of Hangzhou and San Francisco to explain government adoption of facial recognition technology through policy feedback.",
-    pubThreeKeywords: "Policy feedback; facial recognition; comparative case study",
-    pubFourJournal: "Chinese Public Administration",
-    pubFour: "Guo, Y., <strong>He, L.</strong>, & Su, J. Chinese Public Administration, (05), 71-78. CSSCI.",
-    pubFourSummary: "Builds an instrument-narrative-feedback framework to connect behavioral public policy with general policy process theories.",
-    pubFourKeywords: "Behavioral public policy; policy instruments; narrative; feedback",
-    cvKicker: "CV",
-    cvTitle: "Curriculum vitae",
-    cvIntro: "The public English CV is embedded here for quick review. Use the PDF for the complete academic record.",
-    cvStatusLabel: "Current status",
-    cvStatusText: "Ph.D. candidate, Tsinghua University",
-    cvAreasLabel: "Research areas",
-    cvAreasText: "Policy design, behavioral public management, government communication, collaborative governance",
-    cvUpdatedLabel: "Updated",
-    openCv: "Open PDF",
-    cvPdfFallback: "PDF preview is not available in this browser. <a href=\"assets/cv/linsheng-he-cv.pdf\">Open the CV PDF</a>.",
-    tsinghuaText: "Ph.D. candidate in Public Administration, School of Public Policy and Management, Tsinghua University.",
-    bnuText: "B.A. in Public Affairs Management, School of Government, Beijing Normal University.",
-    awards: "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
-    service: "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
-    projects: "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
-    conferencesKicker: "Conferences",
-    conferencesTitle: "Conferences",
-    conferencesIntro: "Future conference dates, selected presentation records, and a map of academic travel.",
-    conferenceStatsTitle: "Conference stats",
-    conferenceStatsNote: "A compact view of past presentations and future conference nodes.",
-    statPast: "Past presentations",
-    statInternational: "International",
-    statDomestic: "Domestic",
-    statUpcoming: "Upcoming",
-    statPlaces: "Mapped places",
-    statHonors: "Awards or roles",
-    upcomingConferencesTitle: "Upcoming conferences",
-    upcomingConferencesNote: "Officially listed conference dates and milestones to monitor.",
-    pastConferencesTitle: "Past presentations",
-    pastConferencesNote: "Selected conference presentations, grouped as an academic activity record.",
-    conferenceMapTitle: "Conference map",
-    conferenceMapNote: "Presentation locations and future meeting sites are shown as a geographic supplement.",
-    legendUpcoming: "Upcoming",
-    legendPast: "Attended",
-    dateRangeJoin: "to",
-    daysUntil: "in",
-    daysUnit: "days",
-    todayLabel: "today",
-    sourceLabel: "Source",
-    noUpcomingConferences: "No upcoming conference nodes are listed yet.",
-    noPastConferences: "No presentation locations are listed yet.",
-    footerCopyright: "© Copyright 2026 Linsheng He. Last updated: June 8, 2026.",
-  },
-  zh: {
-    documentTitle: "Linsheng He 何林晟",
-    metaDescription: "何林晟的学术主页：研究、论文、简历与会议活动。",
-    toggleLabel: "EN",
-    themeToNight: "切换到夜间模式",
-    themeToDay: "切换到日间模式",
-    wordmark: "何林晟",
-    navHome: "主页",
-    navResearch: "研究",
-    navPublications: "论文",
-    navCv: "履历",
-    navConferences: "会议",
-    hanziName: "何林晟 <span class=\"ipa\" aria-label=\"Pronunciation\">[ˈlɪnʃʌŋ hʌ]</span>",
-    heroIntro: "我是何林晟，清华大学公共管理学院公共管理专业博士生。我关注政策设计、行为机制与协同如何共同塑造公共结果。",
-    heroDetail: "我尤其关注治理中的“人”的一面：人们如何沟通、协作，以及如何回应政策。我使用实验和比较方法，研究协作、政策反馈与具体情境中的公众态度。",
-    homePublicationsTitle: "代表作",
-    lastUpdated: "更新于 2026",
-    downloadCv: "下载简历",
-    portraitAlt: "何林晟头像插画",
-    researchKicker: "研究",
-    researchTitle: "研究议程",
-    researchIntro: "我的研究关注政府如何设计政策工具、与公众沟通并在组织间协同。研究方法包括行为实验、比较案例分析、元分析和计算方法。",
-    themeOne: "政策设计",
-    themeOneText: "行为假设如何影响政策工具与政策组合的设计？",
-    themeOneMethods: "政策过程；政策评估；比较分析",
-    themeTwo: "行为治理",
-    themeTwoText: "公众如何感知、记忆并回应政府行为？",
-    themeTwoMethods: "实验；公众态度；政策反馈",
-    themeThree: "协同治理",
-    themeThreeText: "组织与公众如何在复杂治理情境中协作？",
-    themeThreeMethods: "共同生产；网络；协同治理",
-    publicationsKicker: "论文",
-    publicationsTitle: "代表性论文",
-    pubStatusArticle: "期刊论文",
-    pubStatusChinese: "中文期刊论文",
-    pubOne: "<strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.",
-    pubOneSummary: "说明政策组合中各政策工具的行为假设越一致，政策组合越可能发挥更好的效果。",
-    pubOneKeywords: "政策组合；行为假设；政策工具",
-    pubTwo: "Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.",
-    pubTwoSummary: "讨论地方文化如何帮助政府围绕核电项目进行受众细分与沟通策略设计。",
-    pubTwoKeywords: "政府沟通；地方文化；核电",
-    pubThreeTitle: "政府采纳人脸识别技术的政策反馈解释",
-    pubThreeJournal: "公共行政评论",
-    pubThree: "郭跃, 洪婧诗, & <strong>何林晟</strong>. 公共行政评论, 14(05), 159-177. CSSCI.",
-    pubThreeSummary: "基于杭州与旧金山的比较案例，解释政府采纳人脸识别技术背后的政策反馈机制。",
-    pubThreeKeywords: "政策反馈；人脸识别；比较案例研究",
-    pubFourJournal: "中国行政管理",
-    pubFour: "郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理, (05), 71-78. CSSCI.",
-    pubFourSummary: "提出“工具-叙事-反馈”框架，将行为公共政策研究与一般政策过程理论连接起来。",
-    pubFourKeywords: "行为公共政策；政策工具；叙事；反馈",
-    cvKicker: "履历",
-    cvTitle: "学术简历",
-    cvIntro: "这里嵌入英文公开版简历，便于快速预览。完整学术履历以 PDF 版本为准。",
-    cvStatusLabel: "当前身份",
-    cvStatusText: "清华大学公共管理专业博士生",
-    cvAreasLabel: "研究方向",
-    cvAreasText: "政策设计、行为公共管理、政府沟通、协同治理",
-    cvUpdatedLabel: "更新时间",
-    openCv: "打开 PDF",
-    cvPdfFallback: "当前浏览器无法预览 PDF。<a href=\"assets/cv/linsheng-he-cv.pdf\">打开简历 PDF</a>。",
-    tsinghuaText: "公共管理专业博士生，清华大学公共管理学院。",
-    bnuText: "公共事业管理专业管理学学士，北京师范大学政府管理学院。",
-    awards: "<strong>奖项。</strong> 国家奖学金；ASPA-SCPA Best Student Paper Award；ICCPS Best Paper Award；《公共行政评论》青年学者论坛最佳论文奖。",
-    service: "<strong>学术服务。</strong> Public Administration 编辑助理；Governance、Public Management Review、Information Polity 及中文公共管理期刊审稿人。",
-    projects: "<strong>研究项目。</strong> 参与国家自然科学基金、唐仲英基金会、清华-丰田联合研究院项目，以及核安全治理政策咨询工作。",
-    conferencesKicker: "会议",
-    conferencesTitle: "学术会议",
-    conferencesIntro: "记录未来会议时间节点、已参加会议列表，以及会议地点地图。",
-    conferenceStatsTitle: "会议统计",
-    conferenceStatsNote: "快速查看已参加报告、未来会议和会议足迹。",
-    statPast: "已参加报告",
-    statInternational: "国际会议",
-    statDomestic: "国内会议",
-    statUpcoming: "未来会议",
-    statPlaces: "地图地点",
-    statHonors: "获奖或组织",
-    upcomingConferencesTitle: "未来会议",
-    upcomingConferencesNote: "来自会议官网的未来日期与需要跟踪的时间节点。",
-    pastConferencesTitle: "已参加会议",
-    pastConferencesNote: "保留已参加会议与报告记录，作为学术活动列表。",
-    conferenceMapTitle: "会议地图",
-    conferenceMapNote: "地图放在最后，作为会议地点和未来会议信息的补充。",
-    legendUpcoming: "未来会议",
-    legendPast: "已参加",
-    dateRangeJoin: "至",
-    daysUntil: "还有",
-    daysUnit: "天",
-    todayLabel: "今天",
-    sourceLabel: "来源",
-    noUpcomingConferences: "暂未列出未来会议节点。",
-    noPastConferences: "暂未列出报告地点。",
-    footerCopyright: "© Copyright 2026 何林晟。最后更新：2026年6月8日。",
-  },
+const copy = {
+  "documentTitle": "Linsheng He",
+  "metaDescription": "Linsheng He academic homepage: research, publications, CV, and conference activities.",
+  "themeToNight": "Switch to night mode",
+  "themeToDay": "Switch to day mode",
+  "wordmark": "Linsheng He",
+  "navHome": "Home",
+  "navResearch": "Research",
+  "navPublications": "Publications",
+  "navCv": "CV",
+  "navConferences": "Conferences",
+  "heroIntro": "I’m Linsheng He, a Ph.D. candidate in Public Administration at <a href=\"https://www.sppm.tsinghua.edu.cn\" target=\"_blank\" rel=\"noreferrer\">Tsinghua University’s School of Public Policy and Management</a>. I study how policy design, behavior, and collaboration shape public outcomes.",
+  "heroDetail": "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
+  "homePublicationsTitle": "Representative work",
+  "lastUpdated": "Last updated 2026",
+  "downloadCv": "Download CV",
+  "portraitAlt": "Illustrated portrait of Linsheng He",
+  "researchKicker": "Research",
+  "researchTitle": "Research agenda",
+  "researchIntro": "My research examines how governments design policy instruments, communicate with publics, and coordinate across organizations. I use behavioral experiments, comparative case analysis, meta-analysis, and computational approaches to study public administration and policy processes.",
+  "themeOne": "Policy design",
+  "themeOneText": "How do behavioral assumptions shape policy instruments and policy mixes?",
+  "themeOneMethods": "Policy process; evaluation; comparative analysis",
+  "themeTwo": "Behavioral governance",
+  "themeTwoText": "How do people perceive, remember, and respond to government action?",
+  "themeTwoMethods": "Experiments; public attitudes; policy feedback",
+  "themeThree": "Collaboration",
+  "themeThreeText": "How do organizations and publics coordinate in complex governance settings?",
+  "themeThreeMethods": "Coproduction; networks; collaborative governance",
+  "publicationsKicker": "Publications",
+  "publicationsTitle": "Selected publications",
+  "pubStatusArticle": "Journal article",
+  "pubStatusChinese": "Journal article",
+  "pubOne": "<strong>He, L.</strong>, Dai, Y., & Guo, Y. Public Administration, Online First. SSCI, JCR Q1, ABS 4.",
+  "pubOneSummary": "Shows that policy mixes are more effective when the behavioral assumptions embedded in their instruments are consistent.",
+  "pubOneKeywords": "Policy mix; behavioral assumptions; policy instruments",
+  "pubTwo": "Guo, Y., & <strong>He, L.</strong> Review of Policy Research, 41(4), 654-678. SSCI, JCR Q1.",
+  "pubTwoSummary": "Examines how local culture can guide audience segmentation and communication strategies around nuclear power projects.",
+  "pubTwoKeywords": "Government communication; local culture; nuclear power",
+  "pubThreeTitle": "Policy feedback explanations for government adoption of facial recognition technology",
+  "pubThreeJournal": "Journal of Public Administration",
+  "pubThree": "Guo, Y., Hong, J., & <strong>He, L.</strong> Journal of Public Administration, 14(05), 159-177. CSSCI.",
+  "pubThreeSummary": "Uses a comparative case study of Hangzhou and San Francisco to explain government adoption of facial recognition technology through policy feedback.",
+  "pubThreeKeywords": "Policy feedback; facial recognition; comparative case study",
+  "pubFourJournal": "Chinese Public Administration",
+  "pubFour": "Guo, Y., <strong>He, L.</strong>, & Su, J. Chinese Public Administration, (05), 71-78. CSSCI.",
+  "pubFourSummary": "Builds an instrument-narrative-feedback framework to connect behavioral public policy with general policy process theories.",
+  "pubFourKeywords": "Behavioral public policy; policy instruments; narrative; feedback",
+  "cvKicker": "CV",
+  "cvTitle": "Curriculum vitae",
+  "cvIntro": "The public English CV is embedded here for quick review. Use the PDF for the complete academic record.",
+  "cvStatusLabel": "Current status",
+  "cvStatusText": "Ph.D. candidate, Tsinghua University",
+  "cvAreasLabel": "Research areas",
+  "cvAreasText": "Policy design, behavioral public management, government communication, collaborative governance",
+  "cvUpdatedLabel": "Updated",
+  "openCv": "Open PDF",
+  "cvPdfFallback": "PDF preview is not available in this browser. <a href=\"assets/cv/linsheng-he-cv.pdf\">Open the CV PDF</a>.",
+  "tsinghuaText": "Ph.D. candidate in Public Administration, School of Public Policy and Management, Tsinghua University.",
+  "bnuText": "B.A. in Public Affairs Management, School of Government, Beijing Normal University.",
+  "awards": "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
+  "service": "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
+  "projects": "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
+  "conferencesKicker": "Conferences",
+  "conferencesTitle": "Conferences",
+  "conferencesIntro": "Future conference dates, selected presentation records, and a map of academic travel.",
+  "conferenceStatsTitle": "Conference stats",
+  "conferenceStatsNote": "A compact view of past presentations and future conference nodes.",
+  "statPast": "Past presentations",
+  "statInternational": "International",
+  "statDomestic": "Domestic",
+  "statUpcoming": "Upcoming",
+  "statPlaces": "Mapped places",
+  "statHonors": "Awards or roles",
+  "upcomingConferencesTitle": "Upcoming conferences",
+  "upcomingConferencesNote": "Officially listed conference dates and milestones to monitor.",
+  "pastConferencesTitle": "Past presentations",
+  "pastConferencesNote": "Selected conference presentations, grouped as an academic activity record.",
+  "conferenceMapTitle": "Conference map",
+  "conferenceMapNote": "Presentation locations and future meeting sites are shown as a geographic supplement.",
+  "legendUpcoming": "Upcoming",
+  "legendPast": "Attended",
+  "dateRangeJoin": "to",
+  "daysUntil": "in",
+  "daysUnit": "days",
+  "todayLabel": "today",
+  "sourceLabel": "Source",
+  "noUpcomingConferences": "No upcoming conference nodes are listed yet.",
+  "noPastConferences": "No presentation locations are listed yet.",
+  "footerCopyright": "© Copyright 2026 Linsheng He. Last updated: June 8, 2026.",
+  "pubFourTitle": "Tool, Narrative, and Feedback: A Research Framework for Behavioral Public Policy"
 };
 
 const pages = ["home", "research", "publications", "cv", "conferences"];
 const themeStorageKey = "site-theme";
-const languageStorageKey = "site-language";
+
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
+
 const themeIconSvg = {
   moon:
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>',
@@ -230,8 +135,6 @@ const applyTimeTheme = () => {
 const updateThemeToggle = () => {
   const toggle = document.querySelector("[data-theme-toggle]");
   if (!toggle) return;
-  const language = document.documentElement.lang === "zh-CN" ? "zh" : "en";
-  const copy = translations[language];
   const currentTheme = document.documentElement.dataset.theme;
   const label = currentTheme === "night" ? copy.themeToDay : copy.themeToNight;
   toggle.innerHTML = currentTheme === "night" ? themeIconSvg.sun : themeIconSvg.moon;
@@ -245,27 +148,35 @@ const getRoute = () => {
   return pages.includes(route) ? route : "home";
 };
 
-const getUrlLanguage = () => {
-  const language = new URLSearchParams(window.location.search).get("lang");
-  return language === "zh" || language === "en" ? language : "";
-};
+const applyPageCopy = () => {
+  document.documentElement.lang = "en";
+  document.title = copy.documentTitle;
+  document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
 
-const getSavedLanguage = () => {
-  try {
-    const language = localStorage.getItem(languageStorageKey);
-    return language === "zh" || language === "en" ? language : "";
-  } catch (error) {
-    return "";
-  }
-};
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    if (copy[key] !== undefined) {
+      element.textContent = copy[key];
+      element.hidden = copy[key] === "";
+    }
+  });
 
-const getBrowserLanguage = () => {
-  const languages = navigator.languages && navigator.languages.length > 0 ? navigator.languages : [navigator.language];
-  return languages.some((language) => language.toLowerCase().startsWith("zh")) ? "zh" : "en";
-};
+  document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+    const key = element.dataset.i18nHtml;
+    if (copy[key]) {
+      element.innerHTML = copy[key];
+    }
+  });
 
-const getInitialLanguage = () => {
-  return getUrlLanguage() || getSavedLanguage() || "en";
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    const key = element.dataset.i18nAlt;
+    if (copy[key]) {
+      element.setAttribute("alt", copy[key]);
+    }
+  });
+
+  updateThemeToggle();
+  renderConferences();
 };
 
 const setRoute = (route) => {
@@ -301,51 +212,6 @@ const setRoute = (route) => {
   });
 };
 
-const setLanguage = (language) => {
-  const copy = translations[language];
-  document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
-  document.title = copy.documentTitle;
-  document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
-
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.dataset.i18n;
-    if (copy[key] !== undefined) {
-      element.textContent = copy[key];
-      element.hidden = copy[key] === "";
-    }
-  });
-
-  document.querySelectorAll("[data-i18n-html]").forEach((element) => {
-    const key = element.dataset.i18nHtml;
-    if (copy[key]) {
-      element.innerHTML = copy[key];
-    }
-  });
-
-  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
-    const key = element.dataset.i18nAlt;
-    if (copy[key]) {
-      element.setAttribute("alt", copy[key]);
-    }
-  });
-
-  const toggle = document.querySelector("[data-language-toggle]");
-  if (!toggle) {
-    updateThemeToggle();
-    renderConferences(language);
-    return;
-  }
-  toggle.textContent = copy.toggleLabel;
-  toggle.setAttribute("aria-pressed", String(language === "zh"));
-  try {
-    localStorage.setItem(languageStorageKey, language);
-  } catch (error) {
-    // Language switching still works for this page view when storage is unavailable.
-  }
-  updateThemeToggle();
-  renderConferences(language);
-};
-
 let confMap = null;
 let conferenceLayer = null;
 let conferenceBounds = [];
@@ -362,26 +228,26 @@ const parseDate = (value) => {
   return new Date(year, month - 1, day);
 };
 
-const formatDate = (value, language) => {
+const formatDate = (value) => {
   const date = parseDate(value);
-  return new Intl.DateTimeFormat(language === "zh" ? "zh-CN" : "en-US", {
+  return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
   }).format(date);
 };
 
-const formatDateRange = (entry, language, copy) => {
-  const start = formatDate(entry.startDate, language);
-  const end = formatDate(entry.endDate, language);
+const formatDateRange = (entry) => {
+  const start = formatDate(entry.startDate);
+  const end = formatDate(entry.endDate);
   return entry.startDate === entry.endDate ? start : `${start} ${copy.dateRangeJoin} ${end}`;
 };
 
-const formatCountdown = (entry, language, copy) => {
+const formatCountdown = (entry) => {
   const start = parseDate(entry.startDate);
   const diff = Math.ceil((start - getToday()) / 86400000);
   if (diff === 0) return copy.todayLabel;
-  if (diff > 0) return language === "zh" ? `${copy.daysUntil} ${diff} ${copy.daysUnit}` : `${copy.daysUntil} ${diff} ${copy.daysUnit}`;
+  if (diff > 0) return `${copy.daysUntil} ${diff} ${copy.daysUnit}`;
   return "";
 };
 
@@ -396,13 +262,13 @@ const initMap = () => {
   if (!el || confMap || typeof L === "undefined") return;
   confMap = L.map(el, { scrollWheelZoom: false }).setView([30, 110], 3);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 18,
   }).addTo(confMap);
   conferenceLayer = L.layerGroup().addTo(confMap);
 };
 
-const addConferenceMarker = (entry, language, kind) => {
+const addConferenceMarker = (entry, kind) => {
   if (!confMap || !conferenceLayer || !entry.coordinates) return null;
   const { lat, lon } = entry.coordinates;
   const color = kind === "upcoming" ? "#a65f45" : "#34483d";
@@ -414,13 +280,11 @@ const addConferenceMarker = (entry, language, kind) => {
     fillOpacity: 0.9,
   }).addTo(conferenceLayer);
 
-  const title = entry.title[language];
-  const city = entry.city[language];
-  marker.bindTooltip(`${entry.organization ? `${entry.organization}: ` : ""}${city}`, {
+  marker.bindTooltip(`${entry.organization ? `${entry.organization}: ` : ""}${entry.city}`, {
     direction: "top",
     offset: [0, -8],
   });
-  marker.bindPopup(`<strong>${title}</strong><br>${city}`);
+  marker.bindPopup(`<strong>${entry.title}</strong><br>${entry.city}`);
   marker.on("click", () => setActiveConference(entry.id));
   conferenceMarkers.set(entry.id, marker);
   return [lat, lon];
@@ -435,7 +299,7 @@ const focusConference = (entry) => {
   setActiveConference(entry.id);
 };
 
-const renderUpcomingConferences = (language, copy) => {
+const renderUpcomingConferences = () => {
   const list = document.querySelector("[data-upcoming-conference-list]");
   if (!list) return;
   list.innerHTML = "";
@@ -463,17 +327,17 @@ const renderUpcomingConferences = (language, copy) => {
     card.dataset.conferenceId = entry.id;
     meta.className = "upcoming-meta";
     org.textContent = entry.organization;
-    countdown.textContent = formatCountdown(entry, language, copy);
-    title.textContent = entry.title[language];
-    place.textContent = `${formatDateRange(entry, language, copy)} - ${entry.city[language]} - ${entry.venue}`;
+    countdown.textContent = formatCountdown(entry);
+    title.textContent = entry.title;
+    place.textContent = `${formatDateRange(entry)} - ${entry.city} - ${entry.venue}`;
     milestones.className = "milestone-list";
 
     entry.milestones.forEach((milestone) => {
       const item = document.createElement("li");
       const label = document.createElement("span");
       const date = document.createElement("strong");
-      label.textContent = milestone.label[language];
-      date.textContent = milestone.dateText[language];
+      label.textContent = milestone.label;
+      date.textContent = milestone.dateText;
       item.append(label, date);
       milestones.appendChild(item);
     });
@@ -497,14 +361,14 @@ const renderUpcomingConferences = (language, copy) => {
   });
 };
 
-const renderConferenceStats = (language, copy) => {
+const renderConferenceStats = () => {
   const stats = document.querySelector("[data-conference-stats]");
   if (!stats) return;
 
   const mappedPlaces = new Set(
     [...conferenceEntries, ...upcomingConferences]
       .filter((entry) => entry.coordinates)
-      .map((entry) => entry.city[language])
+      .map((entry) => entry.city)
   );
   const honors = conferenceEntries.filter((entry) => entry.note).length;
   const rows = [
@@ -528,18 +392,14 @@ const renderConferenceStats = (language, copy) => {
   });
 };
 
-const renderConferences = (language) => {
+const renderConferences = () => {
   const list = document.querySelector("[data-conference-list]");
-  const copy = translations[language];
-  const typeNames = {
-    en: { international: "International", domestic: "Domestic" },
-    zh: { international: "国际会议", domestic: "国内会议" },
-  };
+  const typeNames = { international: "International", domestic: "Domestic" };
 
   if (!list) return;
   list.innerHTML = "";
-  renderConferenceStats(language, copy);
-  renderUpcomingConferences(language, copy);
+  renderConferenceStats();
+  renderUpcomingConferences();
 
   initMap();
   conferenceMarkers.clear();
@@ -548,13 +408,13 @@ const renderConferences = (language) => {
 
     const bounds = [];
     upcomingConferences.forEach((entry) => {
-      const coordinates = addConferenceMarker(entry, language, "upcoming");
+      const coordinates = addConferenceMarker(entry, "upcoming");
       if (coordinates) bounds.push(coordinates);
     });
 
     conferenceEntries.filter((e) => e.coordinates).forEach((entry, index) => {
       const normalizedEntry = { ...entry, id: entry.id || `past-${index}` };
-      const coordinates = addConferenceMarker(normalizedEntry, language, "past");
+      const coordinates = addConferenceMarker(normalizedEntry, "past");
       if (coordinates) bounds.push(coordinates);
     });
 
@@ -570,18 +430,20 @@ const renderConferences = (language) => {
     const type = document.createElement("small");
     const title = document.createElement("strong");
     const noteEl = document.createElement("span");
+    const city = document.createElement("span");
 
     item.dataset.conferenceId = normalizedEntry.id;
     item.tabIndex = normalizedEntry.coordinates ? 0 : -1;
     item.classList.toggle("is-mappable", Boolean(normalizedEntry.coordinates));
-    type.textContent = `${normalizedEntry.year} - ${typeNames[language][normalizedEntry.type]}`;
-    title.textContent = normalizedEntry.title[language];
+    type.textContent = `${normalizedEntry.year} - ${typeNames[normalizedEntry.type]}`;
+    title.textContent = normalizedEntry.title;
     title.setAttribute("translate", "no");
+    city.textContent = normalizedEntry.city;
     if (normalizedEntry.note) {
-      noteEl.textContent = normalizedEntry.note[language];
+      noteEl.textContent = normalizedEntry.note;
     }
 
-    item.append(type, title);
+    item.append(type, title, city);
     if (normalizedEntry.note) item.append(noteEl);
     if (normalizedEntry.coordinates) {
       item.addEventListener("click", () => focusConference(normalizedEntry));
@@ -596,17 +458,9 @@ const renderConferences = (language) => {
   });
 };
 
-const initialLanguage = getInitialLanguage();
 applyTimeTheme();
-setLanguage(initialLanguage);
+applyPageCopy();
 setRoute(getRoute());
-const languageToggle = document.querySelector("[data-language-toggle]");
-if (languageToggle) {
-  languageToggle.addEventListener("click", () => {
-    const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
-    setLanguage(nextLanguage);
-  });
-}
 
 document.querySelector("[data-theme-toggle]").addEventListener("click", () => {
   const currentTheme = document.documentElement.dataset.theme === "night" ? "night" : "day";

@@ -40,10 +40,6 @@ html {
   font-family: var(--serif);
 }
 
-html:lang(zh-CN) {
-  font-family: var(--cjk);
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -338,7 +334,6 @@ main {
   background: linear-gradient(135deg, var(--gold), var(--moss));
 }
 
-.language-toggle,
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -360,14 +355,12 @@ main {
   font-size: 0;
 }
 
-[data-theme="night"] .language-toggle,
 [data-theme="night"] .theme-toggle {
   border-color: rgba(244, 239, 228, 0.18);
   color: var(--ink);
   background: rgba(244, 239, 228, 0.08);
 }
 
-.language-toggle:hover,
 .theme-toggle:hover {
   border-color: var(--moss);
   color: var(--moss);
@@ -419,14 +412,6 @@ h1,
 h2,
 h3 {
   text-wrap: balance;
-}
-
-html:lang(zh-CN) h1,
-html:lang(zh-CN) h2,
-html:lang(zh-CN) h3 {
-  font-family: var(--cjk);
-  font-weight: 600;
-  letter-spacing: 0;
 }
 
 h1 {
@@ -1448,16 +1433,8 @@ h1 {
     border-radius: 0;
   }
 
-  .language-toggle,
   .theme-toggle {
     height: 26px;
-  }
-
-  .language-toggle {
-    width: auto;
-    min-height: 26px;
-    padding: 0 8px;
-    white-space: nowrap;
   }
 
   .theme-toggle {
