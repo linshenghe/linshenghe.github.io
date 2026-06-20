@@ -1,5 +1,41 @@
 # MASTER_CONTROL
 
+## [CC] refine-typography-and-hero
+
+- **Time**: 2026-06-20 17:30
+- **Branch**: refine-typography-and-hero
+- **Commit**: 8215178
+- **Files touched**: index.html, assets/css/styles.css
+
+### Summary
+
+- h1、section h2、.work h3 改用 Cormorant Garamond 作为首屏字体，增强学术出版气质
+- Hero h1 英文名下方加入中文名 "何林晟"（复用已有 `.hanzi` class）
+- 去掉 Research 网格的 01/02/03 编号（三个主题是并列关系不是序列），网格从三列改为两列
+- PR #2 已创建，等待审查
+
+### For Codex
+
+标题字体现在使用 Cormorant Garamond 优先。Research 网格不再有 `counter-reset` 和 `counter-increment`。`.research-item` 的 `grid-template-columns` 去掉了第一列编号列，子元素 `grid-column` 从 2/3 改为 1/2。
+
+## [CC] refine-content-structure
+
+- **Time**: 2026-06-20 17:35
+- **Branch**: refine-content-structure
+- **Commit**: bfb1f17
+- **Files touched**: index.html, assets/css/styles.css, assets/js/site.js
+
+### Summary
+
+- Hero intro 从两段合并为一段，去掉语义重复，信息压缩为身份+机构+方法+关注点
+- Publications 拆成 "Published articles" 和 "Chinese publications" 两组，用小号大写标签分隔
+- 清理了不再使用的 `.hero-copy` CSS 规则和 `heroDetail` 翻译 key
+- PR #3 已创建，等待审查
+
+### For Codex
+
+Hero 现在只有一段 `.intro`，`heroDetail` 翻译 key 已删除。Publications 页面 `.work-list` 内插入了 `.pub-group-label` 分组标签。CSS 中 `.hero-copy` 选择器全部移除。
+
 ## 角色与更新规则
 
 - 本文件是主控线程的控制面板，用来汇总当前目标、已知决策、执行线程回传、阻塞和下一步。
