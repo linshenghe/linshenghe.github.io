@@ -1377,10 +1377,6 @@ h1 {
     grid-column: 1;
   }
 
-  .epigraph-inner {
-    width: 100%;
-  }
-
   .research-grid,
   .compact-list,
   .cv-layout,

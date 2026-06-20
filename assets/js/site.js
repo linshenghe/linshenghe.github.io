@@ -85,7 +85,7 @@ const copy = {
   "sourceLabel": "Source",
   "noUpcomingConferences": "No upcoming conference nodes are listed yet.",
   "noPastConferences": "No presentation locations are listed yet.",
-    "pubFourTitle": "“工具-叙事-反馈”：一个行为公共政策的研究框架 (Tool, Narrative, and Feedback: A Research Framework for Behavioral Public Policy)"
+  "pubFourTitle": "“工具-叙事-反馈”：一个行为公共政策的研究框架 (Tool, Narrative, and Feedback: A Research Framework for Behavioral Public Policy)"
 };
 
 const pages = ["home", "research", "publications", "cv", "conferences"];
