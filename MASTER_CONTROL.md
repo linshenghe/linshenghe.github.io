@@ -9,10 +9,24 @@
 
 ### Summary
 
-- h1、section h2、.work h3 改用 Cormorant Garamond 作为首屏字体，增强学术出版气质
+1. 本线程目标
+- 收紧排版和视觉细节，让页面更有学术出版气质
+
+2. 实际完成
+- h1、section h2、.work h3 改用 Cormorant Garamond 作为首屏字体
 - Hero h1 英文名下方加入中文名 "何林晟"（复用已有 `.hanzi` class）
 - 去掉 Research 网格的 01/02/03 编号（三个主题是并列关系不是序列），网格从三列改为两列
-- PR #2 已创建，等待审查
+- PR #2 已创建
+
+3. 未完成
+- 无
+
+4. 改动文件
+- index.html — Hero 加 `<span class="hanzi">何林晟</span>`
+- assets/css/styles.css — 标题 font-family、Research 网格去掉 counter 和编号列
+
+5. 下一步建议
+- 合并 PR #2 后，在这个基础上继续做 Hero intro 合并和 Publications 分组
 
 ### For Codex
 
@@ -27,10 +41,26 @@
 
 ### Summary
 
-- Hero intro 从两段合并为一段，去掉语义重复，信息压缩为身份+机构+方法+关注点
+1. 本线程目标
+- 在 typography 分支基础上继续收紧内容结构
+
+2. 实际完成
+- Hero intro 从两段合并为一段，去掉语义重复
 - Publications 拆成 "Published articles" 和 "Chinese publications" 两组，用小号大写标签分隔
 - 清理了不再使用的 `.hero-copy` CSS 规则和 `heroDetail` 翻译 key
-- PR #3 已创建，等待审查
+- PR #3 已创建
+
+3. 未完成
+- 无
+
+4. 改动文件
+- index.html — Hero intro 合并、Publications 分组标签
+- assets/css/styles.css — 新增 `.pub-group-label`、移除 `.hero-copy`
+- assets/js/site.js — 合并翻译 key、新增分组标签翻译
+
+5. 下一步建议
+- 合并 PR #3（注意 #3 包含了 #2 的改动，先合 #2 再合 #3，或直接合 #3 并关 #2）
+- 下一轮优先处理移动端导航和背景网格透明度
 
 ### For Codex
 
