@@ -25,6 +25,7 @@
         document.documentElement.style.colorScheme = theme === "night" ? "dark" : "light";
       })();
     </script>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/styles.css?v=20260617d">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +38,7 @@
       <header class="topbar" aria-label="Site header">
         <div class="topbar-start">
           <a class="wordmark" href="#home" data-route="home">
-            <span class="seal" aria-hidden="true">LH</span>
+            <span class="seal" aria-hidden="true">HE</span>
             <span data-i18n="wordmark">Linsheng He</span>
           </a>
           <div class="quick-links" aria-label="Academic links">
@@ -75,7 +76,8 @@
 
       <main id="main">
         <section class="hero page-view is-active" id="home" data-page="home" aria-labelledby="page-title">
-          <div>
+          <div class="hero-main">
+            <p class="identity-label">Ph.D. Candidate · Tsinghua University</p>
             <h1 id="page-title">
               Linsheng He
               <span class="name-pronunciation"><span class="ipa" aria-label="Pronunciation">[ˈlɪnʃʌŋ hʌ]</span></span>
@@ -86,19 +88,16 @@
             <p class="hero-copy">
               <span data-i18n="heroDetail">I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.</span>
             </p>
-            <div class="hero-actions" aria-label="Academic links">
-              <a class="button-link" href="assets/cv/linsheng-he-cv.pdf" download data-i18n="downloadCv">Download CV</a>
-              <a href="https://scholar.google.com/citations?user=QOLXk7MAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
-              <a href="https://orcid.org/0000-0002-1003-5499" target="_blank" rel="noreferrer">ORCID</a>
-              <a href="mailto:contact@linshenghe.com">Email</a>
-            </div>
           </div>
 
           <div class="hero-side">
             <figure class="portrait">
               <img src="assets/images/portrait.png" alt="Illustrated portrait of Linsheng He" data-i18n-alt="portraitAlt" width="900" height="900">
             </figure>
-            <figure class="epigraph" aria-label="Motto">
+          </div>
+
+          <figure class="epigraph" aria-label="Motto">
+            <div class="epigraph-inner">
               <blockquote>
                 <p>We shall not cease from exploration<br>
                 And the end of all our exploring<br>
@@ -106,8 +105,8 @@
                 And know the place for the first time.</p>
               </blockquote>
               <figcaption>T. S. Eliot</figcaption>
-            </figure>
-          </div>
+            </div>
+          </figure>
         </section>
 
         <section class="section page-view" id="research" data-page="research" aria-labelledby="research-title" hidden>
@@ -295,7 +294,8 @@
       </main>
 
       <footer class="footer">
-        <p data-i18n="footerCopyright">© Copyright 2026 Linsheng He. Last updated: June 8, 2026.</p>
+        <span>© 2026 Linsheng He</span>
+        <span>Updated June 20, 2026</span>
       </footer>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
