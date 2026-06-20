@@ -472,23 +472,13 @@ h1 {
   line-height: 1.62;
 }
 
-.hero-copy {
-  max-width: 750px;
-  margin-bottom: 20px;
-  color: #312d25;
-  font-size: clamp(18px, 1.75vw, 22px);
-  line-height: 1.62;
-}
-
-.intro a,
-.hero-copy a {
+.intro a {
   color: inherit;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.14em;
 }
 
 [data-theme="night"] .intro,
-[data-theme="night"] .hero-copy,
 [data-theme="night"] .measure {
   color: #e6ddcf;
 }
@@ -712,6 +702,21 @@ h1 {
   margin-top: 10px;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--line);
+}
+
+.pub-group-label {
+  padding: 13px 0 11px;
+  color: var(--clay);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+}
+
+.pub-group-label + .pub-group-label {
+  border-top: 1px solid var(--rule);
 }
 
 .work {
@@ -1509,12 +1514,6 @@ h1 {
 
   .intro {
     font-size: 18px;
-  }
-
-  .hero-copy {
-    margin-bottom: 18px;
-    font-size: 17px;
-    line-height: 1.58;
   }
 
   .hero-side {
