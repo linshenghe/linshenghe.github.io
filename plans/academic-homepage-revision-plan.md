@@ -1,225 +1,136 @@
 # 学术主页修改方案
 
-## 目标
+> **状态：✅ 已完成。** Phase 1-3 核心任务已在 2026-06 完成。剩余未做项转入下方新优化计划。
 
-把当前主页从“有风格的个人展示页”升级为“publication-first academic editorial”学术主页。
+## 完成情况
 
-核心目标：
+| 任务 | 状态 |
+|------|------|
+| CV 下载入口 | ✅ |
+| Scholar / ORCID / Email 学术链接（header quick-links） | ✅ |
+| 代表作补 DOI / 期刊链接 / 贡献说明 / 关键词 | ✅ |
+| Research → Research agenda（三主题卡片，去掉编号） | ✅ |
+| CV 页面：PDF 预览 + Open/Download 入口 | ✅ |
+| Hero 中文名 + 排版字体升级 | ✅ |
+| Publications 信息补齐 | ✅ |
+| Conferences → Academic Activities（nav 改名） | ❌ 未做 |
+| 区分 Published / Working papers / Chinese publications | ❌ 未做 |
+| 降低背景装饰强度 | ❌ 未做 |
+| 移动端导航压缩 | ⚠️ 部分 |
 
-- 保留当前暖纸张、档案感、手绘头像和轻 editorial 风格。
-- 降低装饰感，把论文、CV、学术链接和研究项目放到更核心位置。
-- 不引入框架、不加构建系统，继续保持轻量静态站点。
-- 让访问者快速确认：你是谁、研究什么、发表了什么、如何联系、CV 在哪里。
+---
 
-## 当前判断
+# 第二轮优化计划（2026-06-22）
 
-当前页面优点：
+## 当前状态
 
-- 首页有辨识度，不像普通模板。
-- 中英文切换、夜间模式、会议地图已经比较完整。
-- 视觉基调统一，头像资产也能形成个人记忆点。
+旧 plan 的 Phase 1-3 核心任务已完成。当前站点结构：
 
-当前主要问题：
+- **首页**：Hero（姓名+中文名+身份+intro+头像+epigraph）
+- **Research**：Research agenda 三主题卡片（无编号）
+- **Publications**：4 篇 selected publications，含 DOI/PDF/关键词/贡献说明
+- **CV**：PDF 预览 + Open/Download 入口
+- **Conferences**：统计卡片 + upcoming 卡片 + past 列表 + Leaflet 地图
 
-- Publications 信息太少，缺 DOI、链接、摘要或贡献说明。
-- Contact 只有邮箱，缺 Google Scholar、ORCID、机构主页、GitHub 等学术身份链接。
-- CV 页更像简介，不像完整学术履历。
-- Research 页只有方向，没有 working papers / projects / methods / research agenda。
-- Conferences 页面比核心学术内容更丰富，信息权重偏高。
-- 首页首屏没有直接给出 CV、Scholar、代表作入口。
+## 核心问题：Conferences 页面过重
 
-## 推荐风格方向
+当前 Conferences 是整个站点最”重”的页面：
 
-### 方向：Publication-first Academic Editorial
+- 6 个统计卡片（past/international/domestic/upcoming/places/honors）— 信息量大但对访客意义有限
+- 4 个 section heading 各有独立解释文字 — 重复啰嗦
+- upcoming 卡片含 countdown、milestones 列表、来源链接 — 对个人学术主页过于详细
+- 17 条 past presentation 全展开，无折叠
+- Leaflet 地图加载外部 JS/CSS（~100KB），增加页面体积
+- CSS 中 conference 相关规则约 300 行，是最大单一模块
+- 地图在移动端几乎不可用
 
-保留：
+### 目标
 
-- 暖纸张背景。
-- Serif 学术气质。
-- 手绘头像。
-- 简洁卡片和细线分隔。
-- 中英文和夜间模式。
+把 Conferences 从”功能最丰富的页面”降为”简洁的学术活动记录”，视觉权重不超过 Publications 和 CV。
 
-调整：
+### 具体改动
 
-- 首页更像学术名片，而不是纯视觉 hero。
-- Publications 成为核心页面。
-- CV 和学术链接变成明确行动入口。
-- Conferences 降为 academic activities，而不是站点最强功能。
+1. **Nav 改名**：`Conferences` → `Activities`（中英文同步）
+2. **砍掉统计卡片**：6 个数字卡片全删，信息对访客无实质帮助
+3. **合并 section heading**：4 个独立 heading → 1 个页面标题 + 简洁列表，去掉每段的解释文字
+4. **upcoming 卡片瘦身**：只保留会议名、日期、城市，去掉 milestones、countdown、来源链接
+5. **past 列表折叠**：默认只显示最近 3-5 条 + “Show all” 展开按钮
+6. **地图保留但缩小**：去掉独立 heading，作为页面底部的小地图补充，不占主视觉权重
+7. **删除未使用的 CSS**：conference stats、upcoming-card 详细样式、milestone-list 等
 
-## 修改范围
+## 其他优化
 
-### 1. 首页
+### Publications 分组
 
-建议改动：
+当前 4 篇全部混在一起。建议按类型分组：
 
-- 在首页首屏增加一组核心行动链接：
-  - Download CV
-  - Google Scholar
-  - ORCID
-  - Email
-- 把 `Current Focus` 改成更学术化的 `Research Agenda`。
-- 在首页增加 `Selected Publications` 小模块，展示 2-3 篇代表作。
-- `Last updated 2026` 保留，但放低视觉权重。
+- **Published articles**（2 篇英文 SSCI）
+- **Chinese publications**（2 篇中文 CSSCI）
 
-首页结构建议：
+不需要大改 HTML 结构，加两个小标题即可。Working papers 暂无内容，先不加。
 
-1. 姓名、身份、研究一句话简介。
-2. CV / Scholar / ORCID / Email 快速入口。
-3. 头像。
-4. Research Agenda。
-5. Selected Publications 摘要入口。
+### Epigraph 缩小
 
-### 2. Publications 页面
+当前 epigraph 在 hero 下方占一整屏。考虑：
+- 缩小字号和间距
+- 或移到页脚上方作为全站 closing quote
 
-建议改动：
+倾向后者——epigraph 作为全站收尾比放在首页中间更自然。
 
-- 每篇论文增加：
-  - DOI 或 journal link。
-  - publication status。
-  - keywords。
-  - 1 句 contribution summary。
-- 区分：
-  - Published articles
-  - Working papers
-  - Selected Chinese publications
-- 如果暂时没有完整数据，可以先只给代表作加链接和说明。
+### 移动端导航
 
-### 3. Research 页面
+当前移动端 nav 是水平滚动链接列表。可以考虑：
+- 压缩间距
+- 当前页高亮更明显
 
-建议改动：
+小改动，不重构。
 
-- 从“三个主题卡片”升级为更具体的研究结构：
-  - Research areas
-  - Current projects
-  - Methods
-  - Keywords
-- 每个方向不要只写名词，要写 1-2 句具体问题。
+### CSS 清理
 
-示例结构：
-
-- Policy design and behavioral assumptions
-- Government communication and public attitudes
-- Collaborative governance and coproduction
-- Computational and experimental methods
-
-### 4. CV 页面
-
-建议改动：
-
-- 增加公开 CV 下载按钮。
-- 拆成更清晰的模块：
-  - Education
-  - Publications
-  - Awards
-  - Research projects
-  - Academic service
-  - Conference presentations
-- 当前三张卡片可以保留，但最好改成更紧凑的履历式列表。
-
-### 5. Conferences 页面
-
-建议改动：
-
-- Nav 名称可考虑从 `Conferences` 改成 `Activities` 或 `Academic Activities`。
-- 地图保留，但不要让它在视觉上压过论文和 CV。
-- 过去会议列表可以折叠或分组：
-  - Upcoming conferences
-  - Selected presentations
-  - Full list
-
-### 6. Contact 页面
-
-建议改动：
-
-- 不只放邮箱，改成学术身份链接页。
-- 增加：
-  - Email
-  - Google Scholar
-  - ORCID
-  - Institutional profile
-  - CV
-  - GitHub 或 OSF，如果适合公开
-
-## 视觉调整
-
-建议小改，不大重做：
-
-- 降低背景网格透明度，让正文更清晰。
-- Publications 卡片减少边框盒子感，更像期刊目录。
-- 统一按钮和链接样式，避免普通链接、胶囊按钮、卡片链接混杂。
-- 移动端 nav 当前高度偏高，可以压缩。
-- Conferences 地图灰底略重，可以降低存在感。
-
-## 文件影响
-
-预计主要修改：
-
-- `index.html`
-  - 调整页面结构和新增链接区域。
-- `assets/css/styles.css`
-  - 新增 CV / academic links / publication detail 样式。
-  - 微调首页、论文页、移动端 nav。
-- `assets/js/site.js`
-  - 更新中英文文案。
-  - 如修改导航名称，需要同步翻译。
-- `assets/data/conferences.js`
-  - 如果会议页改名但数据不变，可不动。
-- `assets/images/`
-  - 如果增加 CV PDF 或 OG 图，可能新增资产。
+- 删除 `counter-reset: research-item` 等已不用的规则
+- 删除 conference stats 相关样式（如果砍掉统计卡片）
+- 合并重复的 font-family 声明
 
 ## 实施顺序
 
-### Phase 1：信息补齐
+### Step 1：Conferences 瘦身（主要工作）
+- 改 `index.html`：简化 conference 区块结构
+- 改 `site.js`：删统计渲染、简化 upcoming 渲染、加 past 折叠逻辑、更新翻译
+- 改 `styles.css`：删 ~150 行无用 conference 样式、简化保留样式
+- 改 `conferences.js`：数据不动
 
-- 添加 CV 下载入口。
-- 添加 Google Scholar / ORCID / Email 等学术链接。
-- 给代表作补 DOI 或期刊链接。
-- 首页增加 Selected Publications。
+### Step 2：Publications 分组
+- `index.html`：加两个 sub-heading
+- `site.js`：加对应翻译 key
 
-### Phase 2：结构优化
+### Step 3：Epigraph 移位
+- `index.html`：从 hero 底部移到 footer 上方
+- `styles.css`：调整样式
 
-- Research 页面改成 research agenda。
-- CV 页面拆成更完整的履历结构。
-- Conferences 调整为 Academic Activities。
+### Step 4：CSS 清理 + 移动端微调
+- 删无用规则
+- 移动端 nav 间距收紧
 
-### Phase 3：视觉收紧
+## 文件影响
 
-- 优化移动端导航。
-- 降低背景装饰强度。
-- 优化论文卡片和学术链接样式。
-- 检查中英文排版一致性。
+- `index.html` — conference 结构简化、publications 分组、epigraph 移位
+- `assets/css/styles.css` — 删 ~150 行、简化保留样式、移动端微调
+- `assets/js/site.js` — 删统计渲染、简化 upcoming、加折叠、更新翻译
+- `assets/data/conferences.js` — 不动
+
+## 不建议做
+
+- 删掉地图（保留但缩小）
+- 改 URL hash（`#conferences` 保持不变，即使 nav 显示为 Activities）
+- 引入折叠库或 JS 框架
+- 重构整个导航系统
 
 ## 验证
 
-每次改完应验证：
-
-- `git diff --check`
-- 桌面端首页、Publications、CV、Contact 页面无明显错位。
-- 移动端无横向溢出。
-- 中英文切换正常。
-- 夜间模式可读。
-- 外部链接正确打开。
-- CV PDF 链接有效。
-- 图片正常加载。
-
-## 不建议做的事
-
-暂时不建议：
-
-- 引入 React / Next.js / Tailwind。
-- 做重动效或滚动叙事。
-- 把 Publications 做成过度设计的 portfolio 卡片。
-- 大幅改变现有 URL 和 hash 导航。
-- 让会议地图继续占据比论文更高的视觉权重。
-
-## 推荐下一步
-
-先做 Phase 1。
-
-最小可交付版本：
-
-- 首页增加 CV / Scholar / ORCID / Email 链接。
-- 首页增加 2-3 篇代表作。
-- Publications 给代表作补链接和一句贡献说明。
-- Contact 改成完整学术链接页。
+- `bash scripts/check.sh` 通过
+- 桌面端每个页面无错位
+- 移动端无横向溢出
+- 中英文切换正常
+- 夜间模式可读
+- 地图仍可正常加载和交互
+- Past 列表折叠/展开正常
