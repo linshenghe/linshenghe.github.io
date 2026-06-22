@@ -1,38 +1,46 @@
-# MASTER_CONTROL
+# Master Control
 
-## [CC] Conferences 瘦身：砍统计卡片、简化 upcoming、past 折叠、地图降级
+## 项目信息
+
+- **项目**：linshenghe.github.io — 个人学术主页
+- **仓库**：git@github-linshenghe-homepage:linshenghe/linshenghe.github.io.git
+- **默认分支**：main
+
+## 活动日志
+
+### [CC] Conferences 瘦身：砍统计卡片、简化 upcoming、past 折叠、地图降级
 
 - **Time**: 2026-06-22 19:25
+- **Session ID**: 3adb9f3c-3bfa-442e-9cbc-f02ae4ddc715
 - **Branch**: slim-conferences
 - **Commit**: 4a87b70
 - **Files touched**: index.html, assets/css/styles.css, assets/js/site.js
 
-### Summary
+#### Summary
 
 - Nav 名改为 Activities，URL hash 不变；砍掉 6 个统计卡片；4 个 heading 合并为 2 个，删除所有解释文字
 - Upcoming 卡片只保留会议名+日期+城市，去掉 milestones、countdown、来源链接
 - Past 列表默认显示 5 条，原生 JS "Show all" 折叠/展开；地图保留在页面底部无独立 heading
 - 总计 -278 行 / +112 行，净减 166 行；旧 plan 标记完成，新第二轮优化计划已写入
 
-### For Codex
+#### For Codex
 
 - Conferences → Activities 决策已定。后续 Step 2-4（Publications 分组、epigraph 移位、CSS 清理）尚未开始，下一步优先做 Step 2。
 
-## 角色与更新规则
+## 当前状态
+
+Conferences 瘦身完成（slim-conferences 分支），待继续 Step 2（Publications 分组）。站点已推进到 publication-first academic editorial 方向，保留轻量静态站点形态，不引入框架或构建系统。
+
+## 历史记录
+
+### 角色与更新规则
 
 - 本文件是主控线程的控制面板，用来汇总当前目标、已知决策、执行线程回传、阻塞和下一步。
 - 决策优先级：用户直接指令 > 根目录 `AGENTS.md` > `README.md` > 其他计划或草稿文档。
 - 每次收到执行线程的有效回传后，都要同步更新本文件；更新后检查本次改动，再提交。需要推送时，只推与该次回传相关的提交。
 - 如果回传内容和现有规则冲突，先在本文件标出冲突，不默认折中处理。
 
-## 当前目标
-
-- 在已完成首页重设计并上线的基础上，继续把主页稳定推进到 `publication-first academic editorial` 方向。
-- 保留轻量静态站点形态，不引入框架、构建系统或额外外部依赖。
-- 让访问者快速确认四件事：你是谁、研究什么、发表了什么、如何联系、CV 在哪里。
-- 当前下一阶段重点从“首页骨架重做”转为“学术内容与细节收紧”：优先处理 `Publications`、移动端导航、背景网格透明度，以及后续可选的 PR 自动检查。
-
-## 已知决策
+### 已知决策
 
 - 站点继续作为 GitHub Pages 轻量静态主页维护。
 - 首页已经完成一轮 `publication-first academic editorial` 重设计，并已合并部署到线上。
@@ -50,7 +58,7 @@
 - 视觉收紧优先级已经明确：移动端导航、背景网格透明度、论文条目样式、中英文字体与排版一致性、夜间模式可读性。
 - 验证基线已确定：提交前优先运行 `bash scripts/check.sh`；阶段性 UI 改动在定稿、提交或发布前再做桌面端和移动端可视检查。
 
-## 已知冲突与未决问题
+### 已知冲突与未决问题
 
 - `Contact` 页面定位存在冲突：
   - `AGENTS.md` 说它不应作为主导航页，除非以后有 office hours、合作说明或表单等实质内容。
@@ -68,7 +76,7 @@
 - GitHub Pages workflow 仍有 Node.js 20 弃用警告，但当前不影响部署。
 - GitHub PR 目前没有独立 CI checks；现阶段仍依赖 `bash scripts/check.sh` 和浏览器可视检查。
 
-## 执行线程状态
+### 执行线程状态
 
 - 已补录一条旧执行线程有效回传，对应已合并的 PR #1。
 - 该线程目标：重新设计并发布学术主页首页，完善导航、Hero、头像、题记、页脚和 `HE` 品牌标识。
@@ -93,17 +101,9 @@
   - `main` 上存在合并提交 `f83d14b`，对应 `Merge pull request #1 from linshenghe/redesign-hero-epigraph`。
   - 当前仓库可见 `HE` 品牌、favicon、Scholar/ORCID 链接、`T. S. Eliot` 题记和 `Updated June 20, 2026` 页脚文本。
 
-## 下一步
-
-1. 继续第二轮优化：
-   - Step 2：Publications 按 Published articles / Chinese publications 分组（加两个 sub-heading）
-   - Step 3：Epigraph 从 hero 底部移到页脚上方
-   - Step 4：CSS 清理（删 counter-reset 残留等）+ 移动端 nav 微调
-2. 以上完成后合并 slim-conferences 到 main，删除分支。
-3. 如果要补工程保障，优先考虑给 PR 配置自动执行 `bash scripts/check.sh` 的 GitHub Actions。
-
-## 更新记录
+### 更新记录
 
 - 2026-06-20：初始化主控文档。已读取 `README.md`、`AGENTS.md`，并补读 `plans/academic-homepage-revision-plan.md` 作为低优先级参考；确认当前目标、已知决策、冲突点和下一步。`MASTER_CONTROL.md` 此前不存在，现已创建。
 - 2026-06-20：补录旧执行线程回传。已将已合并的 PR #1 首页重设计结果、验证范围、涉及文件、残留运维问题和后续建议同步进主控文档；并用本地 `git log` 与仓库文件内容做了基础对齐。
 - 2026-06-22：Conferences 瘦身完成（slim-conferences 分支）。nav 改名 Activities、砍统计卡片、upcoming 简化、past 折叠、地图降级。旧 plan 标记完成，新第二轮优化计划已写入。同步更新 MASTER_CONTROL 中的决策和冲突状态。
+- 2026-06-22：重构 MASTER_CONTROL.md 为规范模板（项目信息 → 活动日志 → 当前状态 → 历史记录）。
