@@ -8,7 +8,7 @@ const copy = {
   "navResearch": "Research",
   "navPublications": "Publications",
   "navCv": "CV",
-  "navConferences": "Conferences",
+  "navConferences": "Activities",
   "heroIntro": "I’m Linsheng He, a Ph.D. candidate in Public Administration at <a href=\"https://www.sppm.tsinghua.edu.cn\" target=\"_blank\" rel=\"noreferrer\">Tsinghua University’s School of Public Policy and Management</a>. I study how policy design, behavior, and collaboration shape public outcomes.",
   "heroDetail": "I’m especially interested in the human side of governance: how people communicate, coordinate, and respond to policy. I use experiments and comparative methods to study collaboration, policy feedback, and public attitudes in context.",
   "lastUpdated": "Last updated 2026",
@@ -45,6 +45,7 @@ const copy = {
   "pubFour": "郭跃, <strong>何林晟</strong>, & 苏竣. 中国行政管理 (Chinese Public Administration), (05), 71-78. CSSCI.",
   "pubFourSummary": "Builds an instrument-narrative-feedback framework to connect behavioral public policy with general policy process theories.",
   "pubFourKeywords": "Behavioral public policy; policy instruments; narrative; feedback",
+  "sourceLabel": "Source",
   "cvKicker": "CV",
   "cvTitle": "Curriculum vitae",
   "cvStatusLabel": "Current status",
@@ -59,32 +60,15 @@ const copy = {
   "awards": "<strong>Awards.</strong> National Scholarship; ASPA-SCPA Best Student Paper Award; ICCPS Best Paper Award; Best Paper Award from the Public Administration Review Young Scholars Forum.",
   "service": "<strong>Academic service.</strong> Editorial assistant for Public Administration; reviewer for Governance, Public Management Review, Information Polity, and Chinese public administration journals.",
   "projects": "<strong>Research projects.</strong> Participant in projects supported by the National Natural Science Foundation of China, Cyrus Tang Foundation, Tsinghua-Toyota Joint Research Institute, and policy advisory work on nuclear safety governance.",
-  "conferencesKicker": "Conferences",
-  "conferencesTitle": "Conferences",
-  "conferencesIntro": "Future conference dates, selected presentation records, and a map of academic travel.",
-  "conferenceStatsTitle": "Conference stats",
-  "conferenceStatsNote": "A compact view of past presentations and future conference nodes.",
-  "statPast": "Past presentations",
-  "statInternational": "International",
-  "statDomestic": "Domestic",
-  "statUpcoming": "Upcoming",
-  "statPlaces": "Mapped places",
-  "statHonors": "Awards or roles",
-  "upcomingConferencesTitle": "Upcoming conferences",
-  "upcomingConferencesNote": "Officially listed conference dates and milestones to monitor.",
+  "conferencesTitle": "Activities",
+  "upcomingConferencesTitle": "Upcoming",
   "pastConferencesTitle": "Past presentations",
-  "pastConferencesNote": "Selected conference presentations, grouped as an academic activity record.",
-  "conferenceMapTitle": "Conference map",
-  "conferenceMapNote": "Presentation locations and future meeting sites are shown as a geographic supplement.",
   "legendUpcoming": "Upcoming",
   "legendPast": "Attended",
-  "dateRangeJoin": "to",
-  "daysUntil": "in",
-  "daysUnit": "days",
-  "todayLabel": "today",
-  "sourceLabel": "Source",
-  "noUpcomingConferences": "No upcoming conference nodes are listed yet.",
-  "noPastConferences": "No presentation locations are listed yet.",
+  "showMore": "Show all",
+  "showLess": "Show less",
+  "noUpcomingConferences": "No upcoming conferences listed yet.",
+  "noPastConferences": "No past presentations listed yet.",
   "pubFourTitle": "“工具-叙事-反馈”：一个行为公共政策的研究框架 (Tool, Narrative, and Feedback: A Research Framework for Behavioral Public Policy)"
 };
 
@@ -237,15 +221,7 @@ const formatDate = (value) => {
 const formatDateRange = (entry) => {
   const start = formatDate(entry.startDate);
   const end = formatDate(entry.endDate);
-  return entry.startDate === entry.endDate ? start : `${start} ${copy.dateRangeJoin} ${end}`;
-};
-
-const formatCountdown = (entry) => {
-  const start = parseDate(entry.startDate);
-  const diff = Math.ceil((start - getToday()) / 86400000);
-  if (diff === 0) return copy.todayLabel;
-  if (diff > 0) return `${copy.daysUntil} ${diff} ${copy.daysUnit}`;
-  return "";
+  return entry.startDate === entry.endDate ? start : `${start} – ${end}`;
 };
 
 const setActiveConference = (id) => {
@@ -311,42 +287,16 @@ const renderUpcomingConferences = () => {
 
   upcomingConferences.forEach((entry) => {
     const card = document.createElement("article");
-    const meta = document.createElement("div");
-    const org = document.createElement("span");
-    const countdown = document.createElement("span");
     const title = document.createElement("h4");
     const place = document.createElement("p");
-    const milestones = document.createElement("ul");
-    const source = document.createElement("a");
 
     card.className = "upcoming-card";
     card.tabIndex = 0;
     card.dataset.conferenceId = entry.id;
-    meta.className = "upcoming-meta";
-    org.textContent = entry.organization;
-    countdown.textContent = formatCountdown(entry);
     title.textContent = entry.title;
-    place.textContent = `${formatDateRange(entry)} - ${entry.city} - ${entry.venue}`;
-    milestones.className = "milestone-list";
+    place.textContent = `${formatDateRange(entry)} - ${entry.city}`;
 
-    entry.milestones.forEach((milestone) => {
-      const item = document.createElement("li");
-      const label = document.createElement("span");
-      const date = document.createElement("strong");
-      label.textContent = milestone.label;
-      date.textContent = milestone.dateText;
-      item.append(label, date);
-      milestones.appendChild(item);
-    });
-
-    source.href = entry.sourceUrl;
-    source.textContent = `${copy.sourceLabel}: ${entry.sourceLabel}`;
-    source.target = "_blank";
-    source.rel = "noreferrer";
-
-    meta.append(org);
-    if (countdown.textContent) meta.append(countdown);
-    card.append(meta, title, place, milestones, source);
+    card.append(title, place);
     card.addEventListener("click", () => focusConference(entry));
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
@@ -358,44 +308,15 @@ const renderUpcomingConferences = () => {
   });
 };
 
-const renderConferenceStats = () => {
-  const stats = document.querySelector("[data-conference-stats]");
-  if (!stats) return;
-
-  const mappedPlaces = new Set(
-    [...conferenceEntries, ...upcomingConferences]
-      .filter((entry) => entry.coordinates)
-      .map((entry) => entry.city)
-  );
-  const honors = conferenceEntries.filter((entry) => entry.note).length;
-  const rows = [
-    [copy.statPast, conferenceEntries.length],
-    [copy.statInternational, conferenceEntries.filter((entry) => entry.type === "international").length],
-    [copy.statDomestic, conferenceEntries.filter((entry) => entry.type === "domestic").length],
-    [copy.statUpcoming, upcomingConferences.length],
-    [copy.statPlaces, mappedPlaces.size],
-    [copy.statHonors, honors],
-  ];
-
-  stats.innerHTML = "";
-  rows.forEach(([label, value]) => {
-    const item = document.createElement("article");
-    const number = document.createElement("strong");
-    const text = document.createElement("span");
-    number.textContent = value;
-    text.textContent = label;
-    item.append(number, text);
-    stats.appendChild(item);
-  });
-};
+const VISIBLE_PAST = 5;
 
 const renderConferences = () => {
   const list = document.querySelector("[data-conference-list]");
+  const toggleBtn = document.querySelector("[data-conference-toggle]");
   const typeNames = { international: "International", domestic: "Domestic" };
 
   if (!list) return;
   list.innerHTML = "";
-  renderConferenceStats();
   renderUpcomingConferences();
 
   initMap();
@@ -421,38 +342,63 @@ const renderConferences = () => {
     }
   }
 
-  conferenceEntries.forEach((entry, index) => {
-    const normalizedEntry = { ...entry, id: entry.id || `past-${index}` };
-    const item = document.createElement("li");
-    const type = document.createElement("small");
-    const title = document.createElement("strong");
-    const noteEl = document.createElement("span");
-    const city = document.createElement("span");
+  const total = conferenceEntries.length;
+  const needsCollapse = total > VISIBLE_PAST;
+  let expanded = false;
 
-    item.dataset.conferenceId = normalizedEntry.id;
-    item.tabIndex = normalizedEntry.coordinates ? 0 : -1;
-    item.classList.toggle("is-mappable", Boolean(normalizedEntry.coordinates));
-    type.textContent = `${normalizedEntry.year} - ${typeNames[normalizedEntry.type]}`;
-    title.textContent = normalizedEntry.title;
-    title.setAttribute("translate", "no");
-    city.textContent = normalizedEntry.city;
-    if (normalizedEntry.note) {
-      noteEl.textContent = normalizedEntry.note;
-    }
+  const renderItems = () => {
+    list.innerHTML = "";
+    const limit = expanded ? total : VISIBLE_PAST;
 
-    item.append(type, title, city);
-    if (normalizedEntry.note) item.append(noteEl);
-    if (normalizedEntry.coordinates) {
-      item.addEventListener("click", () => focusConference(normalizedEntry));
-      item.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          focusConference(normalizedEntry);
-        }
-      });
+    conferenceEntries.slice(0, limit).forEach((entry, index) => {
+      const normalizedEntry = { ...entry, id: entry.id || `past-${index}` };
+      const item = document.createElement("li");
+      const type = document.createElement("small");
+      const title = document.createElement("strong");
+      const noteEl = document.createElement("span");
+      const city = document.createElement("span");
+
+      item.dataset.conferenceId = normalizedEntry.id;
+      item.tabIndex = normalizedEntry.coordinates ? 0 : -1;
+      item.classList.toggle("is-mappable", Boolean(normalizedEntry.coordinates));
+      type.textContent = `${normalizedEntry.year} - ${typeNames[normalizedEntry.type]}`;
+      title.textContent = normalizedEntry.title;
+      title.setAttribute("translate", "no");
+      city.textContent = normalizedEntry.city;
+      if (normalizedEntry.note) {
+        noteEl.textContent = normalizedEntry.note;
+      }
+
+      item.append(type, title, city);
+      if (normalizedEntry.note) item.append(noteEl);
+      if (normalizedEntry.coordinates) {
+        item.addEventListener("click", () => focusConference(normalizedEntry));
+        item.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            focusConference(normalizedEntry);
+          }
+        });
+      }
+      list.appendChild(item);
+    });
+  };
+
+  renderItems();
+
+  if (toggleBtn) {
+    if (needsCollapse) {
+      toggleBtn.hidden = false;
+      toggleBtn.textContent = copy.showMore;
+      toggleBtn.onclick = () => {
+        expanded = !expanded;
+        toggleBtn.textContent = expanded ? copy.showLess : copy.showMore;
+        renderItems();
+      };
+    } else {
+      toggleBtn.hidden = true;
     }
-    list.appendChild(item);
-  });
+  }
 };
 
 applyTimeTheme();
