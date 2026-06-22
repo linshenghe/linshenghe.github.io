@@ -1,5 +1,23 @@
 # MASTER_CONTROL
 
+## [CC] Conferences 瘦身：砍统计卡片、简化 upcoming、past 折叠、地图降级
+
+- **Time**: 2026-06-22 19:25
+- **Branch**: slim-conferences
+- **Commit**: 4a87b70
+- **Files touched**: index.html, assets/css/styles.css, assets/js/site.js
+
+### Summary
+
+- Nav 名改为 Activities，URL hash 不变；砍掉 6 个统计卡片；4 个 heading 合并为 2 个，删除所有解释文字
+- Upcoming 卡片只保留会议名+日期+城市，去掉 milestones、countdown、来源链接
+- Past 列表默认显示 5 条，原生 JS "Show all" 折叠/展开；地图保留在页面底部无独立 heading
+- 总计 -278 行 / +112 行，净减 166 行；旧 plan 标记完成，新第二轮优化计划已写入
+
+### For Codex
+
+- Conferences → Activities 决策已定。后续 Step 2-4（Publications 分组、epigraph 移位、CSS 清理）尚未开始，下一步优先做 Step 2。
+
 ## 角色与更新规则
 
 - 本文件是主控线程的控制面板，用来汇总当前目标、已知决策、执行线程回传、阻塞和下一步。
@@ -28,7 +46,7 @@
 - `Publications` 是核心页面，论文条目需要逐步补齐 DOI 或期刊链接、publication status、关键词和一句贡献说明。
 - `Research` 要从宽泛主题页升级为 research agenda，突出研究领域、当前项目、方法和关键词。
 - `CV` 页以 PDF 预览窗口加打开/下载入口为主，PDF 是完整学术简历的事实来源。
-- `Conferences` 页面保留会议列表、未来会议和统计信息，地图只能作为补充，不能压过列表本身。
+- `Conferences` 页面已瘦身并改名为 `Activities`，nav 和页面标题已更新。地图保留在页面底部作为补充，不占主视觉权重。
 - 视觉收紧优先级已经明确：移动端导航、背景网格透明度、论文条目样式、中英文字体与排版一致性、夜间模式可读性。
 - 验证基线已确定：提交前优先运行 `bash scripts/check.sh`；阶段性 UI 改动在定稿、提交或发布前再做桌面端和移动端可视检查。
 
@@ -42,7 +60,7 @@
   - `AGENTS.md` 要求以 PDF 预览页为主，不在网页重复维护完整 CV。
   - 旧计划文档建议把网页本身拆成更完整的履历模块。
   - 在用户进一步确认前，默认按 `AGENTS.md` 优先。
-- `Conferences` 是否改名为 `Academic Activities` 还没定。计划文档提过改名，但项目规则没有确认。
+- `Conferences` 是否改名为 `Academic Activities` 的问题已解决：nav 和页面标题改为 `Activities`，URL hash `#conferences` 保持不变。
 - Phase 1 仍缺关键内容源：
   - 公开可用的 `Google Scholar`、`ORCID`、机构主页、GitHub/OSF 链接是否都已准备好。
   - 首页 `Selected Publications` 具体选哪 2-3 篇代表作。
@@ -77,15 +95,15 @@
 
 ## 下一步
 
-1. 后续任何主页修改，都从最新 `main` 新建 feature branch 开始。
-2. 内容和视觉优先级按执行线程建议推进：
-   - 优先检查 `Publications` 条目样式。
-   - 优先检查移动端导航。
-   - 优先检查背景网格透明度。
+1. 继续第二轮优化：
+   - Step 2：Publications 按 Published articles / Chinese publications 分组（加两个 sub-heading）
+   - Step 3：Epigraph 从 hero 底部移到页脚上方
+   - Step 4：CSS 清理（删 counter-reset 残留等）+ 移动端 nav 微调
+2. 以上完成后合并 slim-conferences 到 main，删除分支。
 3. 如果要补工程保障，优先考虑给 PR 配置自动执行 `bash scripts/check.sh` 的 GitHub Actions。
-4. 如果后续处理部署链路，再单独评估 GitHub Pages workflow 的 Node.js 20 弃用警告。
 
 ## 更新记录
 
 - 2026-06-20：初始化主控文档。已读取 `README.md`、`AGENTS.md`，并补读 `plans/academic-homepage-revision-plan.md` 作为低优先级参考；确认当前目标、已知决策、冲突点和下一步。`MASTER_CONTROL.md` 此前不存在，现已创建。
 - 2026-06-20：补录旧执行线程回传。已将已合并的 PR #1 首页重设计结果、验证范围、涉及文件、残留运维问题和后续建议同步进主控文档；并用本地 `git log` 与仓库文件内容做了基础对齐。
+- 2026-06-22：Conferences 瘦身完成（slim-conferences 分支）。nav 改名 Activities、砍统计卡片、upcoming 简化、past 折叠、地图降级。旧 plan 标记完成，新第二轮优化计划已写入。同步更新 MASTER_CONTROL 中的决策和冲突状态。
