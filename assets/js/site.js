@@ -179,13 +179,27 @@ const setRoute = (route) => {
 
   document.documentElement.dataset.route = nextRoute;
 
-  if (nextRoute === "conferences" && confMap) {
-    window.requestAnimationFrame(() => {
-      confMap.invalidateSize();
-      if (conferenceBounds.length > 0) {
-        confMap.fitBounds(conferenceBounds, { padding: [28, 28] });
-      }
-    });
+  if (nextRoute === "conferences") {
+    const refreshMap = () => {
+      window.requestAnimationFrame(() => {
+        if (confMap) {
+          confMap.invalidateSize();
+          if (conferenceBounds.length > 0) {
+            confMap.fitBounds(conferenceBounds, { padding: [28, 28] });
+          }
+        }
+      });
+    };
+
+    if (leafletReady) {
+      refreshMap();
+    } else {
+      loadLeaflet().then(() => {
+        initMap();
+        renderConferences();
+        refreshMap();
+      });
+    }
   }
 
   window.requestAnimationFrame(() => {
@@ -197,6 +211,34 @@ let confMap = null;
 let conferenceLayer = null;
 let conferenceBounds = [];
 const conferenceMarkers = new Map();
+
+let leafletReady = false;
+let leafletLoading = null;
+
+const loadLeaflet = () => {
+  if (leafletReady) return Promise.resolve();
+  if (leafletLoading) return leafletLoading;
+
+  leafletLoading = new Promise((resolve) => {
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    document.head.appendChild(css);
+
+    const js = document.createElement("script");
+    js.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    js.onload = () => {
+      leafletReady = true;
+      resolve();
+    };
+    js.onerror = () => {
+      leafletLoading = null;
+    };
+    document.head.appendChild(js);
+  });
+
+  return leafletLoading;
+};
 
 const getToday = () => {
   const today = new Date();
