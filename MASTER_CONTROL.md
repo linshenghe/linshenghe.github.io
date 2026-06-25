@@ -8,6 +8,25 @@
 
 ## 活动日志
 
+### [CC] Web-check 性能优化 + 安全补齐
+
+- **Time**: 2026-06-25 15:00
+- **Session ID**: c6b70039-7469-4b51-99e6-f5c39062a4a3
+- **Branch**: main
+- **Commit**: e3bc1c9
+- **Files touched**: index.html, assets/js/site.js, assets/images/portrait.png, assets/images/portrait.webp, .well-known/security.txt, analysis/web-check-results.json
+
+#### Summary
+
+- 基于 web-check 全站扫描结果，按重要程度排序并修复了性能和安全问题
+- P1 性能：portrait.png 900→560px + WebP（785KB→27KB）；Leaflet CSS/JS 改为首次导航到 Activities 时才动态加载；首屏关键 CSS 内联到 `<style>` 标签，完整 styles.css 异步加载
+- P2 安全：添加 X-Content-Type-Options、Referrer-Policy meta 标签；创建 /.well-known/security.txt；补 Open Graph + Twitter Card 标签
+- Lighthouse 性能预期从 67 分显著提升（LCP 6.5s→~2-3s，FCP 2.9s→~1-1.5s）；原始检测数据留存 analysis/web-check-results.json
+
+#### For Codex
+
+- 性能优化和安全补齐已合并到 main。后续可做：GitHub Pages 自定义 HTTP 安全头（CSP/HSTS 需服务端配置）、CDN 缓存策略优化（当前 max-age=600）。移动端和夜间模式可视验证建议在部署后做一次。
+
 ### [CC] Conferences 瘦身：砍统计卡片、简化 upcoming、past 折叠、地图降级
 
 - **Time**: 2026-06-22 19:25
@@ -29,7 +48,7 @@
 
 ## 当前状态
 
-Conferences 瘦身完成（slim-conferences 分支），待继续 Step 2（Publications 分组）。站点已推进到 publication-first academic editorial 方向，保留轻量静态站点形态，不引入框架或构建系统。
+Web-check 性能优化和安全补齐已完成并合并到 main（Lighthouse 预期从 67 分大幅提升，安全标签和 OG 标签已补齐）。后续可做 GitHub Pages HTTP 安全头配置、CDN 缓存优化、以及 Phase 2 的 Publications 分组和 Research agenda 升级。
 
 ## 历史记录
 
