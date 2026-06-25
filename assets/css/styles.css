@@ -860,6 +860,17 @@ h1 {
   margin-top: 28px;
 }
 
+.cv-subhead {
+  margin: 36px 0 22px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.cv-timeline {
+  margin-bottom: 40px;
+}
+
 .cv-summary {
   display: grid;
   gap: 22px;
